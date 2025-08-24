@@ -42,4 +42,20 @@ export default function TabLayout() {
       />
     </Tabs>
   );
+
+  /*      <Tabs.Screen 
+        name="story_list"
+        options={{
+          title: 'Choose Story',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen 
+        name="Story_screen"
+        options={{
+          title: 'Choose Story',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+*/
 }

@@ -1,0 +1,94 @@
+{
+  "title": "Modern Family: A Day of Chaos",
+  "author": "OpenAI",
+  "start": "morningChaos",
+  "id": "modern_family",
+  "nodes": {
+    "morningChaos": {
+      "text": "It's a typical chaotic morning in the Dunphy household. Claire is frantically trying to get everyone ready. Phil wants to test his new drone, and the kids are all over the place.",
+      "options": [
+        { "description": "Help Claire get the family organized.", "target": "helpClaire" },
+        { "description": "Join Phil and test the drone.", "target": "testDrone" }
+      ]
+    },
+    "helpClaire": {
+      "text": "You try to help Claire, but Luke accidentally lets the dog out, and Haley refuses to wake up.",
+      "options": [
+        { "description": "Chase after the dog.", "target": "chaseDog" },
+        { "description": "Drag Haley out of bed.", "target": "wakeHaley" }
+      ]
+    },
+    "testDrone": {
+      "text": "You and Phil are having a blast flying the drone—until it crashes into Jay's backyard.",
+      "options": [
+        { "description": "Try to sneak into Jay's yard to get it.", "target": "sneakIntoJays" },
+        { "description": "Confess and ask Jay nicely.", "target": "askJay" }
+      ]
+    },
+    "chaseDog": {
+      "text": "You chase the dog through the neighborhood, knocking over garbage cans. Eventually, you catch him—but now you’re late for the family brunch.",
+      "options": [
+        { "description": "Rush to brunch disheveled.", "target": "brunchChaos" }
+      ]
+    },
+    "wakeHaley": {
+      "text": "You manage to wake Haley, but she takes forever getting ready. Claire is livid.",
+      "options": [
+        { "description": "Try calming Claire down.", "target": "calmClaire" },
+        { "description": "Blame Haley and run.", "target": "blameHaley" }
+      ]
+    },
+    "sneakIntoJays": {
+      "text": "You sneak in and find the drone, but Jay catches you red-handed. He makes you do yard work as punishment.",
+      "options": [
+        { "description": "Grumble through yard work.", "target": "brunchLate" }
+      ]
+    },
+    "askJay": {
+      "text": "Jay appreciates your honesty and hands you the drone. But he can’t resist teasing Phil about it at brunch.",
+      "options": [
+        { "description": "Laugh it off.", "target": "brunchOnTime" }
+      ]
+    },
+    "calmClaire": {
+      "text": "Claire eventually cools off. You all pile into the car and head to brunch.",
+      "options": [
+        { "description": "Sit back and enjoy the ride.", "target": "brunchOnTime" }
+      ]
+    },
+    "blameHaley": {
+      "text": "Haley gets mad and refuses to talk. Family tension rises at brunch.",
+      "options": [
+        { "description": "Try to break the ice.", "target": "brunchChaos" }
+      ]
+    },
+    "brunchChaos": {
+      "text": "Everyone arrives at brunch flustered and bickering. Gloria tries to keep the peace, but Cam and Mitch get caught in the drama too.",
+      "options": [
+        { "description": "Give a toast to lighten the mood.", "target": "happyEnding" },
+        { "description": "Sneak outside with Manny.", "target": "quietEnding" }
+      ]
+    },
+    "brunchOnTime": {
+      "text": "Brunch is a success. Everyone is laughing and enjoying themselves. Even Jay compliments Phil. A rare moment of peace!",
+      "options": [],
+      "ending": "win"
+    },
+    "brunchLate": {
+      "text": "You arrive late and sweaty. Everyone gives you side-eye, but you made it. Jay keeps smirking.",
+      "options": [
+        { "description": "Make a joke to win back the crowd.", "target": "happyEnding" }
+      ]
+    },
+    "happyEnding": {
+      "text": "Somehow, your words bring the family together. Everyone smiles and raises a glass. Success!",
+      "options": [],
+      "ending": "win"
+    },
+    "quietEnding": {
+      "text": "You and Manny sit quietly on the porch, escaping the madness inside. It’s peaceful, at least.",
+      "options": [],
+      "ending": "neutral"
+    }
+  }
+}

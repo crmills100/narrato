@@ -6,8 +6,24 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import StoryList from '../../components/StoryList';
+import StoryScreen from '../../components/StoryScreen';
+import { RootStackParamList } from '../../types/story';
+
+const Stack = createStackNavigator<RootStackParamList>();
+
 export default function HomeScreen() {
-  return (
+    return (
+      <Stack.Navigator initialRouteName="StoryList">
+        <Stack.Screen name="StoryList" component={StoryList} options={{ title: 'Choose a Story' }} />
+        <Stack.Screen name="StoryScreen" component={StoryScreen} options={{ title: 'Story' }} />
+      </Stack.Navigator>
+  );
+
+  /*return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
@@ -53,6 +69,7 @@ export default function HomeScreen() {
       </ThemedView>
     </ParallaxScrollView>
   );
+  */
 }
 
 const styles = StyleSheet.create({
