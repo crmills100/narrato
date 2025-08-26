@@ -1,0 +1,16 @@
+{
+    "id": "breaking_bad",
+    "title": "Breaking Bad",
+    "start": "start",
+    "nodes": {
+      "start": {
+        "text": "Walter White has a choice.",
+        "options": [
+          { "description": "Start cooking meth", "target": "cook" },
+          { "description": "Stay a teacher", "target": "teacher" }
+        ]
+      },
+      "cook": { "text": "He partners with Jesse Pinkman.", "ending": "true" },
+      "teacher": { "text": "He continues his life as a teacher.", "ending": "true" }
+    }
+  }

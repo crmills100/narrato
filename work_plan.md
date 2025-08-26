@@ -10,7 +10,7 @@ Basic version: "Basic"
 - basic flow: x
    - select a story
    - show text and navigation buttons and "end"
-- update README and check-in
+- update README and check-in x
 
 Version 0.1: "Demoable"
 - story viewing:

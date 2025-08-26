@@ -1,0 +1,190 @@
+{
+  "title": "Breaking Bad: Crossroads",
+  "author": "OpenAI",
+  "start": "diagnosis",
+  "id": "bb2",
+  "nodes": {
+    "diagnosis": {
+      "text": "You’ve just been diagnosed with terminal lung cancer. You sit in your car, the weight of the news pressing down on you. Your family depends on you, but time is running out.",
+      "options": [
+        { "description": "Tell Skyler the truth.", "target": "tellSkyler" },
+        { "description": "Keep it to yourself—for now.", "target": "keepSecret" }
+      ]
+    },
+    "tellSkyler": {
+      "text": "Skyler is devastated, but supportive. She urges you to start treatment and focus on family.",
+      "options": [
+        { "description": "Agree and start chemo.", "target": "startChemo" },
+        { "description": "Refuse treatment—consider another path.", "target": "seekMoney" }
+      ]
+    },
+    "keepSecret": {
+      "text": "You don’t say anything. Skyler notices your odd behavior and becomes suspicious.",
+      "options": [
+        { "description": "Distract her by acting normal.", "target": "pretendNormal" },
+        { "description": "Start planning for money behind the scenes.", "target": "seekMoney" }
+      ]
+    },
+    "startChemo": {
+      "text": "You begin treatment. The side effects are brutal. Medical bills start piling up.",
+      "options": [
+        { "description": "Take out loans.", "target": "cripplingDebt" },
+        { "description": "Reconsider illegal options.", "target": "seekMoney" }
+      ]
+    },
+    "cripplingDebt": {
+      "text": "Debt overwhelms you. Skyler starts asking questions. You feel cornered.",
+      "options": [
+        { "description": "Confess everything to her.", "target": "skylerReacts" },
+        { "description": "Keep spiraling on your own.", "target": "fallApart" }
+      ]
+    },
+    "seekMoney": {
+      "text": "You remember Jesse Pinkman, your former student. Maybe he can help you enter the meth game.",
+      "options": [
+        { "description": "Approach Jesse.", "target": "teamUp" },
+        { "description": "Try cooking alone.", "target": "cookAlone" }
+      ]
+    },
+    "pretendNormal": {
+      "text": "Your forced cheerfulness is transparent. Skyler begins digging into your phone calls and finances.",
+      "options": [
+        { "description": "Cover your tracks.", "target": "doubleLife" },
+        { "description": "Come clean.", "target": "skylerReacts" }
+      ]
+    },
+    "teamUp": {
+      "text": "You and Jesse cook in an RV. The first batch is a success—but Jesse owes money to a dealer: Krazy-8.",
+      "options": [
+        { "description": "Help Jesse deal with Krazy-8.", "target": "krazy8Confrontation" },
+        { "description": "Tell Jesse to fix it alone.", "target": "jesseTrouble" }
+      ]
+    },
+    "cookAlone": {
+      "text": "You cook a decent batch, but make a mistake disposing of chemicals. Neighbors get suspicious.",
+      "options": [
+        { "description": "Blame a student prank.", "target": "DEAWarning" },
+        { "description": "Move operations to the desert.", "target": "teamUp" }
+      ]
+    },
+    "krazy8Confrontation": {
+      "text": "You end up trapping Krazy-8 in Jesse’s basement. He pleads for his life.",
+      "options": [
+        { "description": "Let him go.", "target": "krazy8Escapes" },
+        { "description": "Finish the job.", "target": "firstKill" }
+      ]
+    },
+    "jesseTrouble": {
+      "text": "Jesse gets beat up. You find him half-conscious. It’s clear he needs you.",
+      "options": [
+        { "description": "Nurse him back and build trust.", "target": "bondWithJesse" },
+        { "description": "Threaten to find someone else.", "target": "powerPlay" }
+      ]
+    },
+    "krazy8Escapes": {
+      "text": "He reports you to Tuco. Now you’ve attracted a bigger threat.",
+      "options": [
+        { "description": "Prepare for war.", "target": "tucoMeeting" },
+        { "description": "Try to run.", "target": "abandonPlan" }
+      ]
+    },
+    "firstKill": {
+      "text": "You strangle Krazy-8. It's horrifying, but you've crossed the line. There's no going back.",
+      "options": [
+        { "description": "Clean up and move forward.", "target": "drugEmpire" }
+      ]
+    },
+    "bondWithJesse": {
+      "text": "You and Jesse develop a strange bond. He begins to see you as a mentor.",
+      "options": [
+        { "description": "Build the empire together.", "target": "drugEmpire" }
+      ]
+    },
+    "powerPlay": {
+      "text": "Jesse resents your tone but sticks around. He’s volatile.",
+      "options": [
+        { "description": "Trust him anyway.", "target": "drugEmpire" },
+        { "description": "Find a new partner.", "target": "meetGus" }
+      ]
+    },
+    "skylerReacts": {
+      "text": "Skyler is shocked. She threatens to leave with the kids.",
+      "options": [
+        { "description": "Beg her to stay.", "target": "skylerStays" },
+        { "description": "Let her go.", "target": "soloPath" }
+      ]
+    },
+    "fallApart": {
+      "text": "You collapse from stress and chemo. Alone, and broke, your secret dies with you.",
+      "options": [],
+      "ending": "lose"
+    },
+    "tucoMeeting": {
+      "text": "Tuco is unpredictable. Your explosive demonstration earns his respect—and a partnership.",
+      "options": [
+        { "description": "Keep working with Tuco.", "target": "drugEmpire" },
+        { "description": "Look for safer allies.", "target": "meetGus" }
+      ]
+    },
+    "abandonPlan": {
+      "text": "You flee to another state. Eventually, the cancer returns. You die in obscurity.",
+      "options": [],
+      "ending": "neutral"
+    },
+    "skylerStays": {
+      "text": "Skyler agrees to help you launder money. The game gets deeper.",
+      "options": [
+        { "description": "Get serious with Gus Fring.", "target": "meetGus" }
+      ]
+    },
+    "soloPath": {
+      "text": "You go solo. Paranoia and rage grow. Heisenberg begins to take over.",
+      "options": [
+        { "description": "Embrace the darkness.", "target": "finalStand" }
+      ]
+    },
+    "doubleLife": {
+      "text": "You balance two lives, but Hank—your DEA brother-in-law—starts closing in.",
+      "options": [
+        { "description": "Frame someone else.", "target": "framedJesse" },
+        { "description": "Go into hiding.", "target": "neutralEnding" }
+      ]
+    },
+    "framedJesse": {
+      "text": "You set Jesse up. He’s arrested. You keep cooking, but guilt eats away at you.",
+      "options": [
+        { "description": "Turn yourself in.", "target": "prisonEnding" },
+        { "description": "Stay king until the end.", "target": "finalStand" }
+      ]
+    },
+    "drugEmpire": {
+      "text": "Your empire grows. Money flows. So does the blood. You now go by Heisenberg.",
+      "options": [
+        { "description": "Make peace with your legacy.", "target": "finalStand" },
+        { "description": "Try to disappear.", "target": "neutralEnding" }
+      ]
+    },
+    "meetGus": {
+      "text": "Gus Fring offers professionalism and stability—but it's a dangerous game.",
+      "options": [
+        { "description": "Accept Gus’s deal.", "target": "drugEmpire" },
+        { "description": "Reject him and build your own path.", "target": "soloPath" }
+      ]
+    },
+    "prisonEnding": {
+      "text": "You turn yourself in. In prison, you wither away—but leave some money for your family.",
+      "options": [],
+      "ending": "neutral"
+    },
+    "neutralEnding": {
+      "text": "You abandon the empire. The money is buried. You live alone in a cabin, waiting for the end.",
+      "options": [],
+      "ending": "neutral"
+    },
+    "finalStand": {
+      "text": "You return to Albuquerque one final time. Armed and determined, you confront your enemies and go out on your own terms.",
+      "options": [],
+      "ending": "win"
+    }
+  }
+}
