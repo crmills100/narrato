@@ -1,0 +1,17 @@
+{
+    "id": "ss1",
+    "title": "What will I find?",
+    "author": "Annoymous",
+    "start": "start",
+    "nodes": {
+      "start": {
+        "text": "You have a choice.",
+        "options": [
+          { "description": "Start taking risks", "target": "cook" },
+          { "description": "Continue to do what you are doing", "target": "continue" }
+        ]
+      },
+      "cook": { "text": "You start getting things moving and your life changes in unimaginable ways.", "ending": "true" },
+      "continue": { "text": "You continue your life doing what you are doing.", "ending": "true" }
+    }
+  }

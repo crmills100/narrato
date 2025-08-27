@@ -18,8 +18,8 @@ Version 0.1: "Demoable"
    - scrollbar on long text
 - manage local stories:
    - basic story from URL:
-      - simple JSON
-      - save locally
+      - simple JSON x
+      - save locally x
       - delete story
    - rich story from URL:
       - more advanced file format with images
