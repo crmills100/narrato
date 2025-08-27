@@ -12,6 +12,7 @@ export type StoryNode = {
 export type Story = {
   id: string;
   title: string;
+  author: string;
   start: string;
   nodes: { [key: string]: StoryNode };
 };

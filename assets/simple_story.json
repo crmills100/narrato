@@ -1,6 +1,7 @@
 {
     "id": "breaking_bad",
     "title": "Breaking Bad",
+    "author": "Demo",
     "start": "start",
     "nodes": {
       "start": {
@@ -10,7 +11,8 @@
           { "description": "Stay a teacher", "target": "teacher" }
         ]
       },
-      "cook": { "text": "He partners with Jesse Pinkman.", "ending": "true" },
-      "teacher": { "text": "He continues his life as a teacher.", "ending": "true" }
+      "cook": { "text": "He partners with Jesse Pinkman.", "ending": true },
+      "teacher": { "text": "He continues his life as a teacher.", "ending": true }
     }
-  }
+}
+

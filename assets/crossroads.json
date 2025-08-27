@@ -1,8 +1,8 @@
 {
+  "id": "bb2",
   "title": "Breaking Bad: Crossroads",
   "author": "OpenAI",
   "start": "diagnosis",
-  "id": "bb2",
   "nodes": {
     "diagnosis": {
       "text": "You’ve just been diagnosed with terminal lung cancer. You sit in your car, the weight of the news pressing down on you. Your family depends on you, but time is running out.",
@@ -174,17 +174,17 @@
     "prisonEnding": {
       "text": "You turn yourself in. In prison, you wither away—but leave some money for your family.",
       "options": [],
-      "ending": "neutral"
+      "ending": true
     },
     "neutralEnding": {
       "text": "You abandon the empire. The money is buried. You live alone in a cabin, waiting for the end.",
       "options": [],
-      "ending": "neutral"
+      "ending": true
     },
     "finalStand": {
       "text": "You return to Albuquerque one final time. Armed and determined, you confront your enemies and go out on your own terms.",
       "options": [],
-      "ending": "win"
+      "ending": true
     }
   }
 }

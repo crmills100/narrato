@@ -1,8 +1,9 @@
 {
+  "id": "modern_family",
   "title": "Modern Family: A Day of Chaos",
   "author": "OpenAI",
   "start": "morningChaos",
-  "id": "modern_family",
+
   "nodes": {
     "morningChaos": {
       "text": "It's a typical chaotic morning in the Dunphy household. Claire is frantically trying to get everyone ready. Phil wants to test his new drone, and the kids are all over the place.",
@@ -72,7 +73,7 @@
     "brunchOnTime": {
       "text": "Brunch is a success. Everyone is laughing and enjoying themselves. Even Jay compliments Phil. A rare moment of peace!",
       "options": [],
-      "ending": "win"
+      "ending": true
     },
     "brunchLate": {
       "text": "You arrive late and sweaty. Everyone gives you side-eye, but you made it. Jay keeps smirking.",
@@ -83,12 +84,12 @@
     "happyEnding": {
       "text": "Somehow, your words bring the family together. Everyone smiles and raises a glass. Success!",
       "options": [],
-      "ending": "win"
+      "ending": true
     },
     "quietEnding": {
       "text": "You and Manny sit quietly on the porch, escaping the madness inside. It’s peaceful, at least.",
       "options": [],
-      "ending": "neutral"
+      "ending": true
     }
   }
 }

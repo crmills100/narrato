@@ -15,7 +15,14 @@ type Props = {
 };
 
 // Default stories 
-const defaultStories: Story[] = [ story1, story2, story3 ];
+const defaultStories: Story[] = [story1, story2, story3].map((s, idx) => ({
+  // provide fallbacks if missing
+  id: (s as Story).id ?? `default-${idx}`,
+  title: (s as Story).title ?? `Story ${idx + 1}`,
+  author: (s as Story).author,
+  start: (s as Story).start,
+  nodes: (s as Story).nodes
+}));
 
 
 export default function StoryList({ navigation }: Props) {
