@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, FlatList, StyleSheet, TextInput, Alert } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TextInput, Alert, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, Story } from '../types/story';
@@ -16,14 +16,12 @@ type Props = {
 
 // Default stories 
 const defaultStories: Story[] = [story1, story2, story3].map((s, idx) => ({
-  // provide fallbacks if missing
   id: (s as Story).id ?? `default-${idx}`,
   title: (s as Story).title ?? `Story ${idx + 1}`,
   author: (s as Story).author,
   start: (s as Story).start,
   nodes: (s as Story).nodes
 }));
-
 
 export default function StoryList({ navigation }: Props) {
   const [stories, setStories] = useState<Story[]>(defaultStories);
@@ -68,6 +66,24 @@ export default function StoryList({ navigation }: Props) {
     navigation.navigate('StoryScreen', { story });
   };
 
+  const confirmDelete = (story: Story) => {
+    Alert.alert(
+      'Delete Story',
+      `Are you sure you want to delete "${story.title}"?`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: () => {
+            const updated = stories.filter((s) => s.id !== story.id);
+            saveStories(updated);
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Available Stories</Text>
@@ -75,7 +91,13 @@ export default function StoryList({ navigation }: Props) {
         data={stories}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Button title={item.title} onPress={() => openStory(item)} />
+          <TouchableOpacity
+            style={styles.storyItem}
+            onPress={() => openStory(item)}
+            onLongPress={() => confirmDelete(item)}
+          >
+            <Text style={styles.storyText}>{`${item.title} by ${item.author}`}</Text>
+          </TouchableOpacity>
         )}
       />
       <View style={styles.addContainer}>
@@ -85,7 +107,9 @@ export default function StoryList({ navigation }: Props) {
           value={url}
           onChangeText={setUrl}
         />
-        <Button title="Add" onPress={addStoryFromUrl} />
+        <TouchableOpacity style={styles.addButton} onPress={addStoryFromUrl}>
+          <Text style={styles.addButtonText}>Add</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -101,6 +125,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 12,
   },
+  storyItem: {
+    padding: 12,
+    marginVertical: 4,
+    backgroundColor: '#007AFF',
+    borderRadius: 6,
+  },
+  storyText: {
+    color: '#fff',
+    fontSize: 16,
+  },
   addContainer: {
     flexDirection: 'row',
     marginTop: 20,
@@ -113,5 +147,15 @@ const styles = StyleSheet.create({
     padding: 8,
     marginRight: 8,
     borderRadius: 4,
+  },
+  addButton: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 4,
+  },
+  addButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
