@@ -15,12 +15,13 @@ Basic version: "Basic"
 Version 0.1: "Demoable"
 - story viewing:
    - display images
-   - scrollbar on long text
+   - scrollbar on long text x
+   - multiple paragraphs of text
 - manage local stories:
    - basic story from URL:
       - simple JSON x
       - save locally x
-      - delete story
+      - delete story x
    - rich story from URL:
       - more advanced file format with images
       - parse file format
