@@ -5,14 +5,15 @@ Learning / environment setup:
 
 - complete tutorial (StickerSmash) x
 
-Basic version: "Basic"
+Version 0.1: Basic "POC" version
 - revisit ChatGPT/Claude generated code x
 - basic flow: x
    - select a story x
    - show text and navigation buttons and "end" x
+   - story management (add + delete) x
 - update README and check-in x
 
-Version 0.1: "Demoable"
+Version 0.2: "Demoable"
 - change to Claude for generation
 - rich story fomat:
    - define .cyoa file fomat
@@ -21,6 +22,11 @@ Version 0.1: "Demoable"
    - scrollbar on long text 
    - display images
    - multiple paragraphs of text
+- Create main tabs of application:
+   - "Current" - current story being viewed
+   - "Home" - browsing server
+   - "Library" - local stories
+   - "More" - settings, info
 - "Home"
    - basic version - placeholder text
    - story from URL - placeholder text
@@ -29,6 +35,9 @@ Version 0.1: "Demoable"
    - browse (icons and titles)
    - select to launch
    - delete
+- "More"
+   - intro static text
+   - show logs
 - create demo stories:
    - bedtime story - port bedtime story from google
    - music album - use genAI songs
@@ -40,7 +49,7 @@ Version 0.1: "Demoable"
 - intermediate Expo learning:
    - read: https://docs.expo.dev/workflow/overview/
 
-Version 0.2: "Server Library"
+Version 0.3: "Server Library"
 - manage shared stories (no authentication, user login, ...):
    - client:
       - option to set server URL
@@ -52,7 +61,7 @@ Version 0.2: "Server Library"
       - serve list of stories in .cyoa
       - serve individual story
 
-Version 0.3: "Distributable"
+Version 0.4: "Distributable"
 - cloud flare
    - serve list of stories
    - serve individual story in .cyoa format
@@ -70,21 +79,21 @@ Version 0.3: "Distributable"
    - increase/decrease font size
 - pre-release client published to server for download
 
-Version 0.4: "Interactive"
+Version 0.5: "Interactive"
 - narration mode (reads the story)
 - voice control mode (you speak the choices)
 - child-lock mode (only responde to specific sequence of touches)
 - story viewing:
    - hyperlinks in story text
 
-Version 0.5: "Creators"
+Version 0.6: "Creators"
 - create AI story: ability to have generative AI create a story
 - tool to author story
 
-Version 0.6: "
+Version 0.7: "
 - more advanced story library (searching, browsing, 3rd party contribution)
 
-Version 0.7: "Alpha"
+Version 0.8: "Alpha"
 - alpha versions publised to Android and Apple stored
 
 Version 1.0:
