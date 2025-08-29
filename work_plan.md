@@ -8,8 +8,8 @@ Learning / environment setup:
 Basic version: "Basic"
 - revisit ChatGPT/Claude generated code x
 - basic flow: x
-   - select a story
-   - show text and navigation buttons and "end"
+   - select a story x
+   - show text and navigation buttons and "end" x
 - update README and check-in x
 
 Version 0.1: "Demoable"
@@ -41,7 +41,7 @@ Version 0.1: "Demoable"
    - modern family story
    - breaking bad story
    - porn story?
-- intermediate learning:
+- intermediate Expo learning:
    - read: https://docs.expo.dev/workflow/overview/
 
 Version 0.2: "Distributable"
@@ -58,6 +58,8 @@ Version 0.2: "Distributable"
 - content:
    - story workflow from git -> published on server
    - 3 infant stories
+- options:
+   - increase/decrease font size
 - pre-release client published to server for download
 
 Version 0.3: "Interactive"
