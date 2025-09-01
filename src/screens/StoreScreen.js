@@ -15,6 +15,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useGame } from '../context/GameContext';
 
+import { log, getLog } from '@/util/log';
+
 export default function StoreScreen() {
   const { addGameToLibrary, library } = useGame();
   const [games, setGames] = useState([]);
@@ -75,8 +77,10 @@ export default function StoreScreen() {
 
   const fetchGames = async () => {
     setLoading(true);
+
     try {
       // Simulate API call
+      log("fetchGames()");
       await new Promise(resolve => setTimeout(resolve, 1000));
       setGames(mockServerGames);
     } catch (error) {
@@ -165,6 +169,7 @@ export default function StoreScreen() {
         }
       };
 
+      log("call addGameToLibary()");
       const success = await addGameToLibrary(gameData);
       if (success) {
         Alert.alert('Downloaded!', `${game.title} has been added to your library.`);
@@ -172,6 +177,9 @@ export default function StoreScreen() {
         Alert.alert('Error', 'Failed to add game to library');
       }
     } catch (error) {
+      log('Download Failed');
+      log(error);
+      console.log(error);
       Alert.alert('Download Failed', 'Could not download the game. Please try again.');
     } finally {
       setDownloading(prev => ({ ...prev, [game.id]: false }));

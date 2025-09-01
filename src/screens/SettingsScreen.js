@@ -11,6 +11,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { getLog } from '../../util/log';
 
 export default function SettingsScreen() {
   const [settings, setSettings] = useState({
@@ -87,6 +88,7 @@ export default function SettingsScreen() {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Settings</Text>
       </View>
+      <Text style={styles.section}>Log: {getLog()}</Text>
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Gameplay</Text>
