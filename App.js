@@ -1,0 +1,93 @@
+// App.js - Main application entry point
+import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StatusBar } from 'expo-status-bar';
+
+// Screens
+import LibraryScreen from './src/screens/LibraryScreen';
+import StoreScreen from './src/screens/StoreScreen';
+import GameScreen from './src/screens/GameScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+
+// Context
+import { GameProvider } from './src/context/GameContext';
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function LibraryStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="Library" 
+        component={LibraryScreen}
+        options={{ title: 'My Games' }}
+      />
+      <Stack.Screen 
+        name="Game" 
+        component={GameScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function StoreStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="Store" 
+        component={StoreScreen}
+        options={{ title: 'Discover Games' }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <GameProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+              if (route.name === 'LibraryTab') {
+                iconName = focused ? 'library' : 'library-outline';
+              } else if (route.name === 'StoreTab') {
+                iconName = focused ? 'storefront' : 'storefront-outline';
+              } else if (route.name === 'Settings') {
+                iconName = focused ? 'settings' : 'settings-outline';
+              }
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: '#6366f1',
+            tabBarInactiveTintColor: 'gray',
+            headerShown: false,
+          })}
+        >
+          <Tab.Screen 
+            name="LibraryTab" 
+            component={LibraryStack}
+            options={{ title: 'Library' }}
+          />
+          <Tab.Screen 
+            name="StoreTab" 
+            component={StoreStack}
+            options={{ title: 'Store' }}
+          />
+          <Tab.Screen 
+            name="Settings" 
+            component={SettingsScreen}
+            options={{ title: 'Settings' }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </GameProvider>
+  );
+}

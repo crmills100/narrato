@@ -39,7 +39,7 @@ Version 0.2: "Demoable"
    - intro static text
    - show logs
 - create demo stories:
-   - bedtime story - port bedtime story from google
+   - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c
    - music album - use genAI songs
    - vacation album - use Iceland trip
    - infant story (Totes McGoats Adventure inital adventure)
