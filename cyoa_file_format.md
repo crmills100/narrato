@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CYOA format (.cyoa) is a JSON-based file format designed for interactive fiction games with rich multimedia content, branching narratives, and complex game mechanics.
+The CYOA format (.cyoa) is a ZIP-based file format designed for interactive fiction games with rich multimedia content, branching narratives, and complex game mechanics. The main game component of the format is the story.json file detailed below.
 
 ## File Structure
 

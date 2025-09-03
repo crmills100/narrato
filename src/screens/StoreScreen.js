@@ -1,21 +1,22 @@
 // src/screens/StoreScreen.js - Browse and download games
-import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  Alert,
-  RefreshControl,
-  TextInput,
-  ActivityIndicator,
-} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import * as FileSystem from 'expo-file-system';
+import { useEffect, useState } from 'react';
+import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  Image,
+  RefreshControl,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { useGame } from '../context/GameContext';
 
-import { log, getLog } from '@/util/log';
+import { log } from '@/util/log';
 
 export default function StoreScreen() {
   const { addGameToLibrary, library } = useGame();
@@ -128,16 +129,8 @@ export default function StoreScreen() {
                 text: `# ${game.title}\n\nWelcome to ${game.title}! This is a demo of the story content.\n\nYour adventure begins here...`,
               },
               choices: [
-                {
-                  id: "choice1",
-                  text: "Continue the adventure",
-                  target: "chapter1"
-                },
-                {
-                  id: "choice2", 
-                  text: "Learn about the world",
-                  target: "lore"
-                }
+                { id: "choice1", text: "Continue the adventure", target: "chapter1" },
+                { id: "choice2", text: "Learn about the world", target: "lore" }
               ]
             },
             chapter1: {
@@ -145,11 +138,7 @@ export default function StoreScreen() {
                 text: "## Chapter 1\n\nYour journey continues deeper into the story...",
               },
               choices: [
-                {
-                  id: "return",
-                  text: "Return to start",
-                  target: "start"
-                }
+                { id: "return", text: "Return to start", target: "start" }
               ]
             },
             lore: {
@@ -157,11 +146,7 @@ export default function StoreScreen() {
                 text: "## About This World\n\nThis is background information about the game world and its inhabitants...",
               },
               choices: [
-                {
-                  id: "back",
-                  text: "Back to adventure",
-                  target: "start"
-                }
+                { id: "back", text: "Back to adventure", target: "start" }
               ]
             }
           },
@@ -169,8 +154,14 @@ export default function StoreScreen() {
         }
       };
 
-      log("call addGameToLibary()");
-      const success = await addGameToLibrary(gameData);
+      // Save gameData to filesystem
+      const fileName = `game_${game.id || Date.now()}.json`;
+      const filePath = FileSystem.documentDirectory + fileName;
+      await FileSystem.writeAsStringAsync(filePath, JSON.stringify(gameData));
+
+      log("call addGameToLibrary()");
+      const success = await addGameToLibrary(filePath);
+
       if (success) {
         Alert.alert('Downloaded!', `${game.title} has been added to your library.`);
       } else {
@@ -178,8 +169,7 @@ export default function StoreScreen() {
       }
     } catch (error) {
       log('Download Failed');
-      log(error);
-      console.log(error);
+      console.error(error);
       Alert.alert('Download Failed', 'Could not download the game. Please try again.');
     } finally {
       setDownloading(prev => ({ ...prev, [game.id]: false }));

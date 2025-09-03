@@ -1,17 +1,16 @@
 // App.js - Main application entry point
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 
 // Screens
-import LibraryScreen from './src/screens/LibraryScreen';
-import StoreScreen from './src/screens/StoreScreen';
+import AddStoryByURLScreen from './src/screens/AddStoryByURLScreen';
 import GameScreen from './src/screens/GameScreen';
+import LibraryScreen from './src/screens/LibraryScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import StoreScreen from './src/screens/StoreScreen';
 
 // Context
 import { GameProvider } from './src/context/GameContext';
@@ -85,6 +84,11 @@ export default function App() {
             name="Settings" 
             component={SettingsScreen}
             options={{ title: 'Settings' }}
+          />
+          <Tab.Screen 
+            name="AddByURL" 
+            component={AddStoryByURLScreen  }
+            options={{ title: 'AddByURL' }}
           />
         </Tab.Navigator>
       </NavigationContainer>

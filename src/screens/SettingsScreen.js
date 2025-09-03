@@ -1,17 +1,17 @@
 // src/screens/SettingsScreen.js - App settings and preferences
-import React, { useState, useEffect } from 'react';
+import { getLog } from '@/util/log';
+import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Switch,
   Alert,
   ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { getLog } from '../../util/log';
 
 export default function SettingsScreen() {
   const [settings, setSettings] = useState({
