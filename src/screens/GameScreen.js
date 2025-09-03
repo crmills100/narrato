@@ -18,7 +18,7 @@ import { gameEngine } from '../engine/GameEngine';
 
 
 export default function GameScreen({ navigation }) {
-  const { currentGame, gameState, saveGameProgress } = useGame();
+  const { currentGame, gameState, saveGameProgress, getAssetUri } = useGame();
   const [currentNode, setCurrentNode] = useState(null);
   const [variables, setVariables] = useState({});
   const [inventory, setInventory] = useState([]);
@@ -168,7 +168,7 @@ export default function GameScreen({ navigation }) {
         
         {currentNode.content?.image && (
           <Image
-            source={{ uri: currentNode.content.image }}
+            source={{ uri: getAssetUri(currentNode.content.image) }}
             style={styles.storyImage}
             resizeMode="cover"
           />

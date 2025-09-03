@@ -59,8 +59,24 @@ export function GameProvider({ children }) {
     return state.library.some(game => game.id === gameId);
   };
 
+  const getAssetUri = (imageId) => {
+
+    //TODO: use the imageId to resove the relative path for the image
+    //TODO: append the path to the base filesystem
+    //TODO: handle error
+    // const fileUri = FileSystem.documentDirectory + fileName;
+
+    log("getAssetUri: " + imageId);
+
+    log(JSON.stringify(state.currentGame));
+
+    // lookup the path game's assets
+    return "file:///data/user/0/host.exp.exponent/files/2671807.jpg";
+  }
+
   const addGameToLibrary = async (filePath) => {
   try {
+    log("addGameToLibrary: " + filePath);
     // Read the file contents
     const fileContents = await FileSystem.readAsStringAsync(filePath);
     const gameData = JSON.parse(fileContents);
@@ -142,6 +158,7 @@ const loadGame = async (gameId) => {
     loadGame,
     saveGameProgress,
     loadLibrary,
+    getAssetUri
   };
 
   return (

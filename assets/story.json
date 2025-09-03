@@ -1,35 +1,46 @@
 {
-      "id": "space_odyssey",
-      "title": "Stellar Odyssey2",
-      "author": "Cosmic Games",
-      "description": "Navigate the dangers of deep space in this thrilling sci-fi adventure.",
-      "thumbnail": "https://via.placeholder.com/150x150/3b82f6/ffffff?text=Space",
-      "rating": "4.6",
-      "downloads": "8930",
-      "size_mb": "32.1",
-      "estimated_play_time": "60",
-      "tags": ["sci-fi", "space", "exploration"],
-      "price": "2.99",
-      "featured": "false",
+    "id": "space_odyssey",
+    "title": "Stellar Odyssey2",
+    "author": "Cosmic Games",
+    "description": "Navigate the dangers of deep space in this thrilling sci-fi adventure.",
+    "thumbnail": "https://via.placeholder.com/150x150/3b82f6/ffffff?text=Space",
+    "rating": "4.6",
+    "downloads": "8930",
+    "size_mb": "32.1",
+    "estimated_play_time": "60",
+    "tags": ["sci-fi", "space", "exploration"],
+    "price": "2.99",
+    "featured": "false",
     "story": {
-    "meta": {
-        "title": "The Enchanted Forest",
-        "author": "Jane Storyteller",
-        "description": "A magical adventure through mysterious woods filled with ancient secrets.",
-        "language": "EN",
-        "rating": "G",
-        "estimated_play_time": 45,
-        "tags": [
-            "fantasy",
-            "magic",
-            "adventure"
-        ]
-    },
+        "meta": {
+            "title": "The Enchanted Forest",
+            "author": "Jane Storyteller",
+            "description": "A magical adventure through mysterious woods filled with ancient secrets.",
+            "language": "EN",
+            "rating": "G",
+            "estimated_play_time": 45,
+            "tags": [
+                "fantasy",
+                "magic",
+                "adventure"
+            ]
+        },
+        "assets": {
+            "images": {
+                "pcar": {
+                 "path": "./pcar.jpg",
+                 "alt_text": "porsche",
+                 "format": "jpg"
+                }
+            }
+        },
+
     "nodes": {
         "start": {
             "title": "Beginning",
             "content": {
-                "text": "# The Enchanted Forest\n\nWelcome to The Enchanted Forest! This is a demo of the story content.\n\nYour adventure begins here..."
+                "text": "# The Enchanted Forest\n\nWelcome to The Enchanted Forest! This is a demo of the story content.\n\nYour adventure begins here...",
+                "image": "pcar"
             },
             "choices": [
                 {

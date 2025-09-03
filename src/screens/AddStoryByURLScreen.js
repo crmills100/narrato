@@ -1,15 +1,44 @@
 // src/screens/AddStoryByURLScreen.js
+import { log } from '@/util/log';
 import * as FileSystem from 'expo-file-system';
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useGame } from '../context/GameContext';
-
 export default function AddStoryByURLScreen({ navigation }) {
   const { addGameToLibrary } = useGame();
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleAdd = async () => {
+  const handleAdd3 = async () => {
+    if (!url.trim()) {
+      Alert.alert("Error", "Please enter a URL.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const fileName = `2671807.jpg`;
+      const fileUri = FileSystem.documentDirectory + fileName;
+
+      // Download the file
+      const result = await FileSystem.downloadAsync("http://192.168.0.157/2671807.jpg", fileUri);
+      log(fileUri);      
+
+      if (result.status !== 200) {
+        throw new Error(`Failed to download file: ${result.status}`);
+      }
+
+
+    } catch (error) {
+      console.error("Error adding game:", error);
+      Alert.alert("Error", error.message || "Could not add game.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+    const handleAdd = async () => {
     if (!url.trim()) {
       Alert.alert("Error", "Please enter a URL.");
       return;
@@ -24,7 +53,7 @@ export default function AddStoryByURLScreen({ navigation }) {
 
       // Download the file
       const result = await FileSystem.downloadAsync(url.trim(), fileUri);
-
+      
       if (result.status !== 200) {
         throw new Error(`Failed to download file: ${result.status}`);
       }
