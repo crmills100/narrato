@@ -14,9 +14,16 @@ Version 0.1: Basic "POC" version
 - update README and check-in x
 
 Version 0.2: "Demoable"
-- change to Claude for generation
+- change to Claude for generation x
 - rich story fomat:
    - define .cyoa file fomat
+   - create a sample file with body and image
+   - update StoreScreen.js to download to local disk
+   - pass path to zip file to GameContext.js
+   - unzip file in GameContext.js
+   - add to library[] in GameContext.js
+   - return image assets from GameContext.js
+   - update GameScreen.js to render images
    - functionality: nodes, text, sounds, images, ...
 - story viewing / game engine:
    - scrollbar on long text 
