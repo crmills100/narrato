@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f8fafc',
   },
-  
+
   // Library Screen Styles
   header: {
     padding: 16,
@@ -376,6 +376,60 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginLeft: 16,
   },
+
+  // Markdown
+  heading1: {
+    fontSize: 28,
+    marginVertical: 12,
+    fontWeight: "bold",
+  },
+  body: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#374151',
+    marginBottom: 20,
+  },
+  heading1: {
+    fontSize: 28,
+    marginVertical: 12,
+    fontWeight: "bold",
+  },
+  heading2: {
+    fontSize: 22,
+    marginVertical: 8,
+    fontWeight: "600",
+  },
+  strong: {
+    fontWeight: "bold",
+  },
+  em: {
+    fontStyle: "italic",
+  },
+  link: {
+    color: "#6366f1",
+    textDecorationLine: "underline",
+  },
+  list_item: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+  },
+  bullet_list_icon: {
+    marginRight: 8,
+  },
+  code_inline: {
+    backgroundColor: "#eee",
+    borderRadius: 4,
+    paddingHorizontal: 4,
+    fontFamily: "monospace",
+  },
+  code_block: {
+    backgroundColor: "#111",
+    color: "#eee",
+    padding: 8,
+    borderRadius: 6,
+    fontFamily: "monospace",
+  },
+
 
   // Common Styles
   loadingContainer: {

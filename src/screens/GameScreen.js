@@ -1,6 +1,7 @@
 // src/screens/GameScreen.js - Game engine and player
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
+import Markdown from "react-native-markdown-display";
 
 import { Ionicons } from '@expo/vector-icons';
 import {
@@ -174,9 +175,9 @@ export default function GameScreen({ navigation }) {
           />
         )}
 
-        <Text style={styles.storyText}>
+        <Markdown style={styles}>
           {processText(currentNode.content?.text || '')}
-        </Text>
+        </Markdown>
 
         {inventory.length > 0 && (
           <View style={styles.inventorySection}>

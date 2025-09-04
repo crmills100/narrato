@@ -407,7 +407,7 @@ Text content supports Markdown with extensions:
 ## File Organization
 
 ```
-game_folder/
+story.zip (cyoa file):
 ├── story.json              # Main story file
 ├── images/                 # Image assets
 │   ├── backgrounds/

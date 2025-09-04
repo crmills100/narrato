@@ -16,19 +16,19 @@ Version 0.1: Basic "POC" version
 Version 0.2: "Demoable"
 - change to Claude for generation x
 - rich story fomat:
-   - define .cyoa file fomat
-   - create a sample file with body and image
-   - update StoreScreen.js to download to local disk
-   - pass path to zip file to GameContext.js
-   - unzip file in GameContext.js
+   - update StoreScreen.js to save to local disk x
+   - pass path to JSON file to GameContext.js x
+   - create a sample file with body and image x
+   - define .cyoa file fomat (ZIP + JSON) 
+   - unzip file in GameContext.js 
    - add to library[] in GameContext.js
    - return image assets from GameContext.js
    - update GameScreen.js to render images
    - functionality: nodes, text, sounds, images, ...
 - story viewing / game engine:
-   - scrollbar on long text 
+   - scrollbar on long text x
+   - multiple paragraphs of text (via markdown) x
    - display images
-   - multiple paragraphs of text
 - Create main tabs of application:
    - "Current" - current story being viewed
    - "Home" - browsing server
@@ -42,7 +42,7 @@ Version 0.2: "Demoable"
    - browse (icons and titles)
    - select to launch
    - delete
-- "More"
+- "Settings"
    - intro static text
    - show logs
 - create demo stories:
@@ -107,3 +107,27 @@ Version 1.0:
 - marketing
 - 3rd party authors
 
+
+
+
+Code Experiments:
+
+1. Images
+
+This works:
+
+      const fileName = `2671807.jpg`;
+      const fileUri = FileSystem.documentDirectory + fileName;
+
+      // Download the file
+      const result = await FileSystem.downloadAsync("http://192.168.0.157/2671807.jpg", fileUri);
+      log(fileUri);      
+      // Saved file Uri is: file:///data/user/0/host.exp.exponent/files/2671807.jpg
+
+
+      // Display the image
+          <Image
+            source={{ uri: "file:///data/user/0/host.exp.exponent/files/2671807.jpg" }}
+            style={styles.storyImage}
+            resizeMode="cover"
+          />
