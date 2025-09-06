@@ -431,6 +431,54 @@ const styles = StyleSheet.create({
   },
 
 
+  // modal styles
+  modalContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    backgroundColor: '#f8f9fa',
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  modalHeaderButtons: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  modalButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 8,
+    gap: 4,
+  },
+  modalButtonText: {
+    color: '#6366f1',
+    fontSize: 14,
+  },
+  logContainer: {
+    flex: 1,
+    padding: 16,
+  },
+  logText: {
+    fontFamily: 'monospace',
+    fontSize: 12,
+    color: '#333',
+    backgroundColor: '#f5f5f5',
+    padding: 12,
+    borderRadius: 8,
+    minHeight: 400,
+  },
+
+
   // Common Styles
   loadingContainer: {
     flex: 1,
