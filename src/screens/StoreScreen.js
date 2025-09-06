@@ -19,7 +19,7 @@ import { log } from '@/util/log';
 import styles from '../components/styles';
 
 export default function StoreScreen() {
-  const { addGameToLibrary, library } = useGame();
+  const { addGameToLibraryJSON, library } = useGame();
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -159,8 +159,8 @@ export default function StoreScreen() {
       const filePath = FileSystem.documentDirectory + fileName;
       await FileSystem.writeAsStringAsync(filePath, JSON.stringify(gameData));
 
-      log("call addGameToLibrary()");
-      const success = await addGameToLibrary(filePath);
+      log("call addGameToLibraryJSON()");
+      const success = await addGameToLibraryJSON(filePath);
 
       if (success) {
         Alert.alert('Downloaded!', `${game.title} has been added to your library.`);

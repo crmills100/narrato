@@ -80,6 +80,39 @@ export function GameProvider({ children }) {
     return FileSystem.documentDirectory;
   }
 
+  const addGameToLibraryJSON = async (filePath) => {
+    try {
+      log("addGameToLibrary: " + filePath);
+      // Read the file contents
+      const fileContents = await FileSystem.readAsStringAsync(filePath);
+      const gameData = JSON.parse(fileContents);
+
+      if (isGameOwned(gameData.id)) {
+        log('Already Owned', 'You already have this game in your library!');
+        return;
+      }
+
+      // Create new game object
+      const newGame = {
+        id: gameData.id || Date.now().toString(),
+        ...gameData,
+        dateAdded: new Date().toISOString(),
+        filePath: null, // only JSON without assets, no need to store path
+      };
+
+      // Update library and persist
+      const updatedLibrary = [...state.library, newGame];
+      await AsyncStorage.setItem('cyoa_library3', JSON.stringify(updatedLibrary));
+      dispatch({ type: 'ADD_TO_LIBRARY', payload: newGame });
+      return true;
+    } catch (error) {
+      console.error("Failed to add game:", error);
+      dispatch({ type: 'SET_ERROR', payload: 'Failed to add game to library' });
+      return false;
+    }
+  };
+
+
   const addGameToLibrary = async (zipFilePath, gameId) => {
     try {
       log("addGameToLibrary: " + zipFilePath);
@@ -187,6 +220,7 @@ const loadGame = async (gameId) => {
   const value = {
     ...state,
     addGameToLibrary,
+    addGameToLibraryJSON,
     loadGame,
     saveGameProgress,
     loadLibrary,
