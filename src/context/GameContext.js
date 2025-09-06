@@ -61,22 +61,104 @@ export function GameProvider({ children }) {
     return state.library.some(game => game.id === gameId);
   };
 
-  const getAssetUri = (imageId) => {
+  const getImageAssetUri = (imageId) => {
+    try {
+      log("getImageAssetUri: " + imageId);
+      log("state.currentGame: " + JSON.stringify(state.currentGame));
+      
+      
+      if (!imageId || !state.currentGame?.story?.assets?.images) {
+        log("getAudioAssetUri: Invalid input or missing image assets");
+        return null;
+      }
 
-    //TODO: use the imageId to resove the relative path for the image
-    //TODO: append the path to the base filesystem
-    //TODO: handle error
-    // const fileUri = FileSystem.documentDirectory + fileName;
+      // Get the assets from the current game
+      const assets = state.currentGame.story.assets;
+            
+      const asset = assets.images[imageId];
+      if (!asset || !asset.path) {
+        log(`getImageAssetUri: Image '${imageId}' not found`);
+        const availableIds = Object.keys(assets.images);
+        log(`getImageAssetUri: Available image IDs: ${availableIds.join(', ')}`);
+        return null;
+      }
 
-    log("getAssetUri: " + imageId);
+      const gameId = state.currentGame.id;
+      const rootDir = getRootStorageDirectory();
+      const cleanAssetPath = asset.path.startsWith('/') ? asset.path.substring(1) : asset.path;
+      const fullPath = `${rootDir}${gameId}/${cleanAssetPath}`;
+      const fileUri = fullPath.startsWith('file://') ? fullPath : `file://${fullPath}`;
+      
+      log(`getImageAssetUri: Resolved '${imageId}' to '${fileUri}'`);
+      return fileUri;
+      
+    } catch (error) {
+      err(`getImageAssetUri: Error for '${imageId}', ${error.message}`, error);
+      return null;
+    }
+  };
 
-    log(JSON.stringify(state.currentGame));
+  // Utility function to get image asset metadata
+  const getImageAssetMetadata = (imageId) => {
+    try {
+      if (!state.currentGame?.story?.assets?.images?.[imageId]) {
+        return null;
+      }
+      
+      const asset = state.currentGame.story.assets.images[imageId];
+      return {
+        path: asset.path,
+        altText: asset.alt_text,
+        width: asset.width,
+        height: asset.height,
+        format: asset.format,
+        uri: getImageAssetUri(imageId)
+      };
+      
+    } catch (error) {
+      err(`getImageAssetMetadata: Error for '${imageId}', ${error.message}`, error);
+      return null;
+    }
+  };
 
-    // lookup the path game's assets
-    return "file:///data/user/0/com.cyoa.adventureengine/files/basic_story/images/car.jpg";
-  }
+  // Audio asset URI resolver
+  const getAudioAssetUri = (audioId) => {
+    try {
+      log("getAudioAssetUri: " + audioId);
+      
+      if (!audioId || !state.currentGame?.story?.assets?.audio) {
+        log("getAudioAssetUri: Invalid input or missing audio assets");
+        return null;
+      }
+      
+      // Get the assets from the current game
+      const assets = state.currentGame.story.assets;
+            
+      const asset = assets.audio[audioId];
+      if (!asset || !asset.path) {
+        log(`getAudioAssetUri: Audio '${audioId}' not found`);
+        const availableIds = Object.keys(assets.audio);
+        log(`getAudioAssetUri: Available audio IDs: ${availableIds.join(', ')}`);
+        return null;
+      }
+      
+      const gameId = state.currentGame.id;
+      const rootDir = getRootStorageDirectory();
+      const cleanAssetPath = asset.path.startsWith('/') ? asset.path.substring(1) : asset.path;
+      const fullPath = `${rootDir}${gameId}/${cleanAssetPath}`;
+      const fileUri = fullPath.startsWith('file://') ? fullPath : `file://${fullPath}`;
+      
+      log(`getAudioAssetUri: Resolved '${audioId}' to '${fileUri}'`);
+      return fileUri;
+      
+    } catch (error) {
+      err(`getAudioAssetUri: Error for '${audioId}', ${error.message}`, error);
+      return null;
+    }
+  };
 
-  const getGameDirectory = () => {
+
+  const getRootStorageDirectory = () => {
     return FileSystem.documentDirectory;
   }
 
@@ -118,7 +200,7 @@ export function GameProvider({ children }) {
       log("addGameToLibrary: " + zipFilePath);
 
       // Define extraction path
-      const extractPath = `${getGameDirectory()}${gameId}`;
+      const extractPath = `${getRootStorageDirectory()}${gameId}`;
 
       log("call unzip: " + zipFilePath + ", " + extractPath);
 
@@ -144,6 +226,7 @@ export function GameProvider({ children }) {
       const storyPath = `${extractPath}/story.json`;
       const fileContents = await FileSystem.readAsStringAsync(storyPath);
       const gameData = JSON.parse(fileContents);
+      gameData.id = gameId;
 
       if (isGameOwned(gameId)) {
         log('Already Owned', 'You already have this game in your library!');
@@ -152,7 +235,6 @@ export function GameProvider({ children }) {
 
       // Create new game object
       const newGame = {
-        id: gameId,
         ...gameData,
         dateAdded: new Date().toISOString(),
         filePath: extractPath, // store path of extracted folder
@@ -185,6 +267,7 @@ const loadGame = async (gameId) => {
         log("loadGame from directory:" + game.filePath);
         const fileContents = await FileSystem.readAsStringAsync(game.filePath + "/story.json");
         const parsedData = JSON.parse(fileContents);
+        parsedData.id = gameId;
         fullGameData = {
           ...game,
           ...parsedData, // overwrite with latest contents
@@ -224,7 +307,8 @@ const loadGame = async (gameId) => {
     loadGame,
     saveGameProgress,
     loadLibrary,
-    getAssetUri
+    getImageAssetUri,
+    getAudioAssetUri,
   };
 
   return (
