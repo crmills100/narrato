@@ -113,6 +113,13 @@ The app supports the CYOA file format with the following features:
   }
 }
 ```
+## Building for Development (Android)
+
+```bash
+eas build --platform android --profile development
+```
+
+On device, download APK file and install.
 
 ## Building for Production
 

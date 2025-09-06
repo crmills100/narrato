@@ -1,8 +1,10 @@
 // src/context/GameContext.js - Game state management
-import { log } from '@/util/log';
+import { err, log, warn } from '@/util/log';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as FileSystem from 'expo-file-system';
 import { createContext, useContext, useEffect, useReducer } from 'react';
+import RNFS from 'react-native-fs';
+import { unzip } from 'react-native-zip-archive';
 
 const GameContext = createContext();
 
@@ -71,41 +73,70 @@ export function GameProvider({ children }) {
     log(JSON.stringify(state.currentGame));
 
     // lookup the path game's assets
-    return "file:///data/user/0/host.exp.exponent/files/2671807.jpg";
+    return "file:///data/user/0/com.cyoa.adventureengine/files/basic_story/images/car.jpg";
   }
 
-  const addGameToLibrary = async (filePath) => {
-  try {
-    log("addGameToLibrary: " + filePath);
-    // Read the file contents
-    const fileContents = await FileSystem.readAsStringAsync(filePath);
-    const gameData = JSON.parse(fileContents);
+  const getGameDirectory = () => {
+    return FileSystem.documentDirectory;
+  }
 
-    if (isGameOwned(gameData.id)) {
-      log('Already Owned', 'You already have this game in your library!');
-      return;
+  const addGameToLibrary = async (zipFilePath, gameId) => {
+    try {
+      log("addGameToLibrary: " + zipFilePath);
+
+      // Define extraction path
+      const extractPath = `${getGameDirectory()}${gameId}`;
+
+      log("call unzip: " + zipFilePath + ", " + extractPath);
+
+      await unzip(zipFilePath, extractPath)
+        .then((path) => {
+          log(`Unzip completed at ${path}`);
+        })
+        .catch((error) => {
+          err("Could not unzip", error);
+      });
+
+      const path = extractPath
+      RNFS.readdir(path)
+      .then(files => {
+        log("entries in: " + path);
+        log(files);
+      })
+      .catch(error => {
+        err('Error reading directory:', error);
+      });
+
+      // Load story.json from inside the extracted directory
+      const storyPath = `${extractPath}/story.json`;
+      const fileContents = await FileSystem.readAsStringAsync(storyPath);
+      const gameData = JSON.parse(fileContents);
+
+      if (isGameOwned(gameId)) {
+        log('Already Owned', 'You already have this game in your library!');
+        return;
+      }
+
+      // Create new game object
+      const newGame = {
+        id: gameId,
+        ...gameData,
+        dateAdded: new Date().toISOString(),
+        filePath: extractPath, // store path of extracted folder
+      };
+
+      // Update library and persist
+      const updatedLibrary = [...state.library, newGame];
+      await AsyncStorage.setItem('cyoa_library3', JSON.stringify(updatedLibrary));
+      dispatch({ type: 'ADD_TO_LIBRARY', payload: newGame });
+
+      return true;
+    } catch (error) {
+      err("Failed to add game:", error);
+      dispatch({ type: 'SET_ERROR', payload: 'Failed to add game to library' });
+      return false;
     }
-    
-
-    // Create new game object
-    const newGame = {
-      id: gameData.id || Date.now().toString(),
-      ...gameData,
-      dateAdded: new Date().toISOString(),
-      filePath, // store path in case you want to re-read later
-    };
-
-    // Update library and persist
-    const updatedLibrary = [...state.library, newGame];
-    await AsyncStorage.setItem('cyoa_library3', JSON.stringify(updatedLibrary));
-    dispatch({ type: 'ADD_TO_LIBRARY', payload: newGame });
-    return true;
-  } catch (error) {
-    console.error("Failed to add game:", error);
-    dispatch({ type: 'SET_ERROR', payload: 'Failed to add game to library' });
-    return false;
-  }
-};
+  };
 
 const loadGame = async (gameId) => {
   try {
@@ -118,14 +149,15 @@ const loadGame = async (gameId) => {
     // If the game was added from a file, reload it fresh
     if (game.filePath) {
       try {
-        const fileContents = await FileSystem.readAsStringAsync(game.filePath);
+        log("loadGame from directory:" + game.filePath);
+        const fileContents = await FileSystem.readAsStringAsync(game.filePath + "/story.json");
         const parsedData = JSON.parse(fileContents);
         fullGameData = {
           ...game,
           ...parsedData, // overwrite with latest contents
         };
       } catch (fileError) {
-        console.warn(`Could not reload game file: ${fileError.message}`);
+        warn(`Could not reload game file: ${fileError.message}`);
       }
     }
 
@@ -136,7 +168,7 @@ const loadGame = async (gameId) => {
     dispatch({ type: 'LOAD_GAME', payload: fullGameData });
     dispatch({ type: 'UPDATE_GAME_STATE', payload: gameState });
   } catch (error) {
-    console.error("Failed to load game:", error);
+    err("Failed to load game:", error);
     dispatch({ type: 'SET_ERROR', payload: 'Failed to load game' });
   } finally {
     dispatch({ type: 'SET_LOADING', payload: false });
@@ -148,7 +180,7 @@ const loadGame = async (gameId) => {
       await AsyncStorage.setItem(`cyoa_save_${gameId}`, JSON.stringify(state));
       dispatch({ type: 'SAVE_GAME_PROGRESS' });
     } catch (error) {
-      console.error('Failed to save game progress:', error);
+      err('Failed to save game progress:', error);
     }
   };
 

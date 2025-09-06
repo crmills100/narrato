@@ -38,7 +38,7 @@ export default function AddStoryByURLScreen({ navigation }) {
     }
   };
 
-    const handleAdd = async () => {
+  const handleAdd = async () => {
     if (!url.trim()) {
       Alert.alert("Error", "Please enter a URL.");
       return;
@@ -48,8 +48,11 @@ export default function AddStoryByURLScreen({ navigation }) {
       setLoading(true);
 
       // Create a file path inside app's document directory
-      const fileName = `game_${Date.now()}.json`;
+      const gameId = url.trim().split('/').pop().replace(/\.[^/.]+$/, "");
+      const fileName = gameId + ".zip";
+      //const fileName = `game_${Date.now()}.json`;
       const fileUri = FileSystem.documentDirectory + fileName;
+      log("computed fileUri: " + fileUri);
 
       // Download the file
       const result = await FileSystem.downloadAsync(url.trim(), fileUri);
@@ -59,7 +62,7 @@ export default function AddStoryByURLScreen({ navigation }) {
       }
 
       // Add to library
-      const success = await addGameToLibrary(result.uri);
+      const success = await addGameToLibrary(result.uri, gameId);
       if (success) {
         Alert.alert("Success", "Game added to library.");
         navigation.goBack();
@@ -76,7 +79,7 @@ export default function AddStoryByURLScreen({ navigation }) {
   };
 
   const handleDefault = () => {
-    setUrl("http://192.168.0.157/story.json");
+    setUrl("http://192.168.0.157/basic_story.zip");
   };
 
   return (
@@ -86,7 +89,7 @@ export default function AddStoryByURLScreen({ navigation }) {
         style={styles.input}
         value={url}
         onChangeText={setUrl}
-        placeholder="https://example.com/story.json"
+        placeholder="https://example.com/story.zip"
         autoCapitalize="none"
         autoCorrect={false}
       />
