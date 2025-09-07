@@ -478,6 +478,31 @@ const styles = StyleSheet.create({
     minHeight: 400,
   },
 
+  // audio controls
+  audioControls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+    padding: 10,
+    backgroundColor: '#f8f9fa',
+    borderRadius: 8,
+  },
+  audioButton: {
+    padding: 8,
+    marginRight: 10,
+    borderRadius: 20,
+    backgroundColor: 'white',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+  audioStatus: {
+    color: '#666',
+    fontSize: 14,
+    fontStyle: 'italic',
+  },
 
   // Common Styles
   loadingContainer: {

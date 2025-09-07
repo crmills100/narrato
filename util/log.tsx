@@ -5,7 +5,7 @@ export function log(msg: String) {
   _log += msg + "\n";
 }
 
-export function error(msg: String, error: any) {
+export function err(msg: String, error: any) {
   console.error(msg, error);
   _log += "ERROR: " + msg + " " + error + "\n";
 }

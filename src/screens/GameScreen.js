@@ -1,4 +1,5 @@
-// src/screens/GameScreen.js - Game engine and player
+// src/screens/GameScreen.js - Game engine and player with audio support
+import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import Markdown from "react-native-markdown-display";
@@ -19,17 +20,29 @@ import { gameEngine } from '../engine/GameEngine';
 
 
 export default function GameScreen({ navigation }) {
-  const { currentGame, gameState, saveGameProgress, getImageAssetUri } = useGame();
+  const { currentGame, gameState, saveGameProgress, getImageAssetUri, getAudioAssetUri } = useGame();
   const [currentNode, setCurrentNode] = useState(null);
   const [variables, setVariables] = useState({});
   const [inventory, setInventory] = useState([]);
   const [gameHistory, setGameHistory] = useState([]);
+  const [sound, setSound] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioLoading, setAudioLoading] = useState(false);
 
   useEffect(() => {
     if (currentGame) {
       initializeGame();
     }
   }, [currentGame]);
+
+  // Cleanup audio when component unmounts
+  useEffect(() => {
+    return () => {
+      if (sound) {
+        sound.unloadAsync();
+      }
+    };
+  }, []);
 
   const initializeGame = () => {
     if (!currentGame?.story) return;
@@ -41,6 +54,88 @@ export default function GameScreen({ navigation }) {
     setInventory(gameState.inventory || []);
     setGameHistory(gameState.history || []);
     loadNode(startNode);
+  };
+
+  const loadAudio = async (audioId) => {
+    try {
+      setAudioLoading(true);
+      
+      // Unload previous audio
+      if (sound) {
+        await sound.unloadAsync();
+        setSound(null);
+        setIsPlaying(false);
+      }
+
+      if (!audioId) {
+        setAudioLoading(false);
+        return;
+      }
+
+      const audioUri = getAudioAssetUri(audioId);
+      if (!audioUri) {
+        setAudioLoading(false);
+        return;
+      }
+
+      // Configure audio mode
+      await Audio.setAudioModeAsync({
+        allowsRecordingIOS: false,
+        staysActiveInBackground: false,
+        playsInSilentModeIOS: true,
+        shouldDuckAndroid: true,
+        playThroughEarpieceAndroid: false,
+      });
+
+      const { sound: newSound } = await Audio.Sound.createAsync(
+        { uri: audioUri },
+        { shouldPlay: true, isLooping: false }
+      );
+
+      setSound(newSound);
+      setIsPlaying(true);
+      setAudioLoading(false);
+
+      // Set up playback status listener
+      newSound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded) {
+          setIsPlaying(status.isPlaying);
+          if (status.didJustFinish) {
+            setIsPlaying(false);
+          }
+        }
+      });
+
+    } catch (error) {
+      console.warn('Audio loading failed:', error);
+      setAudioLoading(false);
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleAudio = async () => {
+    if (!sound) return;
+
+    try {
+      if (isPlaying) {
+        await sound.pauseAsync();
+      } else {
+        await sound.playAsync();
+      }
+    } catch (error) {
+      console.warn('Audio playback error:', error);
+    }
+  };
+
+  const stopAudio = async () => {
+    if (!sound) return;
+
+    try {
+      await sound.stopAsync();
+      setIsPlaying(false);
+    } catch (error) {
+      console.warn('Audio stop error:', error);
+    }
   };
 
   const loadNode = (nodeId) => {
@@ -62,6 +157,14 @@ export default function GameScreen({ navigation }) {
     }
 
     setCurrentNode({ id: nodeId, ...node });
+    
+    // Load audio if available
+    if (node.content?.audio) {
+      loadAudio(node.content.audio);
+    } else {
+      // Stop current audio if no audio for this node
+      stopAudio();
+    }
     
     // Add to history
     setGameHistory(prev => [...prev, nodeId]);
@@ -133,6 +236,46 @@ export default function GameScreen({ navigation }) {
     );
   };
 
+  const renderAudioControls = () => {
+    if (!currentNode?.content?.audio) return null;
+
+    return (
+      <View style={styles.audioControls}>
+        <TouchableOpacity
+          style={styles.audioButton}
+          onPress={toggleAudio}
+          disabled={audioLoading}
+        >
+          {audioLoading ? (
+            <ActivityIndicator size="small" color="#6366f1" />
+          ) : (
+            <Ionicons 
+              name={isPlaying ? "pause" : "play"} 
+              size={20} 
+              color="#6366f1" 
+            />
+          )}
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={styles.audioButton}
+          onPress={stopAudio}
+          disabled={!sound || audioLoading}
+        >
+          <Ionicons 
+            name="stop" 
+            size={20} 
+            color={sound && !audioLoading ? "#6366f1" : "#ccc"} 
+          />
+        </TouchableOpacity>
+        
+        <Text style={styles.audioStatus}>
+          {audioLoading ? 'Loading...' : isPlaying ? 'Playing' : 'Paused'}
+        </Text>
+      </View>
+    );
+  };
+
   if (!currentGame) {
     return (
       <View style={styles.container}>
@@ -174,6 +317,8 @@ export default function GameScreen({ navigation }) {
             resizeMode="cover"
           />
         )}
+
+        {renderAudioControls()}
 
         <Markdown style={styles}>
           {processText(currentNode.content?.text || '')}

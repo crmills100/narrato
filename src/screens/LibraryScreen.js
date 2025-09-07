@@ -1,5 +1,7 @@
 // src/screens/LibraryScreen.js - Local game library
+import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
+import * as FileSystem from 'expo-file-system';
 import { useState } from 'react';
 import {
   Alert,
@@ -12,6 +14,7 @@ import {
 } from 'react-native';
 import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
+
 
 export default function LibraryScreen({ navigation }) {
   const { library, loadGame, loading } = useGame();
@@ -39,13 +42,19 @@ export default function LibraryScreen({ navigation }) {
     );
   };
 
+  const getThumbnail = (gameId) => {
+    log("getThumbnail(): gameId: " + gameId + ", " + FileSystem.documentDirectory + gameId + "/thumbnail.jpg")
+    return FileSystem.documentDirectory + gameId + "/thumbnail.jpg";
+  }
+  
+
   const renderGameItem = ({ item }) => (
     <TouchableOpacity 
       style={styles.gameCard}
       onPress={() => handleGameSelect(item)}
     >
       <Image 
-        source={{ uri: item.thumbnail || 'https://via.placeholder.com/100x100' }}
+        source={{ uri: getThumbnail(item.id) }}
         style={styles.thumbnail}
       />
       <View style={styles.gameInfo}>

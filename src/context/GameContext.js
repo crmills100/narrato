@@ -32,6 +32,9 @@ function gameReducer(state, action) {
       return { ...state, gameState: { ...state.gameState, ...action.payload } };
     case 'SAVE_GAME_PROGRESS':
       return { ...state };
+    case 'RESET_CONTEXT':
+      return { ...initialState };
+
     default:
       return state;
   }
@@ -253,6 +256,11 @@ export function GameProvider({ children }) {
     }
   };
 
+  // Reset state variables
+const resetGameContext = async () => {
+  dispatch({ type: 'RESET_CONTEXT' });
+};
+
 const loadGame = async (gameId) => {
   try {
     dispatch({ type: 'SET_LOADING', payload: true });
@@ -305,6 +313,7 @@ const loadGame = async (gameId) => {
     addGameToLibrary,
     addGameToLibraryJSON,
     loadGame,
+    resetGameContext,
     saveGameProgress,
     loadLibrary,
     getImageAssetUri,

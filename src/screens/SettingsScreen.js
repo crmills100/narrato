@@ -1,5 +1,5 @@
 // src/screens/SettingsScreen.js - App settings and preferences
-import { clearLog, getLog } from '@/util/log';
+import { clearLog, err, getLog } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ import {
   View
 } from 'react-native';
 import styles from '../components/styles';
+import { useGame } from '../context/GameContext';
 
 const { height: screenHeight } = Dimensions.get('window');
 
@@ -28,6 +29,7 @@ export default function SettingsScreen() {
     notifications: false,
   });
 
+  const { resetGameContext } = useGame();
   const [showLogModal, setShowLogModal] = useState(false);
   const [logContent, setLogContent] = useState('');
   const [showDevSection, setShowDevSection] = useState(false);
@@ -138,9 +140,13 @@ export default function SettingsScreen() {
           onPress: async () => {
             try {
               await AsyncStorage.clear();
+
+              // Reset game context state
+              resetGameContext();
+
               Alert.alert('Success', 'All data has been cleared.');
             } catch (error) {
-              Alert.alert('Error', 'Failed to clear data.');
+              err('Failed to clear data.', error);
             }
           },
         },
