@@ -29,9 +29,9 @@ Version 0.2: "Demoable"
    - display node level images x
    - play background sound x
    - display images (inline)
+   - state: check to see that state is saved and resumed
 - Create main tabs of application:
-   - "Current" - current story being viewed
-   - "Library" - local stories
+   - "Library" - local stories + current story being viewed
    - "Store" - browsing server
    - "Settings" - settings, info
 - "Home"
@@ -45,6 +45,11 @@ Version 0.2: "Demoable"
 - "Settings"
    - show logs x
    - about static text
+   - implement features
+      - sound effects
+- fixes
+   - header goes into status area
+   - audio still plays on switching screen
 - create demo stories:
    - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c
    - music album - use genAI songs

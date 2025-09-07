@@ -5,6 +5,8 @@ import { ActivityIndicator } from 'react-native';
 import Markdown from "react-native-markdown-display";
 
 import { Ionicons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import {
   Alert,
   Image,
@@ -43,6 +45,21 @@ export default function GameScreen({ navigation }) {
       }
     };
   }, []);
+
+  // Effect to cleanup the audio when screen focus lost
+  useFocusEffect(
+    useCallback(() => {
+      // This runs when the screen comes into focus
+      return () => {
+        // This cleanup runs when the screen loses focus (user navigates away)
+        if (sound && isPlaying) {
+          sound.pauseAsync().catch(console.warn);
+          setIsPlaying(false);
+        }
+      };
+    }, [sound])
+  );
+
 
   const initializeGame = () => {
     if (!currentGame?.story) return;
