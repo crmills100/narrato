@@ -5,7 +5,7 @@ Learning / environment setup:
 
 - complete tutorial (StickerSmash) x
 
-Version 0.1: Basic "POC" version
+Version 0.1: Basic "POC" version x
 - revisit ChatGPT/Claude generated code x
 - basic flow: x
    - select a story x
@@ -15,36 +15,36 @@ Version 0.1: Basic "POC" version
 
 Version 0.2: "Demoable"
 - change to Claude for generation x
-- rich story fomat:
+- rich story fomat: x
    - update StoreScreen.js to save to local disk x
    - pass path to JSON file to GameContext.js x
-   - create a sample file with body and image x
-   - define .cyoa file fomat (ZIP + JSON) 
-   - unzip file in GameContext.js 
-   - add to library[] in GameContext.js
-   - return image assets from GameContext.js
-   - update GameScreen.js to render images
-   - functionality: nodes, text, sounds, images, ...
+   - create a sample JSON with body and image x
+   - define .cyoa file fomat (ZIP: JSON + assets) x
+   - unzip file in GameContext.js x
+   - return image assets from GameContext.js x
+   - functionality: nodes, text, sounds, images, ... x
 - story viewing / game engine:
    - scrollbar on long text x
    - multiple paragraphs of text (via markdown) x
-   - display images
+   - display node level images x
+   - play background sound x
+   - display images (inline)
 - Create main tabs of application:
    - "Current" - current story being viewed
-   - "Home" - browsing server
    - "Library" - local stories
-   - "More" - settings, info
+   - "Store" - browsing server
+   - "Settings" - settings, info
 - "Home"
    - basic version - placeholder text
-   - story from URL - placeholder text
-   - browse for local story
+   - story from URL - placeholder text x
 - "Library" manage and launch local stories:
-   - browse (icons and titles)
-   - select to launch
+   - browse for local story x
+   - browse (icons and titles) x
+   - select to launch x
    - delete
 - "Settings"
-   - intro static text
-   - show logs
+   - show logs x
+   - about static text
 - create demo stories:
    - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c
    - music album - use genAI songs
@@ -131,3 +131,8 @@ This works:
             style={styles.storyImage}
             resizeMode="cover"
           />
+
+
+2. Audio - background effects:
+
+https://pixabay.com/sound-effects/search/forest/
