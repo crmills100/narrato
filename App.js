@@ -24,7 +24,7 @@ function LibraryStack() {
       <Stack.Screen 
         name="Library" 
         component={LibraryScreen}
-        options={{ title: 'My Games' }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen 
         name="Game" 

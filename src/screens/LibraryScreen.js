@@ -2,6 +2,7 @@
 import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
+import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {
   Alert,
@@ -12,11 +13,13 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 
 
 export default function LibraryScreen({ navigation }) {
+  const insets = useSafeAreaInsets();
   const { library, loadGame, loading } = useGame();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -79,8 +82,11 @@ export default function LibraryScreen({ navigation }) {
   );
 
   return (
-    <View style={styles.container}>
+
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <StatusBar style="dark" backgroundColor="white" />
       <View style={styles.header}>
+        <Text style={styles.headerTitle}>My Games</Text>
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={20} color="#666" style={styles.searchIcon} />
           <TextInput
@@ -122,4 +128,3 @@ export default function LibraryScreen({ navigation }) {
     </View>
   );
 }
-

@@ -6,20 +6,20 @@ import Markdown from "react-native-markdown-display";
 
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 import { useCallback } from 'react';
 import {
   Alert,
   Image,
-  SafeAreaView,
   ScrollView,
   Text,
   TouchableOpacity,
   View
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 import { gameEngine } from '../engine/GameEngine';
-
 
 export default function GameScreen({ navigation }) {
   const { currentGame, gameState, saveGameProgress, getImageAssetUri, getAudioAssetUri } = useGame();
@@ -30,7 +30,8 @@ export default function GameScreen({ navigation }) {
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
-
+  const insets = useSafeAreaInsets();
+  
   useEffect(() => {
     if (currentGame) {
       initializeGame();
@@ -311,7 +312,8 @@ export default function GameScreen({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <StatusBar style="dark" backgroundColor="white" />
       <View style={styles.gameHeader}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color="#333" />
@@ -358,6 +360,6 @@ export default function GameScreen({ navigation }) {
         <Text style={styles.statText}>Node: {currentNode.id}</Text>
         <Text style={styles.statText}>History: {gameHistory.length} steps</Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
