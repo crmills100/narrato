@@ -2,6 +2,7 @@
 import { clearLog, err, getLog } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import {
   Alert,
@@ -14,6 +15,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 
@@ -34,6 +36,8 @@ export default function SettingsScreen() {
   const [logContent, setLogContent] = useState('');
   const [showDevSection, setShowDevSection] = useState(false);
 
+  const insets = useSafeAreaInsets();
+  
   useEffect(() => {
     loadSettings();
     checkDevMode();
@@ -169,165 +173,167 @@ export default function SettingsScreen() {
 
   return (
     <>
-      <ScrollView style={styles.container}>
+      <View style={[styles.container, { paddingTop: insets.top }]}>
+        <StatusBar style="dark" backgroundColor="white" />
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Settings</Text>
         </View>
+        <ScrollView style={styles.container}>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Gameplay</Text>
+            
+            <SettingRow
+              title="Sound Effects"
+              description="Play audio during games"
+              icon="volume-high-outline"
+              rightElement={
+                <Switch
+                  value={settings.soundEnabled}
+                  onValueChange={(value) => updateSetting('soundEnabled', value)}
+                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                />
+              }
+            />
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Gameplay</Text>
-          
-          <SettingRow
-            title="Sound Effects"
-            description="Play audio during games"
-            icon="volume-high-outline"
-            rightElement={
-              <Switch
-                value={settings.soundEnabled}
-                onValueChange={(value) => updateSetting('soundEnabled', value)}
-                trackColor={{ false: '#ccc', true: '#6366f1' }}
-              />
-            }
-          />
+            <SettingRow
+              title="Auto Save"
+              description="Automatically save progress"
+              icon="save-outline"
+              rightElement={
+                <Switch
+                  value={settings.autoSave}
+                  onValueChange={(value) => updateSetting('autoSave', value)}
+                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                />
+              }
+            />
 
-          <SettingRow
-            title="Auto Save"
-            description="Automatically save progress"
-            icon="save-outline"
-            rightElement={
-              <Switch
-                value={settings.autoSave}
-                onValueChange={(value) => updateSetting('autoSave', value)}
-                trackColor={{ false: '#ccc', true: '#6366f1' }}
-              />
-            }
-          />
+            <SettingRow
+              title="Haptic Feedback"
+              description="Vibrate on choices and events"
+              icon="phone-portrait-outline"
+              rightElement={
+                <Switch
+                  value={settings.vibration}
+                  onValueChange={(value) => updateSetting('vibration', value)}
+                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                />
+              }
+            />
+          </View>
 
-          <SettingRow
-            title="Haptic Feedback"
-            description="Vibrate on choices and events"
-            icon="phone-portrait-outline"
-            rightElement={
-              <Switch
-                value={settings.vibration}
-                onValueChange={(value) => updateSetting('vibration', value)}
-                trackColor={{ false: '#ccc', true: '#6366f1' }}
-              />
-            }
-          />
-        </View>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Appearance</Text>
+            
+            <SettingRow
+              title="Text Size"
+              description={`Current: ${settings.textSize}`}
+              icon="text-outline"
+              onPress={() => {
+                Alert.alert(
+                  'Text Size',
+                  'Choose your preferred text size',
+                  [
+                    { text: 'Small', onPress: () => updateSetting('textSize', 'small') },
+                    { text: 'Medium', onPress: () => updateSetting('textSize', 'medium') },
+                    { text: 'Large', onPress: () => updateSetting('textSize', 'large') },
+                    { text: 'Cancel', style: 'cancel' },
+                  ]
+                );
+              }}
+            />
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Appearance</Text>
-          
-          <SettingRow
-            title="Text Size"
-            description={`Current: ${settings.textSize}`}
-            icon="text-outline"
-            onPress={() => {
-              Alert.alert(
-                'Text Size',
-                'Choose your preferred text size',
-                [
-                  { text: 'Small', onPress: () => updateSetting('textSize', 'small') },
-                  { text: 'Medium', onPress: () => updateSetting('textSize', 'medium') },
-                  { text: 'Large', onPress: () => updateSetting('textSize', 'large') },
-                  { text: 'Cancel', style: 'cancel' },
-                ]
-              );
-            }}
-          />
+            <SettingRow
+              title="Dark Mode"
+              description="Use dark theme"
+              icon="moon-outline"
+              rightElement={
+                <Switch
+                  value={settings.darkMode}
+                  onValueChange={(value) => updateSetting('darkMode', value)}
+                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                />
+              }
+            />
+          </View>
 
-          <SettingRow
-            title="Dark Mode"
-            description="Use dark theme"
-            icon="moon-outline"
-            rightElement={
-              <Switch
-                value={settings.darkMode}
-                onValueChange={(value) => updateSetting('darkMode', value)}
-                trackColor={{ false: '#ccc', true: '#6366f1' }}
-              />
-            }
-          />
-        </View>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Data & Storage</Text>
+            
+            <SettingRow
+              title="Clear All Data"
+              description="Delete all games and saves"
+              icon="trash-outline"
+              onPress={clearAllData}
+            />
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Data & Storage</Text>
-          
-          <SettingRow
-            title="Clear All Data"
-            description="Delete all games and saves"
-            icon="trash-outline"
-            onPress={clearAllData}
-          />
+            <SettingRow
+              title="Export Save Data"
+              description="Backup your progress"
+              icon="cloud-upload-outline"
+              onPress={() => Alert.alert('Coming Soon', 'Save export feature will be available in a future update.')}
+            />
+          </View>
 
-          <SettingRow
-            title="Export Save Data"
-            description="Backup your progress"
-            icon="cloud-upload-outline"
-            onPress={() => Alert.alert('Coming Soon', 'Save export feature will be available in a future update.')}
-          />
-        </View>
+          {/* Developer Section */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Developer</Text>
+            
+            <SettingRow
+              title="Developer Mode"
+              description={showDevSection ? "Enabled" : "Disabled"}
+              icon="code-slash-outline"
+              rightElement={
+                <Switch
+                  value={showDevSection}
+                  onValueChange={toggleDevMode}
+                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                />
+              }
+            />
 
-        {/* Developer Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Developer</Text>
-          
-          <SettingRow
-            title="Developer Mode"
-            description={showDevSection ? "Enabled" : "Disabled"}
-            icon="code-slash-outline"
-            rightElement={
-              <Switch
-                value={showDevSection}
-                onValueChange={toggleDevMode}
-                trackColor={{ false: '#ccc', true: '#6366f1' }}
-              />
-            }
-          />
+            {showDevSection && (
+              <>
+                <SettingRow
+                  title="Show Logs"
+                  description="View application logs"
+                  icon="terminal-outline"
+                  onPress={showLogs}
+                />
 
-          {showDevSection && (
-            <>
-              <SettingRow
-                title="Show Logs"
-                description="View application logs"
-                icon="terminal-outline"
-                onPress={showLogs}
-              />
+                <SettingRow
+                  title="Clear Logs"
+                  description="Remove all log entries"
+                  icon="trash-bin-outline"
+                  onPress={clearLogs}
+                />
+              </>
+            )}
+          </View>
 
-              <SettingRow
-                title="Clear Logs"
-                description="Remove all log entries"
-                icon="trash-bin-outline"
-                onPress={clearLogs}
-              />
-            </>
-          )}
-        </View>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>About</Text>
+            
+            <SettingRow
+              title="App Version"
+              description="1.0.0"
+              icon="information-circle-outline"
+            />
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>About</Text>
-          
-          <SettingRow
-            title="App Version"
-            description="1.0.0"
-            icon="information-circle-outline"
-          />
+            <SettingRow
+              title="Privacy Policy"
+              icon="shield-checkmark-outline"
+              onPress={() => Alert.alert('Privacy Policy', 'Your privacy policy content would go here.')}
+            />
 
-          <SettingRow
-            title="Privacy Policy"
-            icon="shield-checkmark-outline"
-            onPress={() => Alert.alert('Privacy Policy', 'Your privacy policy content would go here.')}
-          />
-
-          <SettingRow
-            title="Terms of Service"
-            icon="document-text-outline"
-            onPress={() => Alert.alert('Terms of Service', 'Your terms of service content would go here.')}
-          />
-        </View>
-      </ScrollView>
+            <SettingRow
+              title="Terms of Service"
+              icon="document-text-outline"
+              onPress={() => Alert.alert('Terms of Service', 'Your terms of service content would go here.')}
+            />
+          </View>
+        </ScrollView>
+      </View>
 
       {/* Log Viewer Modal */}
       <Modal

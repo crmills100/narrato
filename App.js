@@ -41,7 +41,7 @@ function StoreStack() {
       <Stack.Screen 
         name="Store" 
         component={StoreScreen}
-        options={{ title: 'Discover Games' }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
@@ -87,7 +87,7 @@ export default function App() {
           />
           <Tab.Screen 
             name="AddByURL" 
-            component={AddStoryByURLScreen  }
+            component={AddStoryByURLScreen}
             options={{ title: 'AddByURL' }}
           />
         </Tab.Navigator>
