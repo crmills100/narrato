@@ -48,8 +48,8 @@ Version 0.2: "Demoable"
    - implement features
       - sound effects
 - fixes
-   - header goes into status area
-   - audio still plays on switching screen
+   - header goes into status area x
+   - audio still plays on switching screen x
 - create demo stories:
    - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c
    - music album - use genAI songs

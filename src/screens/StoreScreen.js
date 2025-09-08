@@ -1,6 +1,8 @@
 // src/screens/StoreScreen.js - Browse and download games
+import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
+import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -13,10 +15,9 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { useGame } from '../context/GameContext';
-
-import { log } from '@/util/log';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from '../components/styles';
+import { useGame } from '../context/GameContext';
 
 export default function StoreScreen() {
   const { addGameToLibraryJSON, library } = useGame();
@@ -25,6 +26,7 @@ export default function StoreScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [downloading, setDownloading] = useState({});
+  const insets = useSafeAreaInsets();
 
   // Mock server data - in real app, this would fetch from API
   const mockServerGames = [
@@ -258,7 +260,9 @@ export default function StoreScreen() {
   }
 
   return (
-    <View style={styles.container}>
+
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <StatusBar style="dark" backgroundColor="white" />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Discover Games</Text>
         <View style={styles.searchContainer}>
