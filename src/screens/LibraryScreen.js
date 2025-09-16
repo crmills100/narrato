@@ -47,7 +47,7 @@ export default function LibraryScreen({ navigation }) {
 
   const getThumbnail = (gameId) => {
     log("getThumbnail(): gameId: " + gameId + ", " + FileSystem.documentDirectory + gameId + "/thumbnail.jpg")
-    return FileSystem.documentDirectory + gameId + "/thumbnail.jpg";
+    return FileSystem.Paths.document.uri + gameId + "/thumbnail.jpg";
   }
   
 

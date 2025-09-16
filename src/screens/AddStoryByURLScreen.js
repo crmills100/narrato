@@ -1,6 +1,7 @@
 // src/screens/AddStoryByURLScreen.js
 import { log } from '@/util/log';
-import * as FileSystem from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
+
 import { useState } from 'react';
 import { ActivityIndicator, Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useGame } from '../context/GameContext';
@@ -19,10 +20,10 @@ export default function AddStoryByURLScreen({ navigation }) {
       setLoading(true);
 
       const fileName = `2671807.jpg`;
-      const fileUri = FileSystem.documentDirectory + fileName;
+      const fileUri = Paths.document.uri + fileName;
 
       // Download the file
-      const result = await FileSystem.downloadAsync("http://192.168.0.157/2671807.jpg", fileUri);
+      const result = await File.downloadFileAsync("http://192.168.0.157/2671807.jpg", fileUri);
       log(fileUri);      
 
       if (result.status !== 200) {
@@ -50,25 +51,29 @@ export default function AddStoryByURLScreen({ navigation }) {
       // Create a file path inside app's document directory
       const gameId = url.trim().split('/').pop().replace(/\.[^/.]+$/, "");
       const fileName = gameId + ".zip";
-      //const fileName = `game_${Date.now()}.json`;
-      const fileUri = FileSystem.documentDirectory + fileName;
-      log("computed fileUri: " + fileUri);
+     
 
       // Download the file
-      const result = await FileSystem.downloadAsync(url.trim(), fileUri);
-      
-      if (result.status !== 200) {
-        throw new Error(`Failed to download file: ${result.status}`);
+      const localFile = new File(Paths.document, fileName);
+      log("localFile: " + localFile.uri);
+      if (localFile.exists) {
+        log("deleting localFile");
+        localFile.delete();
       }
 
+      const myFile = await File.downloadFileAsync(url.trim(), Paths.document);
+      log("myFile.exists: " + myFile.exists);
+      log("myFile.uri: " + myFile.uri);
+
       // Add to library
-      const success = await addGameToLibrary(result.uri, gameId);
+      const success = await addGameToLibrary(myFile.uri, gameId);
       if (success) {
         Alert.alert("Success", "Game added to library.");
         navigation.goBack();
       } else {
         Alert.alert("Error", "Failed to add game to library.");
       }
+
 
     } catch (error) {
       console.error("Error adding game:", error);

@@ -28,11 +28,8 @@ Learning / environment setup:
    - multiple paragraphs of text (via markdown) x
    - display node level images x
    - play background sound x
-   - display images: inline
-   - display images: click to zoom
    - state: check to see that state is saved and resumed
    - state: return to start
-   - child-lock mode: tap in center and drag to action (only responde to specific sequence of touches)
 - Create main tabs of application:
    - "Current" - icon of current story
    - "Home" - browsing server 
@@ -75,7 +72,11 @@ Learning / environment setup:
 
 - "Current Story":
    - ability to go in and out full screen, restore <-> maximize
-   - restored mode has back and forward buttons
+   - restored view mode has back and forward buttons
+   - display images: inline
+   - display images: click to zoom
+   - display images: full screen background with text on top
+   - child-lock mode: tap in center and drag to action (only responde to specific sequence of touches)
 - more demo stories:
    - Spanish story
    - modern family story

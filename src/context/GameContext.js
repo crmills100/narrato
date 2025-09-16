@@ -2,6 +2,7 @@
 import { err, log, warn } from '@/util/log';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as FileSystem from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import RNFS from 'react-native-fs';
 import { unzip } from 'react-native-zip-archive';
@@ -162,7 +163,7 @@ export function GameProvider({ children }) {
 
 
   const getRootStorageDirectory = () => {
-    return FileSystem.documentDirectory;
+    return Paths.document.uri;
   }
 
   const addGameToLibraryJSON = async (filePath) => {
@@ -226,8 +227,14 @@ export function GameProvider({ children }) {
       });
 
       // Load story.json from inside the extracted directory
-      const storyPath = `${extractPath}/story.json`;
-      const fileContents = await FileSystem.readAsStringAsync(storyPath);
+      //const storyPath = `${extractPath}/story.json`;
+      log("before storyPathFile");
+      log("Constructing storyPathFile: " + getRootStorageDirectory() + " " + gameId + " " + "story.json")
+      
+      const storyPathFile = new File(getRootStorageDirectory(), gameId, "story.json");
+
+      log("storyPathFile.uri: " + storyPathFile.uri);
+      const fileContents = await storyPathFile.text();
       const gameData = JSON.parse(fileContents);
       gameData.id = gameId;
 
@@ -273,7 +280,8 @@ const loadGame = async (gameId) => {
     if (game.filePath) {
       try {
         log("loadGame from directory:" + game.filePath);
-        const fileContents = await FileSystem.readAsStringAsync(game.filePath + "/story.json");
+        const storyFile = new File(game.filePath + "/story.json");
+        const fileContents = await storyFile.text();
         const parsedData = JSON.parse(fileContents);
         parsedData.id = gameId;
         fullGameData = {
