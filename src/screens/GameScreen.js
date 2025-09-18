@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import Markdown from "react-native-markdown-display";
 
+import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
@@ -62,15 +63,31 @@ export default function GameScreen({ navigation }) {
   );
 
 
-  const initializeGame = () => {
+  const initializeGame = async () => {
     if (!currentGame?.story) return;
+    log("intializeGame");
 
-    const startNode = currentGame.story.start_node || 'start';
+    var startNode;
+
+    if (gameState.currentNode) {
+      startNode = gameState.currentNode;
+    }
+    else {
+      startNode = currentGame.story.start_node || 'start';
+    }
+
     const initialVars = gameEngine.initializeVariables(currentGame.story.game_state?.variables || {});
     
     setVariables({ ...initialVars, ...gameState.variables });
     setInventory(gameState.inventory || []);
+    log("gameState.history: " + gameState.history);
     setGameHistory(gameState.history || []);
+    //setGameHistory(["foo","bar"]);
+    //useEffect(() => {
+    //  log("gameHistory updated: " + gameHistory);
+    //}, [gameHistory]);
+
+    log("gameHistory after set: " + gameHistory);
     loadNode(startNode);
   };
 
@@ -183,10 +200,12 @@ export default function GameScreen({ navigation }) {
       // Stop current audio if no audio for this node
       stopAudio();
     }
+    log("current gameHistory: " + gameHistory);
     
     // Add to history
     setGameHistory(prev => [...prev, nodeId]);
 
+    log("autosave: " + gameHistory);
     // Auto-save progress
     const saveData = {
       currentNode: nodeId,

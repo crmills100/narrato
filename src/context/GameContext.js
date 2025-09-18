@@ -67,9 +67,7 @@ export function GameProvider({ children }) {
 
   const getImageAssetUri = (imageId) => {
     try {
-      log("getImageAssetUri: " + imageId);
-      log("state.currentGame: " + JSON.stringify(state.currentGame));
-      
+      log("getImageAssetUri: " + imageId);      
       
       if (!imageId || !state.currentGame?.story?.assets?.images) {
         log("getAudioAssetUri: Invalid input or missing image assets");
@@ -296,6 +294,7 @@ const loadGame = async (gameId) => {
     // Load saved progress if exists
     const savedState = await AsyncStorage.getItem(`cyoa_save_${gameId}`);
     const gameState = savedState ? JSON.parse(savedState) : {};
+    log("loadGame(): gameState: " + savedState);
 
     dispatch({ type: 'LOAD_GAME', payload: fullGameData });
     dispatch({ type: 'UPDATE_GAME_STATE', payload: gameState });
