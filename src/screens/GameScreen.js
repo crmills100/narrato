@@ -1,7 +1,7 @@
-// src/screens/GameScreen.js - Game engine and player with audio support
+// src/screens/GameScreen.js - Enhanced Game engine and player with menu options
 import { Audio } from 'expo-av';
 import { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Modal } from 'react-native';
 import Markdown from "react-native-markdown-display";
 
 import { log } from '@/util/log';
@@ -24,6 +24,7 @@ import { gameEngine } from '../engine/GameEngine';
 
 export default function GameScreen({ navigation }) {
   const { currentGame, gameState, saveGameProgress, getImageAssetUri, getAudioAssetUri } = useGame();
+  
   const [currentNode, setCurrentNode] = useState(null);
   const [variables, setVariables] = useState({});
   const [inventory, setInventory] = useState([]);
@@ -31,6 +32,7 @@ export default function GameScreen({ navigation }) {
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
@@ -61,7 +63,6 @@ export default function GameScreen({ navigation }) {
       };
     }, [sound])
   );
-
 
   const initializeGame = async () => {
     if (!currentGame?.story) return;
@@ -250,6 +251,45 @@ export default function GameScreen({ navigation }) {
     return processedText;
   };
 
+  const handleReturnToStart = () => {
+    Alert.alert(
+      'Return to Start',
+      'Are you sure you want to return to the beginning? This will reset your current progress.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Return to Start',
+          style: 'destructive',
+          onPress: () => {
+            setShowMenu(false);
+            const startNode = currentGame.story.start_node || 'start';
+            
+            // Reset variables and inventory to initial state
+            const initialVars = gameEngine.initializeVariables(
+              currentGame.story.game_state?.variables || {}
+            );
+            setVariables(initialVars);
+            setInventory([]);
+            
+            // Clear history
+            gameState.history = [];
+            setGameHistory([]);
+            
+            // Load start node
+            loadNode(startNode);
+          }
+        }
+      ]
+    );
+  };
+
+  const handleGoBack = () => {
+    if (canGoBack) {
+      goBack();
+      setShowMenu(false);
+    }
+  };
+
   const renderChoice = (choice, index) => {
     const isEnabled = !choice.conditions || 
       gameEngine.evaluateConditions(choice.conditions, variables, inventory);
@@ -313,6 +353,73 @@ export default function GameScreen({ navigation }) {
     );
   };
 
+  const renderGameMenu = () => {
+    return (
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={showMenu}
+        onRequestClose={() => setShowMenu(false)}
+      >
+        <TouchableOpacity 
+          style={styles.modalOverlay}
+          activeOpacity={1}
+          onPress={() => setShowMenu(false)}
+        >
+          <View style={styles.menuContainer}>
+            <TouchableOpacity 
+              style={styles.menuCloseButton}
+              onPress={() => setShowMenu(false)}
+            >
+              <Ionicons name="close" size={24} color="#666" />
+            </TouchableOpacity>
+
+            <Text style={styles.menuTitle}>Story Menu</Text>
+
+            <TouchableOpacity 
+              style={[styles.menuItem, !false && styles.menuItemDisabled]}
+              onPress={handleGoBack}
+              disabled={!false}
+            >
+              <Ionicons 
+                name="arrow-undo" 
+                size={20} 
+                color={false ? "#6366f1" : "#ccc"} 
+              />
+              <Text style={[
+                styles.menuItemText, 
+                !false && styles.menuItemTextDisabled
+              ]}>
+                Undo Last Choice
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+              style={styles.menuItem}
+              onPress={handleReturnToStart}
+            >
+              <Ionicons name="home" size={20} color="#6366f1" />
+              <Text style={styles.menuItemText}>Return to Start</Text>
+            </TouchableOpacity>
+
+            <View style={styles.menuSeparator} />
+
+            <TouchableOpacity 
+              style={styles.menuItem}
+              onPress={() => {
+                setShowMenu(false);
+                navigation.goBack();
+              }}
+            >
+              <Ionicons name="library" size={20} color="#6366f1" />
+              <Text style={styles.menuItemText}>Return to Library</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+    );
+  };
+
   if (!currentGame) {
     return (
       <View style={styles.container}>
@@ -338,7 +445,7 @@ export default function GameScreen({ navigation }) {
           <Ionicons name="arrow-back" size={24} color="#333" />
         </TouchableOpacity>
         <Text style={styles.gameTitle}>{currentGame.title}</Text>
-        <TouchableOpacity onPress={() => Alert.alert('Game Menu', 'Settings and save options would go here')}>
+        <TouchableOpacity onPress={() => setShowMenu(true)}>
           <Ionicons name="menu" size={24} color="#333" />
         </TouchableOpacity>
       </View>
@@ -379,6 +486,8 @@ export default function GameScreen({ navigation }) {
         <Text style={styles.statText}>Node: {currentNode.id}</Text>
         <Text style={styles.statText}>History: {gameHistory.length} steps</Text>
       </View>
+
+      {renderGameMenu()}
     </View>
   );
 }
