@@ -32,7 +32,7 @@ export default function GameScreen({ navigation }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioLoading, setAudioLoading] = useState(false);
   const insets = useSafeAreaInsets();
-  
+
   useEffect(() => {
     if (currentGame) {
       initializeGame();
@@ -81,13 +81,14 @@ export default function GameScreen({ navigation }) {
     setVariables({ ...initialVars, ...gameState.variables });
     setInventory(gameState.inventory || []);
     log("gameState.history: " + gameState.history);
-    setGameHistory(gameState.history || []);
-    //setGameHistory(["foo","bar"]);
-    //useEffect(() => {
-    //  log("gameHistory updated: " + gameHistory);
-    //}, [gameHistory]);
+    if (gameState.history) {
+      setGameHistory(...gameState.history);
+    } else {
+      log("setting history to: []");
+      gameState.history = [];
+      setGameHistory([]);
+    }
 
-    log("gameHistory after set: " + gameHistory);
     loadNode(startNode);
   };
 
@@ -200,18 +201,17 @@ export default function GameScreen({ navigation }) {
       // Stop current audio if no audio for this node
       stopAudio();
     }
-    log("current gameHistory: " + gameHistory);
     
     // Add to history
-    setGameHistory(prev => [...prev, nodeId]);
+    gameState.history = [...gameState.history, nodeId];
+    setGameHistory(gameState.history);
 
-    log("autosave: " + gameHistory);
     // Auto-save progress
     const saveData = {
       currentNode: nodeId,
       variables,
       inventory,
-      history: gameHistory,
+      history: gameState.history,
       timestamp: new Date().toISOString(),
     };
     saveGameProgress(currentGame.id, saveData);
