@@ -23,13 +23,13 @@ Learning / environment setup:
    - unzip file in GameContext.js x
    - return image assets from GameContext.js x
    - functionality: nodes, text, sounds, images, ... x
-- story viewing / game engine:
+- story viewing / game engine: x
    - scrollbar on long text x
    - multiple paragraphs of text (via markdown) x
    - display node level images x
    - play background sound x
-   - state: check to see that state is saved and resumed
-   - state: return to start
+   - state: check to see that state is saved and resumed x
+   - state: return to start (via menu) x
 - Create main tabs of application:
    - "Current" - icon of current story
    - "Home" - browsing server 
