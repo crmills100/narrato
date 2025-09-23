@@ -1,8 +1,7 @@
 Work Plan:
 ----------
 
-Learning / environment setup:
-
+## Version -0.1: Learning / environment setup: x
 - complete tutorial (StickerSmash) x
 
 ## Version 0.1: Basic "POC" version x
@@ -31,31 +30,27 @@ Learning / environment setup:
    - state: check to see that state is saved and resumed x
    - state: return to start (via menu) x
 - Create main tabs of application:
+   - "Home" - browsing server x
+   - "Library" - local stories x
+   - "Settings" - settings, info x
    - "Current" - icon of current story
-   - "Home" - browsing server 
-   - "Library" - local stories 
-   - "Settings" - settings, info
-   - remove extra "Add" tab
-- "Current"
+   - Move "Add by URL" to "Settings"
+- "Current" screen
    - book/story icon that launches current story
    - empty story by default
    - set to current story on launch from library
-- "Home"
+- "Home" screen
    - basic version - placeholder text x
-   - icons of stories
-- "Library" manage and launch local stories:
+   - icons of stories 
+- "Library" screen: manage and launch local stories:
    - browse for local story x
    - browse (icons and titles) x
    - select to launch x
    - delete
-   - add story by URL
-- "Settings"
+- "Settings" screen:
    - show logs x
    - about, version, license, static text
-   - implement features
-      - sound effects on/off
-      - text size S/M/L
-- fixes
+- fixes: x
    - header goes into status area x
    - audio still plays on switching screen x
 - create demo stories:
@@ -63,19 +58,22 @@ Learning / environment setup:
    - music album - use genAI songs
    - vacation album - use Iceland trip
    - infant story (Totes McGoats Adventure inital adventure) - what is the GenAI conversation?
+   - load demo stories into "Home"
 - app distribution:
    - android: standalone build with static list of stories
    - iOS: standalone build with static list of stories
 
+## Version 0.2.2: "AI Creator"
+- create AI story: ability to have generative AI create a story
 
-## Version 0.2.1
-
+## Version 0.2.4:
 - "Current Story":
    - ability to go in and out full screen, restore <-> maximize
    - restored view mode has back and forward buttons
    - display images: inline
    - display images: click to zoom
    - display images: full screen background with text on top
+   - add inventory and variables support
    - child-lock mode: tap in center and drag to action (only responde to specific sequence of touches)
 - more demo stories:
    - Spanish story
@@ -84,6 +82,14 @@ Learning / environment setup:
    - corn story?
 - intermediate Expo learning:
    - read: https://docs.expo.dev/workflow/overview/
+- "Settings"
+   - implement features
+      - sound effects on/off
+      - text size S/M/L
+   - switch languages
+- I18N / L10N
+   - strings database for UI text
+   - call strings databse
 
 ## Version 0.3: "Server Library"
 - manage shared stories (no authentication, user login, ...):
@@ -122,7 +128,9 @@ Learning / environment setup:
    - hyperlinks in story text
 
 ## Version 0.6: "Creators"
-- create AI story: ability to have generative AI create a story
+- AI story templates
+  - kids night time story
+  - kids animal adventure story
 - tool to author story
 
 ## Version 0.7: "
@@ -165,7 +173,7 @@ This works:
 
 https://pixabay.com/sound-effects/search/forest/
 
-## 3. Child-lock mode
+## 3. Child-lock mode - complete
 
 Press in center and drag to button
 

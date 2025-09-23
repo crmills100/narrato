@@ -459,7 +459,7 @@ export default function GameScreen({ navigation }) {
           <Image
             source={{ uri: getImageAssetUri(currentNode.content.image) }}
             style={styles.storyImage}
-            resizeMode="cover"
+            height="400"
           />
         )}
 
@@ -477,7 +477,6 @@ export default function GameScreen({ navigation }) {
         )}
 
         <View style={styles.choicesContainer}>
-          <Text style={styles.choicesTitle}>What do you do?</Text>
           {currentNode.choices?.map((choice, index) => renderChoice(choice, index))}
         </View>
       </ScrollView>

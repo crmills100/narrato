@@ -68,7 +68,7 @@ export default function LibraryScreen({ navigation }) {
         </Text>
         <View style={styles.gameStats}>
           <Ionicons name="time-outline" size={14} color="#666" />
-          <Text style={styles.statText}>{item.estimated_play_time || 30}min</Text>
+          <Text style={styles.statText}>{item.estimated_play_time || 30} min</Text>
           {item.progress && (
             <>
               <Ionicons name="bookmark-outline" size={14} color="#666" style={styles.statIcon} />

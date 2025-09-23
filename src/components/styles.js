@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     color: '#4b5563',
   },
   choicesContainer: {
-    marginTop: 20,
+    marginTop: 0,
   },
   choicesTitle: {
     fontSize: 18,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#374151',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   heading1: {
     fontSize: 28,
