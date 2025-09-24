@@ -46,20 +46,24 @@ Work Plan:
    - browse for local story x
    - browse (icons and titles) x
    - select to launch x
-   - delete
+   - delete story x
 - "Settings" screen:
    - show logs x
    - about, version, license, static text
 - fixes: x
    - header goes into status area x
    - audio still plays on switching screen x
+   - error on delete story from library
+   - undefined showing in logs
 - create demo stories:
-   - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c
+   - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c, audio from https://suno.com/ x
    - music album - use genAI songs
    - vacation album - use Iceland trip
-   - infant story (Totes McGoats Adventure inital adventure) - what is the GenAI conversation?
+   - infant story (Totes McGoats Adventure inital adventure) - GenAI conversation: crmills100@yahoo.com ChatGPT x
    - load demo stories into "Home"
 - app distribution:
+   - android: basic standalone build
+   - iOS: basic standalone build
    - android: standalone build with static list of stories
    - iOS: standalone build with static list of stories
 

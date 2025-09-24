@@ -35,7 +35,14 @@ function gameReducer(state, action) {
       return { ...state };
     case 'RESET_CONTEXT':
       return { ...initialState };
-
+    case 'REMOVE_FROM_LIBRARY':
+      return { 
+        ...state, 
+        library: state.library.filter(game => game.id !== action.payload),
+        // Reset current game if it's the one being removed
+        currentGame: state.currentGame?.id === action.payload ? null : state.currentGame,
+        gameState: state.currentGame?.id === action.payload ? {} : state.gameState
+      };
     default:
       return state;
   }
@@ -261,6 +268,69 @@ export function GameProvider({ children }) {
     }
   };
 
+  const removeGameFromLibrary = async (gameId) => {
+  try {
+    dispatch({ type: 'SET_LOADING', payload: true });
+    
+    // Find the game to be removed
+    const game = state.library.find(g => g.id === gameId);
+    if (!game) {
+      warn(`Game with ID ${gameId} not found in library`);
+      return false;
+    }
+
+    log(`Removing game: ${game.title} (${gameId})`);
+
+    // Remove game files if they exist (for games installed from zip)
+    if (game.filePath) {
+      try {
+        const gameDirectory = game.filePath;
+        log(`Checking if game directory exists: ${gameDirectory}`);
+        
+        // Check if directory exists before attempting to delete
+        const dirExists = await FileSystem.getInfoAsync(gameDirectory);
+        if (dirExists.exists) {
+          log(`Deleting game directory: ${gameDirectory}`);
+          await FileSystem.deleteAsync(gameDirectory, { idempotent: true });
+          log(`Successfully deleted game directory`);
+        } else {
+          log(`Game directory does not exist, skipping file deletion`);
+        }
+      } catch (fileError) {
+        warn(`Failed to delete game files: ${fileError.message}`);
+        // Continue with library removal even if file deletion fails
+      }
+    }
+
+    // Remove save data
+    try {
+      const saveKey = `cyoa_save_${gameId}`;
+      await AsyncStorage.removeItem(saveKey);
+      log(`Removed save data for game: ${saveKey}`);
+    } catch (saveError) {
+      warn(`Failed to remove save data: ${saveError.message}`);
+      // Continue with library removal even if save deletion fails
+    }
+
+    // Update library in AsyncStorage
+    const updatedLibrary = state.library.filter(g => g.id !== gameId);
+    await AsyncStorage.setItem('cyoa_library3', JSON.stringify(updatedLibrary));
+    
+    // Update state
+    dispatch({ type: 'REMOVE_FROM_LIBRARY', payload: gameId });
+    
+    log(`Successfully removed game from library: ${game.title}`);
+    return true;
+
+  } catch (error) {
+    err(`Failed to remove game from library: ${error.message}`, error);
+    dispatch({ type: 'SET_ERROR', payload: 'Failed to remove game from library' });
+    return false;
+  } finally {
+    dispatch({ type: 'SET_LOADING', payload: false });
+  }
+};
+
   // Reset state variables
 const resetGameContext = async () => {
   dispatch({ type: 'RESET_CONTEXT' });
@@ -325,6 +395,7 @@ const loadGame = async (gameId) => {
     loadLibrary,
     getImageAssetUri,
     getAudioAssetUri,
+    removeGameFromLibrary
   };
 
   return (

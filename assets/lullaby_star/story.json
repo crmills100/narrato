@@ -12,15 +12,6 @@
     "XXprice": "2.99",
     "XXfeatured": "false",
     "story": {
-        "meta": {
-            "title": "The Lullaby Star (meta DELETE)",
-            "author": "Christopher Mills (meta DELETE)",
-            "description": "Bedtime story full of night wonder. (meta DELETE)",
-            "language": "EN (meta DELETE)",
-            "rating": "E (meta DELETE)",
-            "estimated_play_time": "60 (meta DELETE)",
-            "tags": ["bedtime", "stars", "kids"]
-        },
         "assets": {
             "images": {
                 "ls_img_01": {
@@ -77,6 +68,12 @@
             "audio": {
                 "twilight_whispers": {
                 "path": "./audio/twilight_whispers.mp3",
+                "loop": "true",
+                "volume": "0.3",
+                "format": "mp3"
+                },
+                "starry_lullaby_instrumental": {
+                "path": "./audio/starry_lullaby_instrumental.mp3",
                 "loop": "true",
                 "volume": "0.3",
                 "format": "mp3"
@@ -138,7 +135,8 @@
             "pg4": {
                 "content": {
                     "text": "It wasn't silent like the others. It made a soft, almost-a-whisper sound.",
-                    "image": "ls_img_04"
+                    "image": "ls_img_04",
+                    "audio": "starry_lullaby_instrumental"
                 },
                 "choices": [
                     {

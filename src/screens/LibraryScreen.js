@@ -1,4 +1,4 @@
-// src/screens/LibraryScreen.js - Local game library
+// src/screens/LibraryScreen.js - Local game library with simple delete functionality
 import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
@@ -17,10 +17,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 
-
 export default function LibraryScreen({ navigation }) {
   const insets = useSafeAreaInsets();
-  const { library, loadGame, loading } = useGame();
+  const { library, loadGame, loading, removeGameFromLibrary } = useGame();
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredGames = library.filter(game =>
@@ -45,16 +44,60 @@ export default function LibraryScreen({ navigation }) {
     );
   };
 
+  const handleLongPress = (game) => {
+    Alert.alert(
+      game.title,
+      'What would you like to do?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Play',
+          onPress: async () => {
+            await loadGame(game.id);
+            navigation.navigate('Game');
+          },
+        },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: () => handleDeleteGame(game),
+        },
+      ]
+    );
+  };
+
+  const handleDeleteGame = (game) => {
+    Alert.alert(
+      'Delete Game',
+      `Are you sure you want to delete "${game.title}"? This will permanently remove the game and all save data.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            const success = await removeGameFromLibrary(game.id);
+            if (success) {
+              Alert.alert('Game Deleted', `"${game.title}" has been removed from your library.`);
+            } else {
+              Alert.alert('Error', 'Failed to delete the game. Please try again.');
+            }
+          },
+        },
+      ]
+    );
+  };
+
   const getThumbnail = (gameId) => {
     log("getThumbnail(): gameId: " + gameId + ", " + FileSystem.documentDirectory + gameId + "/thumbnail.jpg")
-    return FileSystem.Paths.document.uri + gameId + "/thumbnail.jpg";
-  }
-  
+        return FileSystem.Paths.document.uri + gameId + "/thumbnail.jpg";
+  };
 
   const renderGameItem = ({ item }) => (
     <TouchableOpacity 
       style={styles.gameCard}
       onPress={() => handleGameSelect(item)}
+      onLongPress={() => handleLongPress(item)}
     >
       <Image 
         source={{ uri: getThumbnail(item.id) }}
@@ -82,7 +125,6 @@ export default function LibraryScreen({ navigation }) {
   );
 
   return (
-
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <StatusBar style="dark" backgroundColor="white" />
       <View style={styles.header}>
