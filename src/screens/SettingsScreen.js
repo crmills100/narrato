@@ -21,7 +21,7 @@ import { useGame } from '../context/GameContext';
 
 const { height: screenHeight } = Dimensions.get('window');
 
-export default function SettingsScreen() {
+export default function SettingsScreen({ navigation }) {
   const [settings, setSettings] = useState({
     soundEnabled: true,
     autoSave: true,
@@ -104,7 +104,6 @@ export default function SettingsScreen() {
           text: 'Clear',
           style: 'destructive',
           onPress: () => {
-            // Assuming there's a clearLog function available
             try {
               clearLog();
               setLogContent('Logs cleared');
@@ -144,8 +143,9 @@ export default function SettingsScreen() {
           onPress: async () => {
             try {
               await AsyncStorage.clear();
-
+              
               // Reset game context state
+
               resetGameContext();
 
               Alert.alert('Success', 'All data has been cleared.');
@@ -294,6 +294,13 @@ export default function SettingsScreen() {
 
             {showDevSection && (
               <>
+                <SettingRow
+                  title="Add Game From URL"
+                  description="Download and install game from URL"
+                  icon="download-outline"
+                  onPress={() => navigation.navigate('AddByURL')}
+                />
+
                 <SettingRow
                   title="Show Logs"
                   description="View application logs"

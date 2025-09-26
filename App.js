@@ -1,4 +1,4 @@
-// App.js - Main application entry point
+// App.js - Main application entry point with nested navigation
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -47,50 +47,62 @@ function StoreStack() {
   );
 }
 
+function TabNavigator() {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          if (route.name === 'LibraryTab') {
+            iconName = focused ? 'library' : 'library-outline';
+          } else if (route.name === 'StoreTab') {
+            iconName = focused ? 'storefront' : 'storefront-outline';
+          } else if (route.name === 'Settings') {
+            iconName = focused ? 'settings' : 'settings-outline';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#6366f1',
+        tabBarInactiveTintColor: 'gray',
+        headerShown: false,
+      })}
+    >
+      <Tab.Screen 
+        name="LibraryTab" 
+        component={LibraryStack}
+        options={{ title: 'Library' }}
+      />
+      <Tab.Screen 
+        name="StoreTab" 
+        component={StoreStack}
+        options={{ title: 'Store' }}
+      />
+      <Tab.Screen 
+        name="Settings" 
+        component={SettingsScreen}
+        options={{ title: 'Settings' }}
+      />
+    </Tab.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <GameProvider>
       <NavigationContainer>
         <StatusBar style="auto" />
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              if (route.name === 'LibraryTab') {
-                iconName = focused ? 'library' : 'library-outline';
-              } else if (route.name === 'StoreTab') {
-                iconName = focused ? 'storefront' : 'storefront-outline';
-              } else if (route.name === 'Settings') {
-                iconName = focused ? 'settings' : 'settings-outline';
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: '#6366f1',
-            tabBarInactiveTintColor: 'gray',
-            headerShown: false,
-          })}
-        >
-          <Tab.Screen 
-            name="LibraryTab" 
-            component={LibraryStack}
-            options={{ title: 'Library' }}
-          />
-          <Tab.Screen 
-            name="StoreTab" 
-            component={StoreStack}
-            options={{ title: 'Store' }}
-          />
-          <Tab.Screen 
-            name="Settings" 
-            component={SettingsScreen}
-            options={{ title: 'Settings' }}
-          />
-          <Tab.Screen 
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Main" component={TabNavigator} />
+          <Stack.Screen 
             name="AddByURL" 
             component={AddStoryByURLScreen}
-            options={{ title: 'AddByURL' }}
+            options={{ 
+              headerShown: true,
+              title: 'Add Game from URL',
+              headerBackTitle: 'Settings'
+            }}
           />
-        </Tab.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     </GameProvider>
   );

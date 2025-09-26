@@ -569,7 +569,143 @@ const styles = StyleSheet.create({
     top: 10,
     right: 10,
     zIndex: 1,
-  }
+  },
+  // Add these to your styles file:
+formContainer: {
+  padding: 20,
+},
+infoCard: {
+  flexDirection: 'row',
+  backgroundColor: '#eff6ff',
+  padding: 16,
+  borderRadius: 12,
+  marginBottom: 24,
+  borderLeftWidth: 4,
+  borderLeftColor: '#6366f1',
+},
+infoContent: {
+  flex: 1,
+  marginLeft: 12,
+},
+infoTitle: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#1f2937',
+  marginBottom: 4,
+},
+infoText: {
+  fontSize: 14,
+  color: '#4b5563',
+  lineHeight: 20,
+},
+inputSection: {
+  marginBottom: 24,
+},
+sectionTitle: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#1f2937',
+  marginBottom: 12,
+},
+inputContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderWidth: 1,
+  borderColor: '#d1d5db',
+  borderRadius: 12,
+  paddingHorizontal: 16,
+  paddingVertical: 12,
+  backgroundColor: 'white',
+},
+inputIcon: {
+  marginRight: 12,
+},
+textInput: {
+  flex: 1,
+  fontSize: 16,
+  color: '#1f2937',
+},
+inputError: {
+  borderColor: '#ef4444',
+  backgroundColor: '#fef2f2',
+},
+errorText: {
+  fontSize: 14,
+  color: '#ef4444',
+  marginTop: 8,
+  marginLeft: 4,
+},
+quickActionsSection: {
+  marginBottom: 32,
+},
+quickActionButton: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: 'white',
+  padding: 16,
+  borderRadius: 12,
+  marginBottom: 8,
+  borderWidth: 1,
+  borderColor: '#e5e7eb',
+},
+quickActionContent: {
+  flex: 1,
+  marginLeft: 12,
+},
+quickActionTitle: {
+  fontSize: 16,
+  fontWeight: '500',
+  color: '#1f2937',
+  marginBottom: 2,
+},
+quickActionSubtitle: {
+  fontSize: 14,
+  color: '#6b7280',
+},
+buttonSection: {
+  gap: 12,
+},
+primaryButton: {
+  backgroundColor: '#6366f1',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: 16,
+  borderRadius: 12,
+  gap: 8,
+},
+secondaryButton: {
+  backgroundColor: 'transparent',
+  borderWidth: 2,
+  borderColor: '#d1d5db',
+  padding: 16,
+  borderRadius: 12,
+  alignItems: 'center',
+},
+disabledButton: {
+  opacity: 0.6,
+},
+primaryButtonText: {
+  color: 'white',
+  fontSize: 16,
+  fontWeight: '600',
+},
+secondaryButtonText: {
+  color: '#4b5563',
+  fontSize: 16,
+  fontWeight: '500',
+},
+loadingIndicator: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginTop: 16,
+  gap: 8,
+},
+loadingText: {
+  fontSize: 14,
+  color: '#6b7280',
+},
 });
 
 export default styles;

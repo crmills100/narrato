@@ -29,16 +29,11 @@ Work Plan:
    - play background sound x
    - state: check to see that state is saved and resumed x
    - state: return to start (via menu) x
-- Create main tabs of application:
+- Create main tabs of application: x
    - "Home" - browsing server x
    - "Library" - local stories x
    - "Settings" - settings, info x
-   - "Current" - icon of current story
-   - Move "Add by URL" to "Settings"
-- "Current" screen
-   - book/story icon that launches current story
-   - empty story by default
-   - set to current story on launch from library
+   - Move "Add by URL" to "Settings" x
 - "Home" screen
    - basic version - placeholder text x
    - icons of stories 
@@ -57,15 +52,17 @@ Work Plan:
    - undefined showing in logs
 - create demo stories:
    - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c, audio from https://suno.com/ x
+   - infant story (Totes McGoats Adventure inital adventure) - GenAI conversation: crmills100@yahoo.com ChatGPT x
    - music album - use genAI songs
    - vacation album - use Iceland trip
-   - infant story (Totes McGoats Adventure inital adventure) - GenAI conversation: crmills100@yahoo.com ChatGPT x
    - load demo stories into "Home"
 - app distribution:
    - android: basic standalone build
-   - iOS: basic standalone build
+   - iOS: basic standalone build for simulator?
    - android: standalone build with static list of stories
    - iOS: standalone build with static list of stories
+   - android: alpha version published to store https://docs.expo.dev/submit/android/ 
+   - iOS: test flight version published https://docs.expo.dev/submit/ios/ 
 
 ## Version 0.2.2: "AI Creator"
 - create AI story: ability to have generative AI create a story
@@ -79,6 +76,12 @@ Work Plan:
    - display images: full screen background with text on top
    - add inventory and variables support
    - child-lock mode: tap in center and drag to action (only responde to specific sequence of touches)
+- Create main tabs of application:
+   - "Current" - icon of current story
+- "Current" screen
+   - book/story icon that launches current story
+   - empty story by default
+   - set to current story on launch from library
 - more demo stories:
    - Spanish story
    - modern family story
