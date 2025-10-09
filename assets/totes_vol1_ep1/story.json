@@ -15,11 +15,12 @@
     "assets": {
       "images": {
         "beach": { "path": "images/tm_beach.png", "alt_text": "A sandy beach at sunrise", "format": "png" },
+        "seashell": { "path": "images/tm_seashell.png", "alt_text": "Colorful seashells and shiny stones", "format": "png" },
         "jungle": { "path": "images/tm_jungle.png", "alt_text": "Dense tropical jungle", "format": "png" },
         "river": { "path": "images/tm_river.png", "alt_text": "Sparkling river through the jungle", "format": "png" },
         "hill": { "path": "images/tm_hill.png", "alt_text": "A steep jungle hill with smoke in the distance", "format": "png" },
-        "hut": { "path": "images/hut.png", "alt_text": "Abandoned bamboo hut", "format": "png" },
-        "clearing": { "path": "images/clearing.png", "alt_text": "A bright jungle clearing with flowers", "format": "png" },
+        "hut": { "path": "images/tm_hut.png", "alt_text": "Abandoned bamboo hut", "format": "png" },
+        "clearing": { "path": "images/tm_clearing.png", "alt_text": "A bright jungle clearing with flowers", "format": "png" },
         "cluckers": { "path": "images/tm_cluckers.png", "alt_text": "A proud chicken named Cluckers", "format": "png" }
       },
       "audio": {
@@ -56,7 +57,7 @@
         "title": "Seashell Collecting",
         "content": {
           "text": "You find colorful seashells and shiny stones, which you tuck into your satchel. Though pretty, they don't help much. The jungle still calls to you.",
-          "image": "beach"
+          "image": "seashell"
         },
         "choices": [
           { "id": "c5", "text": "Head into the jungle.", "target": "jungle_path" }
