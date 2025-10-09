@@ -87,7 +87,7 @@ export default function StoreScreen() {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setGames(mockServerGames);
     } catch (error) {
-      Alert.alert('Error', 'Failed to load games from server');
+      Alert.alert('Error', 'Failed to load stories from server');
     } finally {
       setLoading(false);
     }
@@ -105,7 +105,7 @@ export default function StoreScreen() {
 
   const downloadGame = async (game) => {
     if (isGameOwned(game.id)) {
-      Alert.alert('Already Owned', 'You already have this game in your library!');
+      Alert.alert('Already Owned', 'You already have this story in your library!');
       return;
     }
 
