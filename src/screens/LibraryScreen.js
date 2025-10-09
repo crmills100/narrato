@@ -89,8 +89,8 @@ export default function LibraryScreen({ navigation }) {
   };
 
   const getThumbnail = (gameId) => {
-    log("getThumbnail(): gameId: " + gameId + ", " + FileSystem.documentDirectory + gameId + "/thumbnail.jpg")
-        return FileSystem.Paths.document.uri + gameId + "/thumbnail.jpg";
+    log("getThumbnail(): gameId: " + gameId + ", " + FileSystem.Paths.document.uri + gameId + "/thumbnail.jpg")
+    return FileSystem.Paths.document.uri + gameId + "/thumbnail.jpg";
   };
 
   const renderGameItem = ({ item }) => (
