@@ -1,8 +1,7 @@
 // src/context/GameContext.js - Game state management
 import { err, log, warn } from '@/util/log';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as FileSystem from 'expo-file-system';
-import { File, Paths } from 'expo-file-system';
+import { Directory, File, Paths } from 'expo-file-system';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import RNFS from 'react-native-fs';
 import { unzip } from 'react-native-zip-archive';
@@ -74,8 +73,7 @@ export function GameProvider({ children }) {
 
   const getImageAssetUri = (imageId) => {
     try {
-      log("getImageAssetUri: " + imageId);      
-      
+
       if (!imageId || !state.currentGame?.story?.assets?.images) {
         log("getAudioAssetUri: Invalid input or missing image assets");
         return null;
@@ -98,7 +96,6 @@ export function GameProvider({ children }) {
       const fullPath = `${rootDir}${gameId}/${cleanAssetPath}`;
       const fileUri = fullPath.startsWith('file://') ? fullPath : `file://${fullPath}`;
       
-      log(`getImageAssetUri: Resolved '${imageId}' to '${fileUri}'`);
       return fileUri;
       
     } catch (error) {
@@ -268,6 +265,24 @@ export function GameProvider({ children }) {
     }
   };
 
+  function deleteDirectoryRecursively(directory) {
+        try {
+            const contents = directory.list();
+
+            for (const item of contents) {
+                if (item instanceof Directory) {
+                    deleteDirectoryRecursively(item);
+                } else {
+                    item.delete();
+                }
+            }
+
+            directory.delete();
+        } catch (error) {
+            console.error(`Error deleting directory ${directory.uri}:`, error);
+        }
+}
+
   const removeGameFromLibrary = async (gameId) => {
   try {
     dispatch({ type: 'SET_LOADING', payload: true });
@@ -288,10 +303,10 @@ export function GameProvider({ children }) {
         log(`Checking if game directory exists: ${gameDirectory}`);
         
         // Check if directory exists before attempting to delete
-        const dirExists = await FileSystem.getInfoAsync(gameDirectory);
-        if (dirExists.exists) {
-          log(`Deleting game directory: ${gameDirectory}`);
-          await FileSystem.deleteAsync(gameDirectory, { idempotent: true });
+        const dir = new Directory(gameDirectory);
+        if (dir.exists) {
+          log(`Deleting game directory: ${dir.uri}`);
+          deleteDirectoryRecursively(dir); // cannot call dir.delete(), get an error: Call to function 'FileSystemDirectory.delete' has been rejected.
           log(`Successfully deleted game directory`);
         } else {
           log(`Game directory does not exist, skipping file deletion`);
