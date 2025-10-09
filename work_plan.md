@@ -12,7 +12,7 @@ Work Plan:
    - story management (add + delete) x
 - update README and check-in x
 
-## Version 0.2: "Demoable"
+## Version 0.2: "Demoable" x
 - change to Claude for generation x
 - rich story fomat: x
    - update StoreScreen.js to save to local disk x
@@ -34,40 +34,55 @@ Work Plan:
    - "Library" - local stories x
    - "Settings" - settings, info x
    - Move "Add by URL" to "Settings" x
-- "Home" screen
+- "Home" screen: x
    - basic version - placeholder text x
-   - icons of stories 
-- "Library" screen: manage and launch local stories:
+- "Library" screen: manage and launch local stories: x
    - browse for local story x
    - browse (icons and titles) x
    - select to launch x
    - delete story x
-- "Settings" screen:
+- "Settings" screen: x
    - show logs x
-   - about, version, license, static text
 - fixes: x
    - header goes into status area x
    - audio still plays on switching screen x
-   - error on delete story from library
-   - undefined showing in logs
-- create demo stories:
+- create demo stories: x
    - bedtime story - port bedtime story from google https://g.co/gemini/share/076bd2395a2c, audio from https://suno.com/ x
    - infant story (Totes McGoats Adventure inital adventure) - GenAI conversation: crmills100@yahoo.com ChatGPT x
-   - music album - use genAI songs
-   - vacation album - use Iceland trip
-   - load demo stories into "Home"
-- app distribution:
-   - android: basic standalone build
-   - iOS: basic standalone build for simulator?
-   - android: standalone build with static list of stories
-   - iOS: standalone build with static list of stories
-   - android: alpha version published to store https://docs.expo.dev/submit/android/ 
-   - iOS: test flight version published https://docs.expo.dev/submit/ios/ 
+- app distribution: x
+   - Android x
+      - basic standalone build (AAB) x
+      - local hosting x
+         - convert AAB to APK https://github.com/google/bundletool x
+         - host on cloudflare - deferred file too large - x
 
-## Version 0.2.2: "AI Creator"
+## Version 0.2.2: "MVP App Store"
+
+- Demo stories:
+   - finish images for first Totes infant story
+   - create second Totes story
+- Fixes: 
+   - error on delete story from library
+   - undefined showing in logs x
+- "Home" screen:
+   - standalone build with static list of stories: load 2 demo stories into "Home"
+   - Add “Import Story” and “Coming Soon” marketplace home UI.
+   - icons of stories 
+- "Settings" screen:
+   - about, version, license, static text
+- App Distribution: Publish Narrato on both stores with 2 bundled free stories
+   - Android
+      - play store
+         - signup for developer account https://play.google.com/console/signup
+         - alpha version published to store https://docs.expo.dev/submit/android/ 
+   - iOS
+      - basic standalone build for simulator?
+      - test flight version published https://docs.expo.dev/submit/ios/ 
+
+## Version 0.2.4: "AI Creator"
 - create AI story: ability to have generative AI create a story
 
-## Version 0.2.4:
+## Version 0.2.6:
 - "Current Story":
    - ability to go in and out full screen, restore <-> maximize
    - restored view mode has back and forward buttons
@@ -87,6 +102,9 @@ Work Plan:
    - modern family story
    - breaking bad story
    - corn story?
+   - music album - use genAI songs
+   - vacation album - use Iceland trip
+
 - intermediate Expo learning:
    - read: https://docs.expo.dev/workflow/overview/
 - "Settings"
@@ -98,8 +116,11 @@ Work Plan:
    - strings database for UI text
    - call strings databse
 
-## Version 0.3: "Server Library"
-- manage shared stories (no authentication, user login, ...):
+## Version 0.3: "IAP Library" https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160
+- Add backend catalog with story previews
+- Enable in app purchases (IAP) for story downloads
+
+- manage shared stories (authentication, user login, ...):
    - client:
       - option to set server URL
       - browse library from list on "the server" (connect to server and shows a list)
@@ -110,7 +131,9 @@ Work Plan:
       - serve list of stories in .cyoa
       - serve individual story
 
-## Version 0.4: "Distributable"
+## Version 0.4: "Website Library"
+- Launch website storefront (Stripe or Gumroad)
+- Add account linking and story syncing
 - cloud flare
    - serve list of stories
    - serve individual story in .cyoa format
@@ -176,7 +199,7 @@ This works:
           />
 
 
-## 2. Audio - background effects: - complete
+## 2. Audio - background effects - complete
 
 https://pixabay.com/sound-effects/search/forest/
 
@@ -187,3 +210,28 @@ Press in center and drag to button
 ## 4. AI story creation
 
 Given a simple JSON and a description, can a GenAI tool create a story
+
+
+## 5. Local Build for Android - complete
+
+- convert on Android device to apk
+- publish on local webserver
+
+## 6. APK for Android using command line - complete
+
+- setup keystore:
+
+keytool -genkey -v -keystore mykey.ks -alias key_alias -keyalg RSA -keysize 2048 -validity 100
+(password: welcome)
+
+- create build:
+
+    - eas build --platform android --profile production
+    - download aab file from build
+    - copy to linux host: scp -i C:\Users\cmills\.ssh\id_ed25519_linuxdev .\application-5846be8c-c9fb-4291-8e60-78cd14b50d77.aab vboxuser@192.168.1.196:/home/vboxuser/tmp
+    - mv application-5846be8c-c9fb-4291-8e60-78cd14b50d77.aab narrato_0.2.2.aab
+    - java -jar bundletool-all-1.18.2.jar build-apks --output=./apks --output-format=DIRECTORY --bundle=narrato_0.2.2.aab --mode=universal --ks=mykey.ks --ks-key-alias=key_alias
+    - mv apks/universal.apk apks/narrato_0.2.2.apk
+    - publish to local webserver
+
+
