@@ -21,6 +21,10 @@ import { useGame } from '../context/GameContext';
 
 const { height: screenHeight } = Dimensions.get('window');
 
+// Server configuration key
+const SERVER_URL_KEY = 'store_server_url';
+const DEFAULT_SERVER_URL = 'http://192.168.0.157:3000/api/games';
+
 export default function SettingsScreen({ navigation }) {
   const [settings, setSettings] = useState({
     soundEnabled: true,
@@ -35,12 +39,14 @@ export default function SettingsScreen({ navigation }) {
   const [showLogModal, setShowLogModal] = useState(false);
   const [logContent, setLogContent] = useState('');
   const [showDevSection, setShowDevSection] = useState(false);
+  const [serverUrl, setServerUrl] = useState(DEFAULT_SERVER_URL);
 
   const insets = useSafeAreaInsets();
   
   useEffect(() => {
     loadSettings();
     checkDevMode();
+    loadServerUrl();
   }, []);
 
   const loadSettings = async () => {
@@ -60,6 +66,30 @@ export default function SettingsScreen({ navigation }) {
       setShowDevSection(devMode === 'true');
     } catch (error) {
       console.error('Failed to check dev mode:', error);
+    }
+  };
+
+  const loadServerUrl = async () => {
+    try {
+      const savedUrl = await AsyncStorage.getItem(SERVER_URL_KEY);
+      if (savedUrl) {
+        setServerUrl(savedUrl);
+      } else {
+        setServerUrl(DEFAULT_SERVER_URL);
+      }
+    } catch (error) {
+      console.error('Failed to load server URL:', error);
+    }
+  };
+
+  const saveServerUrl = async (url) => {
+    try {
+      await AsyncStorage.setItem(SERVER_URL_KEY, url);
+      setServerUrl(url);
+      Alert.alert('Success', 'Server URL updated. Pull to refresh the store to load games from the new server.');
+    } catch (error) {
+      err('Failed to save server URL:', error);
+      Alert.alert('Error', 'Failed to save server URL.');
     }
   };
 
@@ -119,8 +149,6 @@ export default function SettingsScreen({ navigation }) {
 
   const copyLogsToClipboard = async () => {
     try {
-      // For React Native, you'd typically use @react-native-clipboard/clipboard
-      // But since it's not imported, we'll show an alert with the logs
       Alert.alert(
         'Copy Logs',
         'Logs copied to clipboard',
@@ -143,11 +171,7 @@ export default function SettingsScreen({ navigation }) {
           onPress: async () => {
             try {
               await AsyncStorage.clear();
-              
-              // Reset game context state
-
               resetGameContext();
-
               Alert.alert('Success', 'All data has been cleared.');
             } catch (error) {
               err('Failed to clear data.', error);
@@ -294,6 +318,13 @@ export default function SettingsScreen({ navigation }) {
 
             {showDevSection && (
               <>
+                <SettingRow
+                  title="Configure Server URL"
+                  description={serverUrl}
+                  icon="server-outline"
+                  onPress={() => navigation.navigate('ConfigureServer')}
+                />
+
                 <SettingRow
                   title="Add Story From URL"
                   description="Download and install story from URL"

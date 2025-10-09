@@ -7,6 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 
 // Screens
 import AddStoryByURLScreen from './src/screens/AddStoryByURLScreen';
+import ConfigureServerScreen from './src/screens/ConfigureServerScreen';
 import GameScreen from './src/screens/GameScreen';
 import LibraryScreen from './src/screens/LibraryScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
@@ -99,6 +100,15 @@ export default function App() {
             options={{ 
               headerShown: true,
               title: 'Add Game from URL',
+              headerBackTitle: 'Settings'
+            }}
+          />
+          <Stack.Screen 
+            name="ConfigureServer" 
+            component={ConfigureServerScreen}
+            options={{ 
+              headerShown: true,
+              title: 'Configure Server',
               headerBackTitle: 'Settings'
             }}
           />

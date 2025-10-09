@@ -1,0 +1,62 @@
+[
+  {
+    "id": "totes-mcgoats-adventure-001",
+    "title": "Totes McGoats and the Mysterious Island",
+    "author": "Tilly Maplesea",
+    "description": "Join Totes McGoats as he wakes up on a strange Pacific island and begins an adventure that leads him to meet a new friend for the very first time.",
+    "thumbnail": "/images/tm_thumbnail.png",
+    "downloadUrl": "/totes_vol1_ep1.zip",
+    "rating": "E",
+    "downloads": "1245",
+    "size_mb": "2.4",
+    "estimated_play_time": "10",
+    "tags": ["adventure", "goat", "island", "friendship", "choose-your-own"],
+    "price": 0,
+    "featured": "true"
+  },
+  {
+    "id": "lullaby_star",
+    "title": "The Lullaby Star",
+    "author": "Christopher Mills",
+    "description": "Bedtime story full of night wonder.",
+    "thumbnail": "/images/ls_thumbnail.jpg",
+    "downloadUrl": "/lullaby_star.zip",
+    "rating": "E",
+    "downloads": "8930",
+    "size_mb": "32.1",
+    "estimated_play_time": "20",
+    "tags": ["bedtime", "stars", "kids"],
+    "price": 0,
+    "featured": "false"
+  },
+  {
+    "id": "forest_adventure",
+    "title": "The Enchanted Forest",
+    "author": "Jane Storyteller",
+    "description": "A magical adventure...",
+    "thumbnail": "/images/forest.jpg",
+    "downloadUrl": "/downloads/forest_adventure.zip",
+    "rating": 4.8,
+    "downloads": 15420,
+    "size_mb": 25.3,
+    "estimated_play_time": 45,
+    "tags": ["fantasy", "magic", "adventure"],
+    "price": 0,
+    "featured": true
+  },
+  {
+    "id": "forest_adventure2",
+    "title": "The Enchanted Forest2",
+    "author": "Jane Storyteller2",
+    "description": "A magical adventure...",
+    "thumbnail": "/images/forest.jpg",
+    "downloadUrl": "/downloads/forest_adventure.zip",
+    "rating": 4.8,
+    "downloads": 15420,
+    "size_mb": 25.3,
+    "estimated_play_time": 45,
+    "tags": ["fantasy", "magic", "adventure"],
+    "price": 0,
+    "featured": true
+  }
+]

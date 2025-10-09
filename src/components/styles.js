@@ -706,6 +706,51 @@ loadingText: {
   fontSize: 14,
   color: '#6b7280',
 },
+// configure url
+configInfoSection: {
+  marginBottom: 24,
+},
+configInfoTitle: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#1f2937',
+  marginBottom: 12,
+},
+configInfoBox: {
+  backgroundColor: '#f9fafb',
+  borderRadius: 8,
+  padding: 16,
+  borderWidth: 1,
+  borderColor: '#e5e7eb',
+},
+configInfoRow: {
+  marginBottom: 12,
+},
+configInfoLabel: {
+  fontSize: 14,
+  fontWeight: '500',
+  color: '#6b7280',
+  marginBottom: 4,
+},
+configInfoValue: {
+  fontSize: 14,
+  color: '#1f2937',
+  fontFamily: 'monospace',
+},
+helpSection: {
+  flexDirection: 'row',
+  backgroundColor: '#eff6ff',
+  padding: 16,
+  borderRadius: 8,
+  marginTop: 16,
+  gap: 12,
+},
+helpText: {
+  flex: 1,
+  fontSize: 14,
+  color: '#4b5563',
+  lineHeight: 20,
+},
 });
 
 export default styles;
