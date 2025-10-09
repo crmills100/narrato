@@ -128,12 +128,12 @@ export default function LibraryScreen({ navigation }) {
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <StatusBar style="dark" backgroundColor="white" />
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Games</Text>
+        <Text style={styles.headerTitle}>My Stories</Text>
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={20} color="#666" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search your games..."
+            placeholder="Search your stories..."
             value={searchQuery}
             onChangeText={setSearchQuery}
           />

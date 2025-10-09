@@ -295,8 +295,8 @@ export default function SettingsScreen({ navigation }) {
             {showDevSection && (
               <>
                 <SettingRow
-                  title="Add Game From URL"
-                  description="Download and install game from URL"
+                  title="Add Story From URL"
+                  description="Download and install story from URL"
                   icon="download-outline"
                   onPress={() => navigation.navigate('AddByURL')}
                 />

@@ -264,12 +264,12 @@ export default function StoreScreen() {
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <StatusBar style="dark" backgroundColor="white" />
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Discover Games</Text>
+        <Text style={styles.headerTitle}>Discover Stories</Text>
         <View style={styles.searchContainer}>
           <Ionicons name="search" size={20} color="#666" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search games, authors, tags..."
+            placeholder="Search titles, authors, tags..."
             value={searchQuery}
             onChangeText={setSearchQuery}
           />
