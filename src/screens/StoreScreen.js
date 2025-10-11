@@ -21,7 +21,7 @@ import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 
 // Server configuration
-const DEFAULT_SERVER_URL = 'http://192.168.1.196/games';
+const DEFAULT_SERVER_URL = 'http://192.168.1.196/story_list.json';
 const SERVER_URL_KEY = 'store_server_url';
 
 export default function StoreScreen() {
@@ -80,7 +80,7 @@ export default function StoreScreen() {
     }
   };
 
-  const resolveUrl = (relativeUrl) => {
+  const resolveUrl = (relativeUrl, currentBaseUrl = null) => {
     if (!relativeUrl) return null;
     
     // If it's already an absolute URL, return as is
@@ -88,13 +88,16 @@ export default function StoreScreen() {
       return relativeUrl;
     }
     
+    // Use provided baseUrl or the state baseUrl
+    const urlBase = currentBaseUrl || baseUrl;
+    
     // Handle relative URLs
-    if (baseUrl) {
+    if (urlBase) {
       // Remove leading slash if present
       const cleanRelativeUrl = relativeUrl.startsWith('/') 
         ? relativeUrl.substring(1) 
         : relativeUrl;
-      return `${baseUrl}/${cleanRelativeUrl}`;
+      return `${urlBase}/${cleanRelativeUrl}`;
     }
     
     return relativeUrl;
@@ -127,13 +130,13 @@ export default function StoreScreen() {
       setBaseUrl(base);
       log(`Base URL set to: ${base}`);
       
-      // Process games to resolve URLs
+      // Process games to resolve URLs - pass base directly to resolveUrl
       const processedGames = data.map(game => ({
         ...game,
-        // Resolve thumbnail URL
-        thumbnail: game.thumbnail ? resolveUrl(game.thumbnail) : 'https://via.placeholder.com/150',
+        // Resolve thumbnail URL with base URL
+        thumbnail: game.thumbnail ? resolveUrl(game.thumbnail, base) : 'https://via.placeholder.com/150',
         // Resolve download URL if present
-        downloadUrl: game.downloadUrl ? resolveUrl(game.downloadUrl) : null,
+        downloadUrl: game.downloadUrl ? resolveUrl(game.downloadUrl, base) : null,
         // Ensure all required fields exist with defaults
         id: game.id || `game_${Date.now()}_${Math.random()}`,
         title: game.title || 'Untitled Game',
@@ -212,11 +215,11 @@ export default function StoreScreen() {
       if (game.downloadUrl) {
         // Download zip file from server
         log(`Downloading game from: ${game.downloadUrl}`);
-        
-      // Create a file path inside app's document directory
+
+              // Create a file path inside app's document directory
       const gameId = game.downloadUrl.trim().split('/').pop().replace(/\.[^/.]+$/, "");
       const fileName = gameId + ".zip";
-
+      log('fileName: ' + fileName);
       // Download the file
       const localFile = new File(Paths.document, fileName);
       log("localFile: " + localFile.uri);
@@ -224,17 +227,6 @@ export default function StoreScreen() {
         log("deleting localFile");
         localFile.delete();
       }
-
-
-//        const { File, Paths } = await import('expo-file-system');
-//        const fileName = `${game.id}.zip`;
-//        const localFile = new File(Paths.document, fileName);
-        
-//        // Delete existing file if present
-//        if (localFile.exists) {
-//          log('Deleting existing file');
-//          localFile.delete();
-//        }
 
         // Download the file
         log(`Downloading to: ${localFile.uri}`);
