@@ -10,6 +10,7 @@ import AddStoryByURLScreen from './src/screens/AddStoryByURLScreen';
 import ConfigureServerScreen from './src/screens/ConfigureServerScreen';
 import GameScreen from './src/screens/GameScreen';
 import LibraryScreen from './src/screens/LibraryScreen';
+import PrivacyPolicyScreen from './src/screens/PrivacyPolicyScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import StoreScreen from './src/screens/StoreScreen';
 import TermsOfServiceScreen from './src/screens/TermsOfServiceScreen';
@@ -119,6 +120,15 @@ export default function App() {
             options={{ 
               headerShown: true,
               title: 'Terms of Service',
+              headerBackTitle: 'Settings'
+            }}
+          />
+          <Stack.Screen 
+            name="PrivacyPolicy" 
+            component={PrivacyPolicyScreen}
+            options={{ 
+              headerShown: true,
+              title: 'Privacy Policy',
               headerBackTitle: 'Settings'
             }}
           />

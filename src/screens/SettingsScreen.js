@@ -361,7 +361,7 @@ export default function SettingsScreen({ navigation }) {
             <SettingRow
               title="Privacy Policy"
               icon="shield-checkmark-outline"
-              onPress={() => Alert.alert('Privacy Policy', 'Your privacy policy content would go here.')}
+              onPress={() => navigation.navigate('PrivacyPolicy')}
             />
 
             <SettingRow
