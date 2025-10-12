@@ -12,6 +12,7 @@ import GameScreen from './src/screens/GameScreen';
 import LibraryScreen from './src/screens/LibraryScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import StoreScreen from './src/screens/StoreScreen';
+import TermsOfServiceScreen from './src/screens/TermsOfServiceScreen';
 
 // Context
 import { GameProvider } from './src/context/GameContext';
@@ -109,6 +110,15 @@ export default function App() {
             options={{ 
               headerShown: true,
               title: 'Configure Server',
+              headerBackTitle: 'Settings'
+            }}
+          />
+          <Stack.Screen 
+            name="TermsOfService" 
+            component={TermsOfServiceScreen}
+            options={{ 
+              headerShown: true,
+              title: 'Terms of Service',
               headerBackTitle: 'Settings'
             }}
           />

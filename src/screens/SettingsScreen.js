@@ -354,7 +354,7 @@ export default function SettingsScreen({ navigation }) {
             
             <SettingRow
               title="App Version"
-              description="1.0.0"
+              description="0.2.2"
               icon="information-circle-outline"
             />
 
@@ -366,9 +366,10 @@ export default function SettingsScreen({ navigation }) {
 
             <SettingRow
               title="Terms of Service"
-              icon="document-text-outline"
-              onPress={() => Alert.alert('Terms of Service', 'Your terms of service content would go here.')}
+              icon="download-outline"
+              onPress={() => navigation.navigate('TermsOfService')}
             />
+
           </View>
         </ScrollView>
       </View>
