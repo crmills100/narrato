@@ -56,25 +56,36 @@ Work Plan:
          - convert AAB to APK https://github.com/google/bundletool x
          - host on cloudflare - deferred file too large - x
 
-## Version 0.2.2: "MVP App Store"
+## Version 0.2.2: "MVP Google Play Store"
 
-- Demo stories:
-   - finish images for first Totes infant story
-   - create second Totes story
+- Demo stories: x
+   - finish images for first Totes infant story x
 - Fixes: 
-   - error on delete story from library
+   - error on delete story from library x
    - undefined showing in logs x
 - "Home" screen:
-   - standalone build with static list of stories: load 2 demo stories into "Home"
-   - Add “Import Story” and “Coming Soon” marketplace home UI.
-   - icons of stories 
+   - static list of stories: load 2 demo stories into "Home" (totes + lullaby) x
+   - add “Import Story” to marketplace UI
+   - add “Coming Soon” to marketplace UI
+   - icons of stories x 
+- Server:
+   - host static assets (images, story_list, stories) on CloudFlare (crmills.com)
 - "Settings" screen:
-   - about, version, license, static text
+   - Terms of Service x
+   - Privacy Policy x
+   - about, version x
+- Application logo (search for images on Wix?)
 - App Distribution: Publish Narrato on both stores with 2 bundled free stories
    - Android
       - play store
          - signup for developer account https://play.google.com/console/signup
          - alpha version published to store https://docs.expo.dev/submit/android/ 
+
+## Version 0.2.3: "MVP iOS Store"
+- "Settings" screen:
+  - iOS version details
+  - build number from build
+- App Distribution: Publish Narrato on both stores with 2 bundled free stories
    - iOS
       - basic standalone build for simulator?
       - test flight version published https://docs.expo.dev/submit/ios/ 
@@ -99,6 +110,7 @@ Work Plan:
    - set to current story on launch from library
 - more demo stories:
    - Spanish story
+   - create second Totes story
    - modern family story
    - breaking bad story
    - corn story?
@@ -232,6 +244,6 @@ keytool -genkey -v -keystore mykey.ks -alias key_alias -keyalg RSA -keysize 2048
     - mv application-5846be8c-c9fb-4291-8e60-78cd14b50d77.aab narrato_0.2.2.aab
     - java -jar bundletool-all-1.18.2.jar build-apks --output=./apks --output-format=DIRECTORY --bundle=narrato_0.2.2.aab --mode=universal --ks=mykey.ks --ks-key-alias=key_alias
     - mv apks/universal.apk apks/narrato_0.2.2.apk
-    - publish to local webserver
+    - publish to local webserver: sudo cp apks/narrato_0.2.2.apk /var/www/html/narrato_0.2.2.apk
 
 
