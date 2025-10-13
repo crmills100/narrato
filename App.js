@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 
 // Screens
+import AboutScreen from './src/screens/AboutScreen';
 import AddStoryByURLScreen from './src/screens/AddStoryByURLScreen';
 import ConfigureServerScreen from './src/screens/ConfigureServerScreen';
 import GameScreen from './src/screens/GameScreen';
@@ -111,6 +112,15 @@ export default function App() {
             options={{ 
               headerShown: true,
               title: 'Configure Server',
+              headerBackTitle: 'Settings'
+            }}
+          />
+          <Stack.Screen 
+            name="About" 
+            component={AboutScreen}
+            options={{ 
+              headerShown: true,
+              title: 'About',
               headerBackTitle: 'Settings'
             }}
           />

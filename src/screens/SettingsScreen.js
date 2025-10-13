@@ -23,7 +23,7 @@ const { height: screenHeight } = Dimensions.get('window');
 
 // Server configuration key
 const SERVER_URL_KEY = 'store_server_url';
-const DEFAULT_SERVER_URL = 'http://192.168.0.157:3000/api/games';
+const DEFAULT_SERVER_URL = 'http://192.168.1.196/story_list.json';
 
 export default function SettingsScreen({ navigation }) {
   const [settings, setSettings] = useState({
@@ -350,14 +350,14 @@ export default function SettingsScreen({ navigation }) {
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>About</Text>
+            <Text style={styles.sectionTitle}>Info</Text>
             
             <SettingRow
-              title="App Version"
-              description="0.2.2"
+              title="About"
               icon="information-circle-outline"
+              onPress={() => navigation.navigate('About')}
             />
-
+            
             <SettingRow
               title="Privacy Policy"
               icon="shield-checkmark-outline"
