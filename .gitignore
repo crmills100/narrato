@@ -38,3 +38,6 @@ yarn-error.*
 
 # distribution artifacts
 *.zip
+
+# www directory
+www/

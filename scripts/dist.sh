@@ -1,24 +1,43 @@
 #!/bin/bash
 
-cd /home/vboxuser/code/narrato/assets/
-sudo cp story_list.json /var/www/html
+mkdir www
+mkdir www/narrato
+mkdir www/narrato/images
 
-cd /home/vboxuser/code/narrato/assets/basic_story
+cp ./assets/story_list.json ./www/narrato
+
+cd ./assets/basic_story
 zip -r basic_story story.json thumbnail.jpg images audio
-sudo cp basic_story.zip /var/www/html
+cd ../../
+cp ./assets/basic_story/basic_story.zip ./www/narrato
 
-
-cd /home/vboxuser/code/narrato/assets/music_demo
+cd ./assets/music_demo
 zip -r music_demo story.json thumbnail.jpg images audio
-sudo cp music_demo.zip /var/www/html
+cd ../../
+cp ./assets/music_demo/music_demo.zip ./www/narrato
 
-
-cd /home/vboxuser/code/narrato/assets/lullaby_star
+cd ./assets/lullaby_star
 zip -r lullaby_star story.json thumbnail.jpg images audio
-sudo cp lullaby_star.zip /var/www/html
-sudo cp thumbnail.jpg /var/www/html/images/ls_thumbnail.jpg
+cd ../../
+cp ./assets/lullaby_star/lullaby_star.zip ./www/narrato
+cp ./assets/lullaby_star/thumbnail.jpg ./www/narrato/images/ls_thumbnail.jpg
 
-cd /home/vboxuser/code/narrato/assets/totes_vol1_ep1
+cd ./assets/totes_vol1_ep1
 zip -r totes_vol1_ep1 story.json thumbnail.jpg images audio
-sudo cp totes_vol1_ep1.zip /var/www/html
-sudo cp thumbnail.jpg /var/www/html/images/tm_thumbnail.png
+cd ../../
+cp ./assets/totes_vol1_ep1/totes_vol1_ep1.zip ./www/narrato
+cp ./assets/totes_vol1_ep1/thumbnail.jpg ./www/narrato/images/tm_thumbnail.png
+
+cd ./www
+zip -r narrato_www.zip narrato
+cd /var/www/html
+sudo unzip /home/vboxuser/code/narrato/www/narrato_www.zip
+
+
+# narrato.crmills.com deployment
+#
+# cd /home/vboxuser/code/narrato-www/plain-sunset-7c99/public
+# unzip -o /home/vboxuser/code/narrato/www/narrato_www.zip
+# rm narrato/lullaby_star.zip
+# cd /home/vboxuser/code/narrato-www/plain-sunset-7c99
+# npm run deploy

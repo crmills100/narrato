@@ -106,7 +106,7 @@ export default function AddStoryByURLScreen({ navigation }) {
   };
 
   const handleSetDefault = () => {
-    setUrl("http://192.168.1.196/basic_story.zip");
+    setUrl("http://192.168.1.196/narrato/basic_story.zip");
   };
 
 

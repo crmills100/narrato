@@ -60,20 +60,26 @@ Work Plan:
 
 - Demo stories: x
    - finish images for first Totes infant story x
-- Fixes: 
+- Fixes: x
    - error on delete story from library x
    - undefined showing in logs x
 - "Home" screen:
    - static list of stories: load 2 demo stories into "Home" (totes + lullaby) x
-   - add “Import Story” to marketplace UI
+   - add “Import Story” to marketplace UI - not needed - in developer section x
    - add “Coming Soon” to marketplace UI
    - icons of stories x 
 - Server:
-   - host static assets (images, story_list, stories) on CloudFlare (crmills.com)
+   - update dist script to create zip file x
+   - deploy zip file locally x
+   - host static assets (images, story_list, stories) on CloudFlare (crmills.com) x
+   - reduce size of lullaby_star.zip to under 25MB
+   - move default URLs to a single location 
+   - update defaults with URL(s)
 - "Settings" screen:
    - Terms of Service x
    - Privacy Policy x
    - about, version x
+   - Review text for ToS, Privacy Policy, About
 - Application logo (search for images on Wix?)
 - App Distribution: Publish Narrato on both stores with 2 bundled free stories
    - Android

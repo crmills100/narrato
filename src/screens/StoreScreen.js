@@ -21,7 +21,7 @@ import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 
 // Server configuration
-const DEFAULT_SERVER_URL = 'http://192.168.1.196/story_list.json';
+const DEFAULT_SERVER_URL = 'http://192.168.1.196/narrato/story_list.json';
 const SERVER_URL_KEY = 'store_server_url';
 
 export default function StoreScreen() {
