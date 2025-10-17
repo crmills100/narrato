@@ -23,7 +23,7 @@ const { height: screenHeight } = Dimensions.get('window');
 
 // Server configuration key
 const SERVER_URL_KEY = 'store_server_url';
-const DEFAULT_SERVER_URL = 'http://192.168.1.196/story_list.json';
+const DEFAULT_SERVER_URL = 'http://192.168.1.196/narrato/story_list.json';
 
 export default function SettingsScreen({ navigation }) {
   const [settings, setSettings] = useState({
@@ -357,7 +357,7 @@ export default function SettingsScreen({ navigation }) {
               icon="information-circle-outline"
               onPress={() => navigation.navigate('About')}
             />
-            
+
             <SettingRow
               title="Privacy Policy"
               icon="shield-checkmark-outline"

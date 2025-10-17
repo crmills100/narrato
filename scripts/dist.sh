@@ -31,7 +31,7 @@ cp ./assets/totes_vol1_ep1/thumbnail.jpg ./www/narrato/images/tm_thumbnail.png
 cd ./www
 zip -r narrato_www.zip narrato
 cd /var/www/html
-sudo unzip /home/vboxuser/code/narrato/www/narrato_www.zip
+sudo unzip -o /home/vboxuser/code/narrato/www/narrato_www.zip
 
 
 # narrato.crmills.com deployment
