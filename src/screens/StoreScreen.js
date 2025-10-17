@@ -1,4 +1,5 @@
 // src/screens/StoreScreen.js - Browse and download games from server
+import { SERVER, STORAGE_KEYS } from '@/src/config/constants';
 import { err, log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -21,8 +22,8 @@ import styles from '../components/styles';
 import { useGame } from '../context/GameContext';
 
 // Server configuration
-const DEFAULT_SERVER_URL = 'http://192.168.1.196/narrato/story_list.json';
-const SERVER_URL_KEY = 'store_server_url';
+const DEFAULT_SERVER_URL = SERVER.DEFAULT_STORY_LIST_URL;
+const SERVER_URL_KEY = STORAGE_KEYS.STORY_LIST_URL;
 
 export default function StoreScreen() {
   const { addGameToLibraryJSON, library, addGameToLibrary } = useGame();

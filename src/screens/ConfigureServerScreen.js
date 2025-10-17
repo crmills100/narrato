@@ -1,4 +1,5 @@
 // src/screens/ConfigureServerScreen.js - Configure game server URL
+import { SERVER, STORAGE_KEYS } from '@/src/config/constants';
 import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -16,8 +17,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import styles from '../components/styles';
 
 // Server configuration
-const DEFAULT_SERVER_URL = 'http://192.168.1.196/narrato/story_list.json';
-const SERVER_URL_KEY = 'store_server_url';
+const DEFAULT_SERVER_URL = SERVER.DEFAULT_STORY_LIST_URL;
+const SERVER_URL_KEY = STORAGE_KEYS.STORY_LIST_URL;
 
 export default function ConfigureServerScreen({ navigation }) {
   const [url, setUrl] = useState('');

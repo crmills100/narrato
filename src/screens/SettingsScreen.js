@@ -1,4 +1,5 @@
 // src/screens/SettingsScreen.js - App settings and preferences
+import { COLORS, DEFAULT_SETTINGS, SERVER, STORAGE_KEYS } from '@/src/config/constants';
 import { clearLog, err, getLog } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -22,19 +23,12 @@ import { useGame } from '../context/GameContext';
 const { height: screenHeight } = Dimensions.get('window');
 
 // Server configuration key
-const SERVER_URL_KEY = 'store_server_url';
-const DEFAULT_SERVER_URL = 'http://192.168.1.196/narrato/story_list.json';
+const DEFAULT_SERVER_URL = SERVER.DEFAULT_STORY_LIST_URL;
+const SERVER_URL_KEY = STORAGE_KEYS.STORY_LIST_URL;
 
 export default function SettingsScreen({ navigation }) {
-  const [settings, setSettings] = useState({
-    soundEnabled: true,
-    autoSave: true,
-    textSize: 'medium',
-    darkMode: false,
-    vibration: true,
-    notifications: false,
-  });
-
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS);
+  
   const { resetGameContext } = useGame();
   const [showLogModal, setShowLogModal] = useState(false);
   const [logContent, setLogContent] = useState('');
@@ -51,9 +45,9 @@ export default function SettingsScreen({ navigation }) {
 
   const loadSettings = async () => {
     try {
-      const stored = await AsyncStorage.getItem('narrato_settings');
+      const stored = await AsyncStorage.getItem(STORAGE_KEYS.SETTINGS);
       if (stored) {
-        setSettings({ ...settings, ...JSON.parse(stored) });
+        setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(stored) });
       }
     } catch (error) {
       console.error('Failed to load settings:', error);
@@ -62,7 +56,7 @@ export default function SettingsScreen({ navigation }) {
 
   const checkDevMode = async () => {
     try {
-      const devMode = await AsyncStorage.getItem('developer_mode');
+      const devMode = await AsyncStorage.getItem(STORAGE_KEYS.DEVELOPER_MODE);
       setShowDevSection(devMode === 'true');
     } catch (error) {
       console.error('Failed to check dev mode:', error);
@@ -214,7 +208,7 @@ export default function SettingsScreen({ navigation }) {
                 <Switch
                   value={settings.soundEnabled}
                   onValueChange={(value) => updateSetting('soundEnabled', value)}
-                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                  trackColor={{ false: COLORS.SWITCH_INACTIVE, true: COLORS.SWITCH_ACTIVE }}
                 />
               }
             />
@@ -227,7 +221,7 @@ export default function SettingsScreen({ navigation }) {
                 <Switch
                   value={settings.autoSave}
                   onValueChange={(value) => updateSetting('autoSave', value)}
-                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                  trackColor={{ false: COLORS.SWITCH_INACTIVE, true: COLORS.SWITCH_ACTIVE }}
                 />
               }
             />
@@ -240,7 +234,7 @@ export default function SettingsScreen({ navigation }) {
                 <Switch
                   value={settings.vibration}
                   onValueChange={(value) => updateSetting('vibration', value)}
-                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                  trackColor={{ false: COLORS.SWITCH_INACTIVE, true: COLORS.SWITCH_ACTIVE }}
                 />
               }
             />
@@ -275,7 +269,7 @@ export default function SettingsScreen({ navigation }) {
                 <Switch
                   value={settings.darkMode}
                   onValueChange={(value) => updateSetting('darkMode', value)}
-                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                  trackColor={{ false: COLORS.SWITCH_INACTIVE, true: COLORS.SWITCH_ACTIVE }}
                 />
               }
             />
@@ -311,7 +305,7 @@ export default function SettingsScreen({ navigation }) {
                 <Switch
                   value={showDevSection}
                   onValueChange={toggleDevMode}
-                  trackColor={{ false: '#ccc', true: '#6366f1' }}
+                  trackColor={{ false: COLORS.SWITCH_INACTIVE, true: COLORS.SWITCH_ACTIVE }}
                 />
               }
             />

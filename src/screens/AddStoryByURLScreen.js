@@ -1,4 +1,5 @@
 // src/screens/AddStoryByURLScreen.js - Styled to match app design
+import { SERVER } from '@/src/config/constants';
 import { log } from '@/util/log';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -106,7 +107,7 @@ export default function AddStoryByURLScreen({ navigation }) {
   };
 
   const handleSetDefault = () => {
-    setUrl("http://192.168.1.196/narrato/basic_story.zip");
+    setUrl(SERVER.DEFAULT_ADD_STORY_URL);
   };
 
 
