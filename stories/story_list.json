@@ -28,35 +28,5 @@
     "tags": ["bedtime", "stars", "kids"],
     "price": 0,
     "featured": "false"
-  },
-  {
-    "id": "forest_adventure",
-    "title": "The Enchanted Forest",
-    "author": "Jane Storyteller",
-    "description": "A magical adventure...",
-    "thumbnail": "/narrato/images/forest.jpg",
-    "downloadUrl": "/narrato/downloads/forest_adventure.zip",
-    "rating": 4.8,
-    "downloads": 15420,
-    "size_mb": 25.3,
-    "estimated_play_time": 45,
-    "tags": ["fantasy", "magic", "adventure"],
-    "price": 0,
-    "featured": true
-  },
-  {
-    "id": "forest_adventure2",
-    "title": "The Enchanted Forest2",
-    "author": "Jane Storyteller2",
-    "description": "A magical adventure...",
-    "thumbnail": "/narrato/images/forest.jpg",
-    "downloadUrl": "/narrato/downloads/forest_adventure.zip",
-    "rating": 4.8,
-    "downloads": 15420,
-    "size_mb": 25.3,
-    "estimated_play_time": 45,
-    "tags": ["fantasy", "magic", "adventure"],
-    "price": 0,
-    "featured": true
   }
 ]

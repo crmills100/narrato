@@ -15,54 +15,54 @@
         "assets": {
             "images": {
                 "ls_img_01": {
-                 "path": "./images/ls_img_01.png",
+                 "path": "./images/ls_img_01.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_02": {
-                 "path": "./images/ls_img_02.png",
+                 "path": "./images/ls_img_02.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_03": {
-                 "path": "./images/ls_img_03.png",
+                 "path": "./images/ls_img_03.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_04": {
-                 "path": "./images/ls_img_04.png",
+                 "path": "./images/ls_img_04.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_05": {
-                 "path": "./images/ls_img_05.png",
+                 "path": "./images/ls_img_05.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_06": {
-                 "path": "./images/ls_img_06.png",
+                 "path": "./images/ls_img_06.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_07": {
-                 "path": "./images/ls_img_07.png",
+                 "path": "./images/ls_img_07.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_08": {
-                 "path": "./images/ls_img_08.png",
+                 "path": "./images/ls_img_08.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_09": {
-                 "path": "./images/ls_img_09.png",
+                 "path": "./images/ls_img_09.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 },
                 "ls_img_10": {
-                 "path": "./images/ls_img_10.png",
+                 "path": "./images/ls_img_10.jpg",
                  "alt_text": "placeholder",
-                 "format": "png"
+                 "format": "jpg"
                 }
             },
             "audio": {

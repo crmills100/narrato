@@ -73,9 +73,9 @@ Work Plan:
    - deploy zip file locally x
    - host static assets (images, story_list, stories) on CloudFlare (crmills.com) x
    - move default URLs to a single location x
-   - remove stories that do not work
-   - reduce size of lullaby_star.zip to under 25MB
-   - update defaults with URL(s)
+   - remove stories that do not work x
+   - reduce size of lullaby_star.zip to under 25MB (export png as jpg) x
+   - update defaults with URL(s) x
 - "Settings" screen:
    - Terms of Service x
    - Privacy Policy x
@@ -99,6 +99,10 @@ Work Plan:
 
 ## Version 0.2.4: "AI Creator"
 - create AI story: ability to have generative AI create a story
+- metrics:
+   - downloads per story
+   - application launches
+   - number of users
 
 ## Version 0.2.6:
 - "Current Story":

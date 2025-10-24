@@ -12,10 +12,18 @@ export const STORAGE_KEYS = {
 
 // Server Configuration
 export const SERVER = {
+  DEFAULT_STORY_LIST_URL: 'https://narrato.crmills.com/narrato/story_list.json',
+  DEFAULT_ADD_STORY_URL: "https://narrato.crmills.com/narrato/basic_story.zip",
+  TIMEOUT: 30000, // 30 seconds
+};
+
+// Server Configuration
+export const DEV_SERVER = {
   DEFAULT_STORY_LIST_URL: 'http://192.168.1.196/narrato/story_list.json',
   DEFAULT_ADD_STORY_URL: "http://192.168.1.196/narrato/basic_story.zip",
   TIMEOUT: 30000, // 30 seconds
 };
+
 
 // Default Settings
 export const DEFAULT_SETTINGS = {

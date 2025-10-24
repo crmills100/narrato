@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# cleanup
+rm ./stories/basic_story/basic_story.zip
+rm ./stories/music_demo/music_demo.zip
+rm ./stories/lullaby_star/lullaby_star.zip
+rm ./stories/totes_vol1_ep1/totes_vol1_ep1.zip
+
 mkdir www
 mkdir www/narrato
 mkdir www/narrato/images
@@ -38,6 +44,5 @@ sudo unzip -o /home/vboxuser/code/narrato/www/narrato_www.zip
 #
 # cd /home/vboxuser/code/narrato-www/plain-sunset-7c99/public
 # unzip -o /home/vboxuser/code/narrato/www/narrato_www.zip
-# rm narrato/lullaby_star.zip
 # cd /home/vboxuser/code/narrato-www/plain-sunset-7c99
 # npm run deploy
