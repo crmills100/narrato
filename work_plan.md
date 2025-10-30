@@ -68,7 +68,7 @@ Work Plan:
    - add “Import Story” to marketplace UI - not needed - in developer section x
    - icons of stories x 
    - add “Coming Soon” to marketplace UI
-- Server:
+- Server: x
    - update dist script to create zip file x
    - deploy zip file locally x
    - host static assets (images, story_list, stories) on CloudFlare (crmills.com) x
@@ -76,23 +76,53 @@ Work Plan:
    - remove stories that do not work x
    - reduce size of lullaby_star.zip to under 25MB (export png as jpg) x
    - update defaults with URL(s) x
-- "Settings" screen:
+- "Settings" screen: x
    - Terms of Service x
    - Privacy Policy x
    - about, version x
-   - Review text for ToS, Privacy Policy, About
-- Application logo (search for images on Wix?)
-- App Distribution: Publish Narrato on both stores with 2 bundled free stories
+   - review text for ToS, Privacy Policy, About x
+- Application logo (search for images on Wix?) x
+   - create application logos https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/ x
+   - test x
+- App Distribution: Publish Talewell on play store with 2 bundled free stories:
    - Android
-      - play store
-         - signup for developer account https://play.google.com/console/signup
-         - alpha version published to store https://docs.expo.dev/submit/android/ 
+      - play store x
+         - signup for developer account https://play.google.com/console/signup x
+         - alpha version published to store https://docs.expo.dev/submit/android/ x
+- Prepare for beta release:
+   - create dev 0.2.2 development build x
+   - application "final touches"
+      - Talewell name x
+      - name of app under logo is not "Talewell" x
+      - bg color of logo is purple x
+      - logo is too big x
+      - package name in build x
+      - register domain name (narratoengine.com) x
+      - email address in ToS and PP x
+      - setup support@narratoengine.com and privacy@narratoengine.com emails x
+      - test support and privacy emails x
+      - URLs in ToS and PP x
+      - content for URLs:
+         - setup worker for: https://talewell.narratoengine.com/talewell/
+         - update distribution to talewell.narratoengine.com
+         - update default URLs in application config
+         - content for: https://narratoengine.com/talewell/privacy
+         - content for: https://narratoengine.com/
+   - create production build
+   - publish
+      - beta version published to play store
+      - download and smoke test from play store
+   - seek testers:
+      - Reddit:
+         - publish post to kids stories group
+         - publish post to authors stories group
+
 
 ## Version 0.2.3: "MVP iOS Store"
 - "Settings" screen:
   - iOS version details
   - build number from build
-- App Distribution: Publish Narrato on both stores with 2 bundled free stories
+- App Distribution: Publish Talewell on both stores with 2 bundled free stories
    - iOS
       - basic standalone build for simulator?
       - test flight version published https://docs.expo.dev/submit/ios/ 
@@ -197,7 +227,17 @@ Work Plan:
 - 3rd party authors
 
 
+# Builds:
 
+## 1. Development EAS build for Android
+
+> eas build --platform android --profile development
+> npx expo start # ensure running development build
+
+navigate to expo.dev build area (https://expo.dev/accounts/crmills100/projects/) and navigate to the build
+download the build
+install the build artifact on the device
+open the app on the device and scan QR code from the expo dev console
 
 # Code Experiments:
 
@@ -240,7 +280,7 @@ Given a simple JSON and a description, can a GenAI tool create a story
 - convert on Android device to apk
 - publish on local webserver
 
-## 6. APK for Android using command line - complete
+## 6. APK for local Android install using command line - complete
 
 - setup keystore:
 

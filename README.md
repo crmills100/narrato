@@ -1,6 +1,8 @@
-# CYOA Mobile Game Engine
+# Talewell CYOA Player Application
 
-Narrato is an application for playing choose your own adventure (CYOA) games. One can browse for a CYOA story and it will show the story with text and images.
+Talewell is the The player or reader-facing app for choose your own adventure (CYOA) games. One can browse for a CYOA story and it will show the story with text and images. “Where stories come to life.”
+
+Narrato Engine is the engine or creation platform. “Crafted by Narrato.” or “Powered by Narrato Engine.”
 
 ## Features
 

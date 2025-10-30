@@ -7,42 +7,35 @@ rm ./stories/lullaby_star/lullaby_star.zip
 rm ./stories/totes_vol1_ep1/totes_vol1_ep1.zip
 
 mkdir www
-mkdir www/narrato
-mkdir www/narrato/images
+mkdir www/talewell
+mkdir www/talewell/images
 
-cp ./stories/story_list.json ./www/narrato
+cp ./stories/story_list.json ./www/talewell
 
 cd ./stories/basic_story
 zip -r basic_story story.json thumbnail.jpg images audio
 cd ../../
-cp ./stories/basic_story/basic_story.zip ./www/narrato
+cp ./stories/basic_story/basic_story.zip ./www/talewell
 
 cd ./stories/music_demo
 zip -r music_demo story.json thumbnail.jpg images audio
 cd ../../
-cp ./stories/music_demo/music_demo.zip ./www/narrato
+cp ./stories/music_demo/music_demo.zip ./www/talewell
 
 cd ./stories/lullaby_star
 zip -r lullaby_star story.json thumbnail.jpg images audio
 cd ../../
-cp ./stories/lullaby_star/lullaby_star.zip ./www/narrato
-cp ./stories/lullaby_star/thumbnail.jpg ./www/narrato/images/ls_thumbnail.jpg
+cp ./stories/lullaby_star/lullaby_star.zip ./www/talewell
+cp ./stories/lullaby_star/thumbnail.jpg ./www/talewell/images/ls_thumbnail.jpg
 
 cd ./stories/totes_vol1_ep1
 zip -r totes_vol1_ep1 story.json thumbnail.jpg images audio
 cd ../../
-cp ./stories/totes_vol1_ep1/totes_vol1_ep1.zip ./www/narrato
-cp ./stories/totes_vol1_ep1/thumbnail.jpg ./www/narrato/images/tm_thumbnail.png
+cp ./stories/totes_vol1_ep1/totes_vol1_ep1.zip ./www/talewell
+cp ./stories/totes_vol1_ep1/thumbnail.jpg ./www/talewell/images/tm_thumbnail.png
 
 cd ./www
-zip -r narrato_www.zip narrato
+zip -r talewell_www.zip talewell
 cd /var/www/html
-sudo unzip -o /home/vboxuser/code/narrato/www/narrato_www.zip
+sudo unzip -o /home/vboxuser/code/narrato/www/talewell_www.zip
 
-
-# narrato.crmills.com deployment
-#
-# cd /home/vboxuser/code/narrato-www/plain-sunset-7c99/public
-# unzip -o /home/vboxuser/code/narrato/www/narrato_www.zip
-# cd /home/vboxuser/code/narrato-www/plain-sunset-7c99
-# npm run deploy

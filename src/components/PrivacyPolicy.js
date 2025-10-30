@@ -1,26 +1,26 @@
-export const privacyPolicyContent = `# Narrato Privacy Policy
+export const privacyPolicyContent = `# Talewell Privacy Policy
 
-_Last Updated: [Insert Date]_
+_Last Updated: 10/30/2025_
 
-Thank you for using **Narrato**, an interactive storytelling platform that lets you experience and share narrative adventures.  
-This Privacy Policy explains how we collect, use, and protect your information when you use the Narrato app and related services.
+Thank you for using **Talewell**, an interactive storytelling platform that lets you experience and share narrative adventures.  
+This Privacy Policy explains how we collect, use, and protect your information when you use the Talewell app and related services.
 
 ---
 
 ## 1. Overview
 
-Narrato is operated by **[Your Company Name]** (“we,” “us,” or “our”).  
+Talewell is operated by **Bebe Coin and Power Studios** (“we,” “us,” or “our”).  
 We respect your privacy and are committed to protecting your personal information.
 
-This Privacy Policy applies to all users of the **Narrato app**, the **Narrato website**, and any related services or content.
+This Privacy Policy applies to all users of the **Talewell app**, the **Talewell website**, and any related services or content.
 
-By using Narrato, you agree to the collection and use of information in accordance with this policy.
+By using Talewell, you agree to the collection and use of information in accordance with this policy.
 
 ---
 
 ## 2. Information We Collect
 
-We collect the following types of information to provide and improve Narrato:
+We collect the following types of information to provide and improve Talewell:
 
 ### **A. Information You Provide**
 - **Account data** (such as username, email address, and password)  
@@ -41,7 +41,7 @@ We use this information to operate and improve the platform, personalize your ex
 
 We use your information to:
 
-- Operate and maintain the Narrato app and services  
+- Operate and maintain the Talewell app and services  
 - Process in-app purchases and subscriptions  
 - Save gameplay progress or story state  
 - Communicate with you about updates, support, or new features  
@@ -66,14 +66,14 @@ Story data and gameplay choices are stored securely and are not shared with othe
 
 ## 5. Data Retention
 
-We retain user data only as long as necessary to operate the Narrato service or as required by law.  
-You may request deletion of your account and data at any time by contacting us at **privacy@narrato.app**.
+We retain user data only as long as necessary to operate the Talewell service or as required by law.  
+You may request deletion of your account and data at any time by contacting us at **privacy@narratoengine.com**.
 
 ---
 
 ## 6. Children’s Privacy
 
-Narrato is intended for users **aged 13 and older**.  
+Talewell is intended for users **aged 13 and older**.  
 We do not knowingly collect personal information from children under 13.  
 If we learn that we have collected data from a child, we will delete it promptly.
 
@@ -94,7 +94,7 @@ Depending on your location, you may have rights to:
 - Request correction or deletion of your personal information  
 - Withdraw consent for data processing  
 
-To exercise these rights, contact us at **privacy@narrato.app**.
+To exercise these rights, contact us at **privacy@narratoengine.com**.
 
 ---
 
@@ -115,9 +115,9 @@ We ensure that data is handled in compliance with applicable privacy laws wherev
 ## 11. Updates to This Policy
 
 We may update this Privacy Policy from time to time.  
-Any updates will be posted within the Narrato app and on our website, with the “Last Updated” date revised accordingly.
+Any updates will be posted within the Talewell app and on our website, with the “Last Updated” date revised accordingly.
 
-Continued use of Narrato after updates means you accept the revised policy.
+Continued use of Talewell after updates means you accept the revised policy.
 
 ---
 
@@ -125,10 +125,12 @@ Continued use of Narrato after updates means you accept the revised policy.
 
 If you have questions or concerns about this Privacy Policy, please contact us:
 
-📧 **privacy@narrato.app**  
-🌐 **https://narrato.app/privacy**
+📧 **privacy@narratoengine.com**  
+🌐 **https://narratoengine.com/talewell/privacy**
 
 ---
 
-© [Year] [Your Company Name]. All Rights Reserved.
+© 2025 Bebe Coin and Power Studios. All Rights Reserved.
+
+.
 `;

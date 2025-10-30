@@ -1,6 +1,6 @@
-export const aboutContent = `# Narrato for Android
+export const aboutContent = `# Talewell for Android
 
 Version: 0.2.2
 
-Narrato for Android software © 2025 **[Your Company Name]**
+Talewell for Android software © 2025 **Bebe Coin and Power Studios**
 `;

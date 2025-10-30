@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "narrato",
-    "slug": "narrato",
+    "name": "Talewell",
+    "slug": "talewell",
     "version": "0.2.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -9,21 +9,21 @@
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#6366f1"
+      "backgroundColor": "#f6f2ed"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.cyoa.adventureengine"
+      "bundleIdentifier": "com.narratoengine.talewell"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#6366f1"
+        "backgroundColor": "#f6f2ed"
       },
-      "package": "com.cyoa.adventureengine",
+      "package": "com.narratoengine.talewell",
       "permissions": [
         "WRITE_EXTERNAL_STORAGE",
         "READ_EXTERNAL_STORAGE",
@@ -44,18 +44,20 @@
       "expo-router",
       "expo-web-browser",
       [
-        "expo-build-properties", 
+        "expo-build-properties",
         {
           "android": {
             "usesCleartextTraffic": true
-          } 
+          }
         }
       ]
     ],
     "extra": {
       "eas": {
-        "projectId": "7f8c2c0f-59da-4271-8495-d8c563aa84ed"
-      }
-    }
+        "projectId": "390269f6-ff51-4f5d-bd9d-a4deb84725f4"
+      },
+      "router": {}
+    },
+    "owner": "crmills100"
   }
 }

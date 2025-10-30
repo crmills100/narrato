@@ -2,7 +2,7 @@
 
 // Storage Keys
 export const STORAGE_KEYS = {
-  SETTINGS: 'narrato_settings',
+  SETTINGS: 'talewell_settings',
   DEVELOPER_MODE: 'developer_mode',
   STORY_LIST_URL: 'story_list_url',
   // Add other storage keys used throughout the app
@@ -12,15 +12,15 @@ export const STORAGE_KEYS = {
 
 // Server Configuration
 export const SERVER = {
-  DEFAULT_STORY_LIST_URL: 'https://narrato.crmills.com/narrato/story_list.json',
-  DEFAULT_ADD_STORY_URL: "https://narrato.crmills.com/narrato/basic_story.zip",
+  DEFAULT_STORY_LIST_URL: 'https://talewell.crmills.com/talewell/story_list.json',
+  DEFAULT_ADD_STORY_URL: "https://talewell.crmills.com/talewell/basic_story.zip",
   TIMEOUT: 30000, // 30 seconds
 };
 
 // Server Configuration
 export const DEV_SERVER = {
-  DEFAULT_STORY_LIST_URL: 'http://192.168.1.196/narrato/story_list.json',
-  DEFAULT_ADD_STORY_URL: "http://192.168.1.196/narrato/basic_story.zip",
+  DEFAULT_STORY_LIST_URL: 'http://192.168.1.196/talewell/story_list.json',
+  DEFAULT_ADD_STORY_URL: "http://192.168.1.196/talewell/basic_story.zip",
   TIMEOUT: 30000, // 30 seconds
 };
 

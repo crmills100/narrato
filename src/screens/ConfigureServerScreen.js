@@ -119,7 +119,7 @@ export default function ConfigureServerScreen({ navigation }) {
             <View style={styles.infoContent}>
               <Text style={styles.infoTitle}>Server Configuration</Text>
               <Text style={styles.infoText}>
-                Configure the URL where Narrato will fetch available games. The URL should point to an API endpoint that returns a JSON array of games.
+                Configure the URL where Talewell will fetch available games. The URL should point to an API endpoint that returns a JSON array of games.
               </Text>
             </View>
           </View>
