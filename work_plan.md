@@ -84,7 +84,7 @@ Work Plan:
 - Application logo (search for images on Wix?) x
    - create application logos https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/ x
    - test x
-- App Distribution: Publish Talewell on play store with 2 bundled free stories:
+- App Distribution: Publish Talewell on play store with 2 bundled free stories: x
    - Android
       - play store x
          - signup for developer account https://play.google.com/console/signup x
@@ -103,9 +103,9 @@ Work Plan:
       - test support and privacy emails x
       - URLs in ToS and PP x
       - content for URLs:
-         - setup worker for: https://talewell.narratoengine.com/talewell/
-         - update distribution to talewell.narratoengine.com
-         - update default URLs in application config
+         - setup worker for: https://talewell.narratoengine.com/talewell/ x
+         - update distribution to talewell.narratoengine.com x
+         - update default URLs in application config x
          - content for: https://narratoengine.com/talewell/privacy
          - content for: https://narratoengine.com/
    - create production build
@@ -238,6 +238,13 @@ navigate to expo.dev build area (https://expo.dev/accounts/crmills100/projects/)
 download the build
 install the build artifact on the device
 open the app on the device and scan QR code from the expo dev console
+
+## 2. www smoketest
+
+https://narratoengine.com/                                  # via worker in cloudflare
+https://talewell.narratoengine.com/                         # via narrato-www
+https://talewell.narratoengine.com/talewell/                # via narrato-www
+https://talewell.narratoengine.com/talewell/story_list.json # via narrato-www
 
 # Code Experiments:
 

@@ -11,6 +11,7 @@ mkdir www/talewell
 mkdir www/talewell/images
 
 cp ./stories/story_list.json ./www/talewell
+cp ./stories/index.html ./www/talewell
 
 cd ./stories/basic_story
 zip -r basic_story story.json thumbnail.jpg images audio

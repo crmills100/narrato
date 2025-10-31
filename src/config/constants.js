@@ -12,8 +12,8 @@ export const STORAGE_KEYS = {
 
 // Server Configuration
 export const SERVER = {
-  DEFAULT_STORY_LIST_URL: 'https://talewell.crmills.com/talewell/story_list.json',
-  DEFAULT_ADD_STORY_URL: "https://talewell.crmills.com/talewell/basic_story.zip",
+  DEFAULT_STORY_LIST_URL: 'https://talewell.narratoengine.com/talewell/story_list.json',
+  DEFAULT_ADD_STORY_URL: "https://talewell.narratoengine.com/talewell/basic_story.zip",
   TIMEOUT: 30000, // 30 seconds
 };
 
