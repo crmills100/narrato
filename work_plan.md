@@ -102,14 +102,12 @@ Work Plan:
       - setup support@narratoengine.com and privacy@narratoengine.com emails x
       - test support and privacy emails x
       - URLs in ToS and PP x
-      - content for URLs:
+      - setup URLs:
          - setup worker for: https://talewell.narratoengine.com/talewell/ x
          - update distribution to talewell.narratoengine.com x
          - update default URLs in application config x
-         - content for: https://narratoengine.com/talewell/privacy
-         - content for: https://narratoengine.com/
-   - create production build
-   - publish
+   - create production build x
+   - publish 
       - beta version published to play store
       - download and smoke test from play store
    - seek testers:
@@ -117,6 +115,18 @@ Work Plan:
          - publish post to kids stories group
          - publish post to authors stories group
 
+## Version www-0.1: "WWW content into own project"
+   - Move stories to own github project
+   - Update distribution
+      - application
+      - server
+   - Initial version of content for website:
+     - content for URLs:
+         - content for: https://narratoengine.com/
+         - content for: https://narratoengine.com/talewell/privacy
+         - content for: https://narratoengine.com/talewell/
+         - NOTE: talewell.narratoengine.com should be redirected to narratoengine.com/talewell/
+         - NOTE: leave talewell.narratoengine.com for apps
 
 ## Version 0.2.3: "MVP iOS Store"
 - "Settings" screen:
@@ -245,6 +255,19 @@ https://narratoengine.com/                                  # via worker in clou
 https://talewell.narratoengine.com/                         # via narrato-www
 https://talewell.narratoengine.com/talewell/                # via narrato-www
 https://talewell.narratoengine.com/talewell/story_list.json # via narrato-www
+
+https://narratoengine.com/talewell/privacy/
+https://narratoengine.com/talewell/
+
+## 3. Internal Play Store Relase
+
+1. Build app: eas build --platform android --profile production
+
+1. Download app from expo.dev https://expo.dev/accounts/crmills100/projects/talewell
+2. Uploade to Play Store: 
+https://play.google.com/console/u/0/developers/5133380479146916403/app-list
+3. Copy URL of test artifact and smoke test on device
+
 
 # Code Experiments:
 
