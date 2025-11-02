@@ -259,15 +259,20 @@ https://talewell.narratoengine.com/talewell/story_list.json # via narrato-www
 https://narratoengine.com/talewell/privacy/
 https://narratoengine.com/talewell/
 
-## 3. Internal Play Store Relase
+## 3. Internal Play Store Release
 
 1. Build app: eas build --platform android --profile production
-
-1. Download app from expo.dev https://expo.dev/accounts/crmills100/projects/talewell
-2. Uploade to Play Store: 
+2. Download app from expo.dev https://expo.dev/accounts/crmills100/projects/talewell
+3. Uploade to Play Store: 
 https://play.google.com/console/u/0/developers/5133380479146916403/app-list
-3. Copy URL of test artifact and smoke test on device
+4. Copy URL of test artifact and smoke test on device
 
+## 4. Internal Play Store Release with EAS submission
+
+1. Build app: eas build --platform android --profile production
+2. Submit app: eas submit
+3. Publish via Play Store GUI
+4. Copy URL of test artifact and smoke test on device
 
 # Code Experiments:
 
