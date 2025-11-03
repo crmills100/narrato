@@ -107,13 +107,19 @@ Work Plan:
          - update distribution to talewell.narratoengine.com x
          - update default URLs in application config x
    - create production build x
-   - publish 
-      - beta version published to play store
-      - download and smoke test from play store
+   - publish x
+      - beta version published to play store x
+      - download and smoke test from play store x
    - seek testers:
       - Reddit:
+         - write Reddit post x
+         - publish comment to r/apps - need to wait until play store link is possible
+         - publish comment to r/SideProject x
          - publish post to kids stories group
          - publish post to authors stories group
+         - write email with instructions
+      - Other:
+         - write short blog/linkedin/text post
 
 ## Version www-0.1: "WWW content into own project"
    - Move stories to own github project
@@ -124,7 +130,7 @@ Work Plan:
      - content for URLs:
          - content for: https://narratoengine.com/
          - content for: https://narratoengine.com/talewell/privacy
-         - content for: https://narratoengine.com/talewell/
+         - content for: https://narratoengine.com/talewell/ x
          - NOTE: talewell.narratoengine.com should be redirected to narratoengine.com/talewell/
          - NOTE: leave talewell.narratoengine.com for apps
 
@@ -270,7 +276,7 @@ https://play.google.com/console/u/0/developers/5133380479146916403/app-list
 ## 4. Internal Play Store Release with EAS submission
 
 1. Build app: eas build --platform android --profile production
-2. Submit app: eas submit
+2. Submit app: eas submit --platform android
 3. Publish via Play Store GUI
 4. Copy URL of test artifact and smoke test on device
 

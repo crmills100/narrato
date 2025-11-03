@@ -12,6 +12,10 @@ mkdir www/talewell/images
 
 cp ./stories/story_list.json ./www/talewell
 cp ./stories/index.html ./www/talewell
+cp -r ./stories/images ./www/talewell
+cp ./stories/favicon.ico ./www/talewell
+cp ./stories/favicon-*.png ./www/talewell
+
 cp ./stories/privacy ./www/talewell/privacy
 cp ./stories/privacy/index.html ./www/talewell/privacy/index.html
 
