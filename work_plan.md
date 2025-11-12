@@ -118,6 +118,8 @@ Work Plan:
          - publish post to kids stories group
          - publish post to authors stories group
          - write email with instructions
+         - bring Google Groups sign-up into instructions?: https://groups.google.com/u/1/g/talewell-alpha
+         - uodate instructions with link: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers
       - Other:
          - write short blog/linkedin/text post
 
