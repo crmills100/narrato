@@ -10,7 +10,7 @@ Basic version: "Basic"
 - basic flow: x
    - select a story
    - show text and navigation buttons and "end"
-- update README and check-in
+- update README and check-in x
 
 Version 0.1: "Demoable"
 - story viewing:
@@ -18,8 +18,8 @@ Version 0.1: "Demoable"
    - scrollbar on long text
 - manage local stories:
    - basic story from URL:
-      - simple JSON
-      - save locally
+      - simple JSON x
+      - save locally x
       - delete story
    - rich story from URL:
       - more advanced file format with images
