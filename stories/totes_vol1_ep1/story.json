@@ -1,0 +1,144 @@
+{
+  "id": "totes-mcgoats-adventure-001",
+  "title": "Totes McGoats and the Mysterious Island",
+  "author": "Tilly Maplesea",
+  "description": "Join Totes McGoats as he wakes up on a strange Pacific island and begins an adventure that leads him to meet a new friend for the very first time.",
+  "thumbnail": "island_thumbnail.png",
+  "rating": "E",
+  "XXdownloads": "1245",
+  "XXsize_mb": "2.4",
+  "estimated_play_time": "10",
+  "tags": ["adventure", "goat", "island", "friendship", "choose-your-own"],
+  "XXprice": "0.00",
+  "XXfeatured": "true",
+  "story": {
+    "assets": {
+      "images": {
+        "beach": { "path": "images/tm_beach.png", "alt_text": "A sandy beach at sunrise", "format": "png" },
+        "seashell": { "path": "images/tm_seashell.png", "alt_text": "Colorful seashells and shiny stones", "format": "png" },
+        "jungle": { "path": "images/tm_jungle.png", "alt_text": "Dense tropical jungle", "format": "png" },
+        "river": { "path": "images/tm_river.png", "alt_text": "Sparkling river through the jungle", "format": "png" },
+        "hill": { "path": "images/tm_hill.png", "alt_text": "A steep jungle hill with smoke in the distance", "format": "png" },
+        "hut": { "path": "images/tm_hut.png", "alt_text": "Abandoned bamboo hut", "format": "png" },
+        "clearing": { "path": "images/tm_clearing.png", "alt_text": "A bright jungle clearing with flowers", "format": "png" },
+        "cluckers": { "path": "images/tm_cluckers.png", "alt_text": "A proud chicken named Cluckers", "format": "png" }
+      },
+      "audio": {
+        "waves": { "path": "audio/waves.mp3", "loop": "true", "volume": "0.6", "format": "mp3" },
+        "jungle_ambience": { "path": "audio/jungle.mp3", "loop": "true", "volume": "0.7", "format": "mp3" },
+        "discovery": { "path": "audio/discovery.mp3", "loop": "false", "volume": "0.9", "format": "mp3" }
+      }
+    },
+    "nodes": {
+      "beach_start": {
+        "title": "Stranded on the Beach",
+        "content": {
+          "text": "You are Totes McGoats, a curious goat who has just woken up on a sandy beach of a mysterious island in the Pacific. The waves crash gently behind you, and a jungle looms ahead. Your trusty satchel is slung across your back.",
+          "image": "beach",
+          "audioX": "waves"
+        },
+        "choices": [
+          { "id": "c1", "text": "Explore the beach for clues.", "target": "beach_search" },
+          { "id": "c2", "text": "Head into the jungle.", "target": "jungle_path" }
+        ]
+      },
+      "beach_search": {
+        "title": "Message in a Bottle",
+        "content": {
+          "text": "You trot along the beach, the sand warm beneath your hooves. You discover a half-buried bottle with a note inside. The note shows a crude map with a path leading inland, marked with an 'X'.",
+          "image": "beach"
+        },
+        "choices": [
+          { "id": "c3", "text": "Follow the map inland.", "target": "jungle_path" },
+          { "id": "c4", "text": "Ignore the map and keep searching the beach.", "target": "seashells" }
+        ]
+      },
+      "seashells": {
+        "title": "Seashell Collecting",
+        "content": {
+          "text": "You find colorful seashells and shiny stones, which you tuck into your satchel. Though pretty, they don't help much. The jungle still calls to you.",
+          "image": "seashell"
+        },
+        "choices": [
+          { "id": "c5", "text": "Head into the jungle.", "target": "jungle_path" }
+        ]
+      },
+      "jungle_path": {
+        "title": "The Fork in the Jungle",
+        "content": {
+          "text": "The jungle is alive with the sounds of chirping birds and rustling leaves. A fork in the path appears: one side leads toward a river, the other up a steep hill.",
+          "image": "jungle",
+          "audioX": "jungle_ambience"
+        },
+        "choices": [
+          { "id": "c6", "text": "Take the river path.", "target": "river_path" },
+          { "id": "c7", "text": "Climb the hill.", "target": "hill_path" }
+        ]
+      },
+      "river_path": {
+        "title": "The Sparkling River",
+        "content": {
+          "text": "You follow the river, its water sparkling in the sun. Suddenly, you spot something shiny in the water. It looks like a coin! But the river seems deep and fast.",
+          "image": "river"
+        },
+        "choices": [
+          { "id": "c8", "text": "Wade into the river to grab the coin.", "target": "river_coin" },
+          { "id": "c9", "text": "Stay safe on the riverbank and keep walking.", "target": "jungle_clearing" }
+        ]
+      },
+      "river_coin": {
+        "title": "A Pirate's Coin",
+        "content": {
+          "text": "You bravely wade into the water and manage to grab the coin—it's an old pirate doubloon! Unfortunately, the current sweeps you downstream. You wash ashore, soaked but unharmed, and stumble into a jungle clearing.",
+          "image": "river"
+        },
+        "choices": [
+          { "id": "c10", "text": "Look around the clearing.", "target": "jungle_clearing" }
+        ]
+      },
+      "hill_path": {
+        "title": "View from the Hill",
+        "content": {
+          "text": "The climb is tough, but you reach the top and see the whole island spread out below. You spot smoke rising in the distance—someone might be there! You also notice a bright clearing directly below.",
+          "image": "hill"
+        },
+        "choices": [
+          { "id": "c11", "text": "Head toward the smoke.", "target": "smoke_hut" },
+          { "id": "c12", "text": "Head down to the clearing.", "target": "jungle_clearing" }
+        ]
+      },
+      "smoke_hut": {
+        "title": "The Abandoned Hut",
+        "content": {
+          "text": "You follow the smoke and discover an abandoned bamboo hut. Inside, there are journals filled with notes about the island. One page mentions 'the guardian of the clearing' who welcomes newcomers.",
+          "image": "hut"
+        },
+        "choices": [
+          { "id": "c13", "text": "Go to the clearing mentioned in the notes.", "target": "jungle_clearing" }
+        ]
+      },
+      "jungle_clearing": {
+        "title": "The Guardian of the Clearing",
+        "content": {
+          "text": "You step into a bright jungle clearing. Flowers bloom all around, and in the center stands a proud chicken with bright feathers. She tilts her head at you curiously.",
+          "image": "clearing",
+          "audioX": "discovery"
+        },
+        "choices": [
+          { "id": "c14", "text": "Introduce yourself to the chicken.", "target": "meet_cluckers" }
+        ]
+      },
+      "meet_cluckers": {
+        "title": "Meeting Cluckers",
+        "content": {
+          "text": "“Well hello there!” says the chicken. “I'm Cluckers. Welcome to the island.” Totes McGoats smiles, realizing he has found his very first friend here. This is just the beginning of a great adventure together.",
+          "image": "cluckers",
+          "audioX": "discovery"
+        },
+        "choices": []
+      }
+    },
+    "start_node": "beach_start"
+  }
+}
+

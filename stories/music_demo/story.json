@@ -1,0 +1,116 @@
+{
+    "id": "music_demo",
+    "title": "The Music Demo",
+    "author": "Cosmic Radio",
+    "description": "Select some tracks.",
+    "thumbnail": "thumbnail.jpg",
+    "rating": "4.6",
+    "downloads": "8930",
+    "size_mb": "32.1",
+    "estimated_play_time": "60",
+    "tags": ["music", "sick beats"],
+    "price": "2.99",
+    "featured": "false",
+    "story": {
+        "meta": {
+            "title": "The Enchanted Forest",
+            "author": "Jane Storyteller",
+            "description": "A magical adventure through mysterious woods filled with ancient secrets.",
+            "language": "EN",
+            "rating": "G",
+            "estimated_play_time": "45",
+            "tags": [
+                "fantasy",
+                "magic",
+                "adventure"
+            ]
+        },
+        "assets": {
+            "images": {
+                "pcar": {
+                 "path": "./images/car.jpg",
+                 "alt_text": "automobile",
+                 "format": "jpg"
+                },
+                "mclaren": {
+                 "path": "./images/mclaren.jpg",
+                 "alt_text": "another automobile",
+                 "format": "jpg"
+                }
+            },
+            "audio": {
+                "akon_ghetto": {
+                "path": "./audio/akon_ghetto.mp3",
+                "loop": "true",
+                "volume": "0.3",
+                "format": "mp3"
+                },
+                "post_malone_i_fall_apart": {
+                "path": "./audio/post_malone_i_fall_apart.mp3",
+                "loop": "false",
+                "volume": "0.8",
+                "format": "mp3"
+                }
+            }
+        },
+
+        "nodes": {
+            "start": {
+                "title": "Beginning",
+                "content": {
+                    "text": "# Let's play\nSelect a track below."
+                },
+                "choices": [
+                    {
+                        "id": "choice1",
+                        "text": "Akon: Ghetto",
+                        "target": "track01"
+                    },
+                    {
+                        "id": "choice2",
+                        "text": "Post Malone: I Fall Apart",
+                        "target": "track02"
+                    }
+                ]
+            },
+            "track01": {
+                "content": {
+                    "text": "# Akon: Ghetto",
+                    "audio": "akon_ghetto"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "track02"
+                    },
+                    {
+                        "id": "return",
+                        "text": "Return to start",
+                        "target": "start"
+                    }
+                ]
+            },
+            "track02": {
+                "content": {
+                    "text": "# Post Malone: I Fall Apart",
+                    "audio": "post_malone_i_fall_apart"
+                },
+                "choices": [
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "track01"
+                    },
+                    {
+                        "id": "return",
+                        "text": "Return to start",
+                        "target": "start"
+                    }
+                ]
+            }
+        },
+        "start_node": "start"
+    }
+}
+    

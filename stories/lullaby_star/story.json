@@ -1,0 +1,267 @@
+{
+    "id": "lullaby_star",
+    "title": "The Lullaby Star",
+    "author": "Christopher Mills",
+    "description": "Bedtime story full of night wonder.",
+    "thumbnail": "thumbnail.jpg",
+    "rating": "E",
+    "XXdownloads": "8930",
+    "XXsize_mb": "32.1",
+    "estimated_play_time": "60",
+    "tags": ["bedtime", "stars", "kids"],
+    "XXprice": "2.99",
+    "XXfeatured": "false",
+    "story": {
+        "assets": {
+            "images": {
+                "ls_img_01": {
+                 "path": "./images/ls_img_01.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_02": {
+                 "path": "./images/ls_img_02.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_03": {
+                 "path": "./images/ls_img_03.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_04": {
+                 "path": "./images/ls_img_04.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_05": {
+                 "path": "./images/ls_img_05.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_06": {
+                 "path": "./images/ls_img_06.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_07": {
+                 "path": "./images/ls_img_07.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_08": {
+                 "path": "./images/ls_img_08.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_09": {
+                 "path": "./images/ls_img_09.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                },
+                "ls_img_10": {
+                 "path": "./images/ls_img_10.jpg",
+                 "alt_text": "placeholder",
+                 "format": "jpg"
+                }
+            },
+            "audio": {
+                "twilight_whispers": {
+                "path": "./audio/twilight_whispers.mp3",
+                "loop": "true",
+                "volume": "0.3",
+                "format": "mp3"
+                },
+                "starry_lullaby_instrumental": {
+                "path": "./audio/starry_lullaby_instrumental.mp3",
+                "loop": "true",
+                "volume": "0.3",
+                "format": "mp3"
+                }
+            }
+        },
+
+        "nodes": {
+            "start": {
+                "title": "",
+                "content": {
+                    "text": "Far, far away, in a world of quiet, lived Lyra. Everything was always just so.",
+                    "image": "ls_img_01"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg2"
+                    }
+                ]
+            },
+            "pg2": {
+                "content": {
+                    "text": "The stars in the sky were all the same. Each one a perfect, silent, silver dot.",
+                    "image": "ls_img_02"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg3"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "start"
+                    }
+                ]
+            },
+            "pg3": {
+                "content": {
+                    "text": "But one night, Lyra saw something new. A tiny, tiny sparkle, just a little bit different.",
+                    "image": "ls_img_03"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg4"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg2"
+                    }
+                ]
+            },
+            "pg4": {
+                "content": {
+                    "text": "It wasn't silent like the others. It made a soft, almost-a-whisper sound.",
+                    "image": "ls_img_04",
+                    "audio": "starry_lullaby_instrumental"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg5"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg3"
+                    }
+                ]
+            },
+            "pg5": {
+                "content": {
+                    "text": "Lyra wanted to know more about this special, quiet sparkle. So, Lyra found Rowan.",
+                    "image": "ls_img_05"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg6"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg4"
+                    }
+                ]
+            },
+            "pg6": {
+                "content": {
+                    "text": "Rowan listened carefully, with a kind and gentle ear. \"What is it, little one?\"",
+                    "image": "ls_img_06"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg7"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg5"
+                    }
+                ]
+            },
+            "pg7": {
+                "content": {
+                    "text": "Together, they looked up at the quiet, starry sky. Lyra pointed to the soft, sparkling sound.",
+                    "image": "ls_img_07"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg8"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg6"
+                    }
+                ]
+            },
+            "pg8": {
+                "content": {
+                    "text": "Rowan smiled a soft, sleepy smile. \"That, Lyra, is a lullaby star.\"",
+                    "image": "ls_img_08"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg9"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg7"
+                    }
+                ]
+            },
+            "pg9": {
+                "content": {
+                    "text": "The lullaby star hummed a tune, just for them. A soft, sleepy song.",
+                    "image": "ls_img_09",
+                    "audio": "twilight_whispers"
+                },
+                "choices": [
+                    {
+                        "id": "next",
+                        "text": "Next",
+                        "target": "pg10"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg8"
+                    }
+                ]
+            },
+            "pg10": {
+                "content": {
+                    "text": "And as the lullaby star hummed, Lyra closed her eyes, and drifted to a peaceful sleep.",
+                    "image": "ls_img_10"
+                },
+                "choices": [
+                    {
+                        "id": "start",
+                        "text": "Start Over",
+                        "target": "start"
+                    },
+                    {
+                        "id": "previous",
+                        "text": "Previous",
+                        "target": "pg9"
+                    }
+                ]
+            }
+        },
+        "start_node": "start"
+    }
+}
+    

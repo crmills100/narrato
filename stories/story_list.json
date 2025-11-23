@@ -1,0 +1,32 @@
+[
+  {
+    "id": "totes-mcgoats-adventure-001",
+    "title": "Totes McGoats and the Mysterious Island",
+    "author": "Tilly Maplesea",
+    "description": "Join Totes McGoats as he wakes up on a strange Pacific island and begins an adventure that leads him to meet a new friend for the very first time.",
+    "thumbnail": "/talewell/images/tm_thumbnail.png",
+    "downloadUrl": "/talewell/totes_vol1_ep1.zip",
+    "rating": "E",
+    "downloads": "1246",
+    "size_mb": "2.4",
+    "estimated_play_time": "10",
+    "tags": ["adventure", "goat", "island", "friendship", "choose-your-own"],
+    "price": 0,
+    "featured": "true"
+  },
+  {
+    "id": "lullaby_star",
+    "title": "The Lullaby Star",
+    "author": "Christopher Mills",
+    "description": "Bedtime story full of night wonder.",
+    "thumbnail": "/talewell/images/ls_thumbnail.jpg",
+    "downloadUrl": "/talewell/lullaby_star.zip",
+    "rating": "E",
+    "downloads": "8931",
+    "size_mb": "32.1",
+    "estimated_play_time": "20",
+    "tags": ["bedtime", "stars", "kids"],
+    "price": 0,
+    "featured": "false"
+  }
+]
