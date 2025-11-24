@@ -175,7 +175,6 @@ Work Plan:
    - corn story?
    - music album - use genAI songs
    - vacation album - use Iceland trip
-
 - intermediate Expo learning:
    - read: https://docs.expo.dev/workflow/overview/
 - "Settings"
@@ -190,7 +189,6 @@ Work Plan:
 ## Version 0.3: "IAP Library" https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160
 - Add backend catalog with story previews
 - Enable in app purchases (IAP) for story downloads
-
 - manage shared stories (authentication, user login, ...):
    - client:
       - option to set server URL
