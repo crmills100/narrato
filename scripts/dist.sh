@@ -16,7 +16,7 @@ cp -r ./stories/images ./www/talewell
 cp ./stories/favicon.ico ./www/talewell
 cp ./stories/favicon-*.png ./www/talewell
 
-cp ./stories/privacy ./www/talewell/privacy
+mkdir ./www/talewell/privacy
 cp ./stories/privacy/index.html ./www/talewell/privacy/index.html
 
 
