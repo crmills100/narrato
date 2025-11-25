@@ -63,11 +63,10 @@ Work Plan:
 - Fixes: x
    - error on delete story from library x
    - undefined showing in logs x
-- "Home" screen:
+- "Home" screen: x
    - static list of stories: load 2 demo stories into "Home" (totes + lullaby) x
    - add “Import Story” to marketplace UI - not needed - in developer section x
    - icons of stories x 
-   - add “Coming Soon” to marketplace UI
 - Server: x
    - update dist script to create zip file x
    - deploy zip file locally x
@@ -85,13 +84,13 @@ Work Plan:
    - create application logos https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/ x
    - test x
 - App Distribution: Publish Talewell on play store with 2 bundled free stories: x
-   - Android
+   - Android x
       - play store x
          - signup for developer account https://play.google.com/console/signup x
          - alpha version published to store https://docs.expo.dev/submit/android/ x
-- Prepare for beta release:
+- Prepare for alpha release: x
    - create dev 0.2.2 development build x
-   - application "final touches"
+   - application "final touches" x
       - Talewell name x
       - name of app under logo is not "Talewell" x
       - bg color of logo is purple x
@@ -102,26 +101,32 @@ Work Plan:
       - setup support@narratoengine.com and privacy@narratoengine.com emails x
       - test support and privacy emails x
       - URLs in ToS and PP x
-      - setup URLs:
+      - setup URLs: x
          - setup worker for: https://talewell.narratoengine.com/talewell/ x
          - update distribution to talewell.narratoengine.com x
          - update default URLs in application config x
    - create production build x
    - publish x
-      - beta version published to play store x
+      - alpha version published to play store x
       - download and smoke test from play store x
-   - seek testers:
-      - Reddit:
-         - write Reddit post x
-         - publish comment to r/apps - need to wait until play store link is possible
-         - publish comment to r/SideProject x
-         - publish post to kids stories group
-         - publish post to authors stories group
-         - write email with instructions
-         - bring Google Groups sign-up into instructions?: https://groups.google.com/u/1/g/talewell-alpha
-         - uodate instructions with link: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers
-      - Other:
-         - write short blog/linkedin/text post
+- "Alpha Testers" / 14+ testers:
+   - Reddit:
+      - write Reddit post (https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160) x 
+      - publish comment to r/SideProject x 
+      - publish comment to r/apps - need to wait until play store link is possible
+      - publish post to kids stories group
+      - publish post to authors stories group
+   - other:
+      - write short blog/linkedin/text post  x
+      - update wix personal site with Talewell
+      - Facebook post
+      - write howto on creating a story
+      - write email with instructions
+      - bring Google Groups sign-up into instructions?: https://groups.google.com/u/1/g/talewell-alpha
+      - uodate instructions with link: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers
+   - metrics:
+      - enable Google Analytics for narratoengine.com x
+   - ads?
 
 ## Version www-0.1: "WWW content into own project"
    - Move stories to own github project
@@ -140,6 +145,8 @@ Work Plan:
 - "Settings" screen:
   - iOS version details
   - build number from build
+- "Home" screen:
+   - add “Coming Soon” to marketplace UI
 - App Distribution: Publish Talewell on both stores with 2 bundled free stories
    - iOS
       - basic standalone build for simulator?
@@ -151,6 +158,11 @@ Work Plan:
    - downloads per story
    - application launches
    - number of users
+   - metrics for story downloads
+   - metrics for application
+   - relationship between Google Analytics and Google Tag Manager?
+- content:
+   - check out Project Gutenberg (www.gutenberg.org) Project Gutenberg is a digital library of more than 15,000 pieces of literature considered to be in the public domain.
 
 ## Version 0.2.6:
 - "Current Story":
