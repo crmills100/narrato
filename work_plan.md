@@ -301,6 +301,17 @@ https://play.google.com/console/u/0/developers/5133380479146916403/app-list
 3. Publish via Play Store GUI
 4. Copy URL of test artifact and smoke test on device
 
+## 5. Update git token
+Check current URL:
+    git remote -v
+
+Obtain token:
+    https://github.com/settings/tokens/
+    
+Set remote URL:
+    git remote set-url origin https://crmills100:{TOKEN}@github.com/crmills100/narrato.git
+
+
 # Code Experiments:
 
 ## 1. Images - complete
