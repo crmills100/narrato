@@ -56,7 +56,7 @@ Work Plan:
          - convert AAB to APK https://github.com/google/bundletool x
          - host on cloudflare - deferred file too large - x
 
-## Version 0.2.2: "MVP Google Play Store"
+## Version 0.2.2: "MVP Google Play Store" x
 
 - Demo stories: x
    - finish images for first Totes infant story x
@@ -109,7 +109,13 @@ Work Plan:
    - publish x
       - alpha version published to play store x
       - download and smoke test from play store x
-- "Alpha Testers" / 14+ testers:
+
+## Version 0.2.2.1: "Alpha Testers" / 14+ testers
+Push to get 14 testers signed up
+   - Status:
+      Beta questionarie responses: https://docs.google.com/forms/d/1f3Dhi_x83L8TEEYTs04dDhwKmkFzY55WpxSVqQgr2SE/edit#responses
+
+
    - Reddit:
       - write Reddit post (https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160) x 
       - publish comment to r/SideProject x 
@@ -127,6 +133,9 @@ Work Plan:
    - metrics:
       - enable Google Analytics for narratoengine.com x
    - ads?
+
+
+
 
 ## Version www-0.1: "WWW content into own project"
    - Move stories to own github project
