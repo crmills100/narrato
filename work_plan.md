@@ -127,7 +127,8 @@ Push to get 14 testers signed up
       - update wix personal site with Talewell
       - Facebook post
       - write howto on creating a story
-      - write email with instructions
+      - write email with instructions - see "Alpha/Beta Marketing"
+      - setup testing feedback form
       - bring Google Groups sign-up into instructions?: https://groups.google.com/u/1/g/talewell-alpha
       - uodate instructions with link: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers
    - metrics:
@@ -264,6 +265,32 @@ Push to get 14 testers signed up
 - 3rd party authors
 
 
+# Alpha/Beta Marketing
+
+## 1. Signup workflow:
+
+- Review signups: https://docs.google.com/forms/d/1f3Dhi_x83L8TEEYTs04dDhwKmkFzY55WpxSVqQgr2SE/edit#responses
+- Add new emails to google groups: https://groups.google.com/g/talewell-alpha
+- Send welcome email to any new signups
+
+
+- details of email: 
+
+
+   From: support@narratoengine.com
+   Bcc: {new email signups}
+   Subject:
+   Email text:
+
+   Welcome to Talewell, {TODO},
+
+   Install on your device:
+   https://play.google.com/store/apps/details?id=com.narratoengine.talewell
+
+
+   Send defects / issues via form {TODO}, if the issue is new you will receive an electronic Amazon gift card for $USD 10.
+
+
 # Builds:
 
 ## 1. Development EAS build for Android
@@ -290,7 +317,7 @@ https://narratoengine.com/talewell/
 
 1. Build app: eas build --platform android --profile production
 2. Download app from expo.dev https://expo.dev/accounts/crmills100/projects/talewell
-3. Uploade to Play Store: 
+3. Upload to Play Store: 
 https://play.google.com/console/u/0/developers/5133380479146916403/app-list
 4. Copy URL of test artifact and smoke test on device
 
