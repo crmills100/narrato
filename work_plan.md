@@ -118,6 +118,7 @@ Push to get 14 testers signed up
       - move screenshots up on the landing page x
       - write email with instructions - see "Alpha/Beta Marketing"
       - setup testing feedback form
+         https://github.com/crmills100/narrato/blob/master/.github/ISSUE_TEMPLATE/test_defect.yml
    - initial marketing: x
      - Reddit: x
         - write Reddit post (https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160) x 
@@ -294,9 +295,12 @@ Push to get 14 testers signed up
 
 Each week, publish a new "post" to channels:
 
-- Week of 1/5/2026:
-   - Reddit r/alphaandbetausers, r/IndieDev (removed not enough comment karma), r/raisingkids: solo_dev.md
+- Week of 1/12/2026:
+   - 1/14/2026: Reddit r/alphaandbetausers, r/IndieDev (removed not enough comment karma), r/raisingkids: solo_dev.md
       https://www.reddit.com/r/alphaandbetausers/comments/1qcnlcn/seeking_alpha_testers_andor_authors_for_story/
+
+   - 1/15/2026: based on post, https://www.ogbetatesters.com/ reached out, I plan to go with basic plan of 12 testers for $30
+
 
 
 # Builds:
