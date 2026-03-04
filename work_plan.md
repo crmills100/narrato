@@ -118,14 +118,35 @@ Work Plan:
       - publish post to authors stories group
    - other:
       - write short blog/linkedin/text post  x
+      - add to Reddit:
+         - r/IndieDev as comment https://www.reddit.com/r/SideProject/comments/1omoyvh/talewell_beta_is_here/ x
+         - r/Android as post - removed https://www.reddit.com/r/Android/comments/1p6bbwy/talewell_alpha_is_here/ x
+         - r/alphaandbetausers 
+            - removed https://www.reddit.com/r/alphaandbetausers/comments/1p6bdtf/talewell_alpha_is_here_a_new/ x
+            - https://www.reddit.com/r/alphaandbetausers/comments/1p75a46/talewell_alpha_is_here_choose_your_own_adventure/ x
+         - r/EnglishLearning as comment https://www.reddit.com/commentstats/t1_nqp2g6t x
+         - r/daddit as comment https://www.reddit.com/r/daddit/comments/1kv4etf/apps_games_for_kids_that_arent_predatory_filled/ x
+         - r/androidapps https://www.reddit.com/r/androidapps/comments/1p75gm2/talewell_alpha_is_here/ x
+         - r/SideProject https://www.reddit.com/r/SideProject/comments/1ojfs7f/what_are_you_building_this_weekend_promote_your/ x
+      - whatsapp:
+         - boyz x
+         - boilerroom x
+         - extended family
+         - mexico - canada friends
+      - Facebook 
+         - general post x
+         - cousins
+      - LinkedIn
       - update wix personal site with Talewell
-      - Facebook post
       - write howto on creating a story
       - write email with instructions
       - bring Google Groups sign-up into instructions?: https://groups.google.com/u/1/g/talewell-alpha
       - uodate instructions with link: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers
    - metrics:
       - enable Google Analytics for narratoengine.com x
+   - on-going through Alpha:
+      - view Google Analytics https://analytics.google.com/analytics/web/?authuser=0#/a375503143p513556428/reports/intelligenthome
+      - add users based on sign-up form
    - ads?
 
 ## Version www-0.1: "WWW content into own project"
