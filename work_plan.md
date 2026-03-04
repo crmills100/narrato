@@ -56,7 +56,7 @@ Work Plan:
          - convert AAB to APK https://github.com/google/bundletool x
          - host on cloudflare - deferred file too large - x
 
-## Version 0.2.2: "MVP Google Play Store"
+## Version 0.2.2: "MVP Google Play Store" x
 
 - Demo stories: x
    - finish images for first Totes infant story x
@@ -109,15 +109,28 @@ Work Plan:
    - publish x
       - alpha version published to play store x
       - download and smoke test from play store x
-- "Alpha Testers" / 14+ testers:
-   - Reddit:
-      - write Reddit post (https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160) x 
-      - publish comment to r/SideProject x 
+
+## Version 0.2.2.1: "Alpha Testers" / 14+ testers
+Push to get 14 testers signed up
+
+   - setup:
+      - tester access to alpha: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers x
+      - move screenshots up on the landing page x
+      - write email with instructions - see "Alpha/Beta Marketing"
+      - setup testing feedback form
+         https://github.com/crmills100/narrato/blob/master/.github/ISSUE_TEMPLATE/test_defect.yml
+   - initial marketing: x
+     - Reddit: x
+        - write Reddit post (https://chatgpt.com/c/677761ad-7684-800f-ba0a-5619224c6160) x 
+        - publish comment to r/SideProject x 
+   - other: x
+      - write short blog/linkedin/text post  x
+
+   - after closed testing (alpha):
       - publish comment to r/apps - need to wait until play store link is possible
       - publish post to kids stories group
       - publish post to authors stories group
    - other:
-      - write short blog/linkedin/text post  x
       - add to Reddit:
          - r/IndieDev as comment https://www.reddit.com/r/SideProject/comments/1omoyvh/talewell_beta_is_here/ x
          - r/Android as post - removed https://www.reddit.com/r/Android/comments/1p6bbwy/talewell_alpha_is_here/ x
@@ -139,15 +152,14 @@ Work Plan:
       - LinkedIn
       - update wix personal site with Talewell
       - write howto on creating a story
-      - write email with instructions
       - bring Google Groups sign-up into instructions?: https://groups.google.com/u/1/g/talewell-alpha
-      - uodate instructions with link: https://play.google.com/console/u/0/developers/5133380479146916403/app/4975687090598532054/tracks/4699868577417718154?tab=testers
    - metrics:
       - enable Google Analytics for narratoengine.com x
    - on-going through Alpha:
       - view Google Analytics https://analytics.google.com/analytics/web/?authuser=0#/a375503143p513556428/reports/intelligenthome
       - add users based on sign-up form
    - ads?
+
 
 ## Version www-0.1: "WWW content into own project"
    - Move stories to own github project
@@ -276,6 +288,42 @@ Work Plan:
 - 3rd party authors
 
 
+# Alpha/Beta Marketing
+
+## 1. Signup workflow:
+
+- Review form responses for new signups on Alpha questionarie responses: https://docs.google.com/forms/d/1f3Dhi_x83L8TEEYTs04dDhwKmkFzY55WpxSVqQgr2SE/edit#responses
+- Add new signups (the email addresses) to google groups: https://groups.google.com/g/talewell-alpha
+- Send welcome email to new signups
+
+- details of email: 
+
+
+   From: support@narratoengine.com
+   Bcc: {new email signups}
+   Subject:
+   Email text:
+
+   Welcome to Talewell, {TODO},
+
+   Install on your device:
+   https://play.google.com/store/apps/details?id=com.narratoengine.talewell [NOTE: only available once in group]
+
+
+   Send defects / issues via form {TODO}, if the issue is new you will receive an electronic Amazon gift card for $USD 10.
+
+## 2. Campaign: 
+
+Each week, publish a new "post" to channels:
+
+- Week of 1/12/2026:
+   - 1/14/2026: Reddit r/alphaandbetausers, r/IndieDev (removed not enough comment karma), r/raisingkids: solo_dev.md
+      https://www.reddit.com/r/alphaandbetausers/comments/1qcnlcn/seeking_alpha_testers_andor_authors_for_story/
+
+   - 1/15/2026: based on post, https://www.ogbetatesters.com/ reached out, I plan to go with basic plan of 12 testers for $30
+
+
+
 # Builds:
 
 ## 1. Development EAS build for Android
@@ -302,7 +350,7 @@ https://narratoengine.com/talewell/
 
 1. Build app: eas build --platform android --profile production
 2. Download app from expo.dev https://expo.dev/accounts/crmills100/projects/talewell
-3. Uploade to Play Store: 
+3. Upload to Play Store: 
 https://play.google.com/console/u/0/developers/5133380479146916403/app-list
 4. Copy URL of test artifact and smoke test on device
 
@@ -312,6 +360,17 @@ https://play.google.com/console/u/0/developers/5133380479146916403/app-list
 2. Submit app: eas submit --platform android
 3. Publish via Play Store GUI
 4. Copy URL of test artifact and smoke test on device
+
+## 5. Update git token
+Check current URL:
+    git remote -v
+
+Obtain token:
+    https://github.com/settings/tokens/
+    
+Set remote URL:
+    git remote set-url origin https://crmills100:{TOKEN}@github.com/crmills100/narrato.git
+
 
 # Code Experiments:
 
