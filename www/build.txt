@@ -1,0 +1,13 @@
+Source the environment:
+    . setup.env
+
+Development:
+    - Change directories: cd plain-sunset-7c99
+    - Start dev server: 
+        npm run start
+
+Deployment:
+    - Change directories: cd plain-sunset-7c99
+    - Deploy again: 
+        npm run deploy
+
