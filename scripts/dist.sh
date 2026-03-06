@@ -10,6 +10,7 @@ mkdir www_tmp
 mkdir www_tmp/talewell
 mkdir www_tmp/talewell/images
 
+cp ./stories/talewell-root.html ./www_tmp/index.html
 cp ./stories/story_list.json ./www_tmp/talewell
 cp ./stories/index.html ./www_tmp/talewell
 cp -r ./stories/images ./www_tmp/talewell
@@ -43,7 +44,7 @@ cp ./stories/totes_vol1_ep1/totes_vol1_ep1.zip ./www_tmp/talewell
 cp ./stories/totes_vol1_ep1/thumbnail.jpg ./www_tmp/talewell/images/tm_thumbnail.png
 
 cd ./www_tmp
-zip -r talewell_www.zip talewell
+zip -r talewell_www.zip talewell index.html
 cd /var/www/html
 sudo unzip -o /home/vboxuser/code/narrato/www_tmp/talewell_www.zip
 
