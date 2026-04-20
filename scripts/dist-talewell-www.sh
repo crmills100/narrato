@@ -5,8 +5,8 @@
 
 # prerequites: login to cloudflare
 
-
+mkdir -p /home/vboxuser/code/narrato/www/plain-sunset-7c99/public
 cd /home/vboxuser/code/narrato/www/plain-sunset-7c99/public
 unzip -o /home/vboxuser/code/narrato/www_tmp/talewell_www.zip
 cd /home/vboxuser/code/narrato/www/plain-sunset-7c99
-npm run deploy
+npx wrangler deploy

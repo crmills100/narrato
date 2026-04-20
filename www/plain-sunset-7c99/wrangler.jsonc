@@ -6,6 +6,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "plain-sunset-7c99",
 	"compatibility_date": "2025-10-11",
+        "account_id": "14ed461d8fe1f9adf2f12756d896fd98",
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
 		"directory": "./public"
